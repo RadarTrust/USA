@@ -356,3 +356,82 @@
   mask-image:linear-gradient(to bottom,#000 0%,#000 72%,transparent 100%);
  }
 }
+
+/* === SKILL CONSTELLATION V6 — alternating stellar glow and smooth orbit === */
+.profiles-directory .profile-links .social-link,
+.profiles-directory .profile-links .social-link::before,
+.profiles-directory .profile-links .social-icon{
+ border-radius:50%!important;
+}
+.profiles-directory .profile-links .social-link{
+ box-shadow:0 6px 20px rgba(9,47,36,.13),inset 0 1px 0 rgba(255,255,255,.75)!important;
+ animation:profile-icon-drift 5.4s ease-in-out infinite, profile-circle-glow 5.4s ease-in-out infinite alternate!important;
+ animation-delay:calc(var(--profile-index,0) * -.58s),calc(var(--profile-index,0) * -.58s)!important;
+}
+@keyframes profile-circle-glow{
+ 0%,100%{border-color:rgba(125,184,152,.36);filter:brightness(.97);box-shadow:0 5px 16px rgba(6,45,33,.11)}
+ 50%{border-color:rgba(154,243,195,.82);filter:brightness(1.12);box-shadow:0 0 23px rgba(95,228,153,.26),0 9px 25px rgba(6,45,33,.16)}
+}
+.hero-aside .skill-pill{
+ position:relative;
+ isolation:isolate;
+ border-color:rgba(171,244,201,.54);
+ background:linear-gradient(125deg,rgba(5,44,48,.96),rgba(22,99,74,.92));
+ text-shadow:0 0 8px rgba(205,255,224,.21);
+ box-shadow:0 5px 16px #020f18a8,0 0 12px rgba(103,255,165,.19);
+ will-change:opacity,filter;
+}
+.hero-aside .skill-node:nth-child(1) .skill-pill{--spark-delay:-.3s;--spark-speed:3.1s}
+.hero-aside .skill-node:nth-child(2) .skill-pill{--spark-delay:-1.7s;--spark-speed:4.2s}
+.hero-aside .skill-node:nth-child(3) .skill-pill{--spark-delay:-2.5s;--spark-speed:3.5s}
+.hero-aside .skill-node:nth-child(4) .skill-pill{--spark-delay:-3.0s;--spark-speed:4.7s}
+.hero-aside .skill-node:nth-child(5) .skill-pill{--spark-delay:-1.0s;--spark-speed:3.8s}
+.hero-aside .skill-track .skill-pill{
+ animation-name:skill-upright,stellar-glow;
+ animation-duration:var(--orbit-duration),var(--spark-speed,3.6s);
+ animation-timing-function:linear,ease-in-out;
+ animation-iteration-count:infinite,infinite;
+ animation-direction:reverse,alternate;
+ animation-delay:0s,var(--spark-delay,0s);
+}
+.hero-aside .skill-track--middle .skill-pill{animation-direction:normal,alternate}
+@keyframes stellar-glow{
+ 0%,100%{
+  opacity:.68;filter:brightness(.9);
+  border-color:rgba(120,223,163,.35);
+  box-shadow:0 5px 14px #021316aa,0 0 7px rgba(112,247,160,.12)
+ }
+ 50%{
+  opacity:1;filter:brightness(1.25);
+  border-color:rgba(212,255,228,.9);
+  box-shadow:0 8px 20px #021316aa,0 0 14px rgba(127,255,183,.55),0 0 31px rgba(127,255,183,.23)
+ }
+}
+.hero-aside .skill-pill::after{
+ content:"";pointer-events:none;position:absolute;
+ width:5px;height:5px;right:10px;top:-4px;
+ background:#ebfff2;border-radius:50%;
+ box-shadow:0 0 7px 3px rgba(188,255,215,.69),0 0 18px 5px rgba(108,233,171,.28);
+ animation:skill-star-flicker 2.8s ease-in-out infinite alternate;
+ animation-delay:var(--spark-delay,0s);
+}
+@keyframes skill-star-flicker{
+ 0%,100%{opacity:.16;transform:scale(.58)}
+ 45%{opacity:1;transform:scale(1.46)}
+ 72%{opacity:.32;transform:scale(.85)}
+}
+@media(max-width:760px){
+ .hero-aside{height:465px!important;min-height:465px!important}
+ .hero-aside .skill-pill,.hero-aside .skill-track--middle .skill-pill{
+  animation:mobile-skill-float 4.6s ease-in-out infinite, stellar-glow var(--spark-speed,3.6s) ease-in-out infinite alternate!important;
+  animation-delay:var(--spark-delay,0s),var(--spark-delay,0s)!important;
+ }
+ .hero-aside .skill-node:nth-child(5) .skill-pill{font-size:9px!important}
+}
+@media(prefers-reduced-motion:reduce){
+ .hero-aside .skill-pill,
+ .hero-aside .skill-pill::after,
+ .profiles-directory .profile-links .social-link{
+   animation:none!important;
+ }
+}
