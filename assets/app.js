@@ -70,7 +70,7 @@
       pdfPath:"",
       previewPath:typeof r.previewPath==="string" && /^\.\/assets\/(featured-certs|previews)\/[a-z0-9_-]+\.webp$/.test(r.previewPath)?r.previewPath:"",
       viewImage:typeof r.viewImage==="string" && /^\.\/assets\/(featured-certs|certificates-full)\/[a-z0-9_-]+\.webp$/.test(r.viewImage)?r.viewImage:"",
-      featured:!!r.title?.includes("ECSA")||!!r.title?.includes("Cybersecurity Certificate V3")
+      featured:!!r.title?.includes("ECSA")||r.id==="cred-001"
     };
   }
   function unique(records) {
@@ -115,7 +115,11 @@
     );
     if(state.sort==="az")data.sort((a,b)=>a.title.localeCompare(b.title));
     else if(state.sort==="issuer")data.sort((a,b)=>a.issuer.localeCompare(b.issuer)||a.title.localeCompare(b.title));
-    else data.sort((a,b)=>Number(b.featured)-Number(a.featured)||Number(!!b.verificationUrl)-Number(!!a.verificationUrl)||a.title.localeCompare(b.title));
+    else {
+      const ranks={"cred-001":10000,"archive-009":9900,"cred-010":9800,"archive-005":9750,"cred-002":9700,"archive-016":9600,"archive-011":9550,"archive-003":9500,"archive-017":9450,"archive-007":9400,"archive-004":9300,"archive-010":9200,"archive-001":9100,"archive-015":9000};
+      const score=r=>ranks[r.id]||(r.type==="Professional certification"?8600:/Program & specialization/.test(r.type)?8000:/(Certified|Certification)/i.test(r.title)&&r.viewImage?6800:r.id==="cred-013"?5500:/badge/i.test(r.title)?5000:r.viewImage?3000:1000);
+      data.sort((a,b)=>score(b)-score(a)||a.title.localeCompare(b.title));
+    }
     return data;
   }
   function issuerMark(name){
