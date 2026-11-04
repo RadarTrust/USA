@@ -70,6 +70,7 @@
       pdfPath:"",
       previewPath:typeof r.previewPath==="string" && /^\.\/assets\/(featured-certs|previews)\/[a-z0-9_-]+\.webp$/.test(r.previewPath)?r.previewPath:"",
       viewImage:typeof r.viewImage==="string" && /^\.\/assets\/(featured-certs|certificates-full)\/[a-z0-9_-]+\.webp$/.test(r.viewImage)?r.viewImage:"",
+      badgeImage:typeof r.badgeImage==="string" && /^\.\/assets\/featured-certs\/[a-z0-9-]+\.webp$/.test(r.badgeImage)?r.badgeImage:"",
       featured:!!r.title?.includes("ECSA")||r.id==="cred-001"
     };
   }
@@ -152,11 +153,13 @@
     }
     const top=node("div","cred-top");
     top.append(node("div","cred-mark",issuerMark(r.issuer)));
-    if(r.id==="cred-002"){
-      const stamp=node("img","ecsa-badge-icon");
-      stamp.src="./assets/featured-certs/ecsa-badge.webp";
-      stamp.alt="EC-Council ECSA badge";
+    if(r.badgeImage){
+      const stamp=node("img","credential-badge-icon");
+      stamp.src=r.badgeImage;
+      stamp.alt=r.issuer+" digital badge artwork";
       stamp.width=48;stamp.height=48;
+      stamp.loading="lazy";
+      stamp.addEventListener("error",()=>stamp.remove(),{once:true});
       top.append(stamp);
     }
     top.append(node("span","cred-badge"+(!r.verificationUrl?" pending":""),r.verificationUrl?"↗ Issuer link":r.viewImage?"View certificate":"Record only"));

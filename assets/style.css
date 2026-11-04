@@ -116,3 +116,7 @@
 .hero-ambient::after{opacity:.96;filter:contrast(1.12) saturate(1.08)}
 .hero-content{position:relative;z-index:2;text-shadow:0 2px 14px rgba(0,0,0,.12)}
 .hero-aside .portrait-photo .hero-photo{filter:contrast(1.09) saturate(1.09)}
+
+/* Authentic issuer badge thumbnails, independent of certificate scans */
+.credential-badge-icon{width:48px;height:48px;object-fit:contain;border-radius:10px;border:1px solid #e1e9df;background:#fff;box-shadow:0 3px 12px #0a261a26}
+@media(max-width:520px){.credential-badge-icon{width:42px;height:42px}}
