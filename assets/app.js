@@ -329,7 +329,7 @@
       if(!original)return;
       aside.classList.add("orbit-hover-freeze");
       const r=original.getBoundingClientRect(),a=aside.getBoundingClientRect();
-      const diameter=Math.round(r.width*3);
+      const diameter=Math.round(r.width*1.5);
       const label=original.textContent.trim();
       const expanded=document.createElement("div");
       expanded.className="skill-zoom-orb";
@@ -340,7 +340,7 @@
       expanded.style.setProperty("--zoom-x",(r.left+r.width/2-a.left)+"px");
       expanded.style.setProperty("--zoom-y",(r.top+r.height/2-a.top)+"px");
       expanded.style.setProperty("--zoom-diameter",diameter+"px");
-      expanded.style.setProperty("--zoom-font",Math.min(25,Math.max(17,diameter*.20))+"px");
+      expanded.style.setProperty("--zoom-font",Math.min(16,Math.max(11,diameter*.12))+"px");
       const text=document.createElement("span");
       text.className="skill-zoom-label";
       text.textContent=label;
