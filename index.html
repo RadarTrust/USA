@@ -247,6 +247,65 @@
  mask-image:linear-gradient(to right,transparent 0%,black 2%,black 98%,transparent 100%),linear-gradient(to bottom,transparent 0%,black 3%,black 97%,transparent 100%);
  mask-composite:intersect;-webkit-mask-composite:source-in;
 }
+/* RadarTrust v66 — seamless chromatic color diffusion from the supplied card.
+   The artwork remains untouched: only the ambient surface, rim and glow change. */
+.connect-section .connect-card{
+ position:relative!important;
+ isolation:isolate!important;
+ overflow:hidden!important;
+ border:1px solid rgba(54,179,228,.25)!important;
+ background:
+  radial-gradient(ellipse 56% 87% at 81% 42%,rgba(10,127,216,.34),transparent 75%),
+  radial-gradient(ellipse 51% 70% at 56% 70%,rgba(0,195,245,.16),transparent 77%),
+  radial-gradient(ellipse 33% 54% at 90% 13%,rgba(59,142,248,.19),transparent 77%),
+  radial-gradient(ellipse 35% 60% at 31% 81%,rgba(10,116,152,.13),transparent 75%),
+  linear-gradient(116deg,#041c27 0%,#062637 43%,#083b5b 73%,#051f30 100%)!important;
+ box-shadow:inset 0 0 66px rgba(29,134,176,.13),0 20px 58px rgba(0,20,32,.20)!important;
+}
+.connect-section .connect-card::before{
+ content:"";
+ position:absolute;inset:-16% -9% -14% 29%;
+ z-index:0;pointer-events:none;
+ background:
+  radial-gradient(ellipse at 68% 44%,rgba(12,153,255,.22),transparent 49%),
+  radial-gradient(ellipse at 28% 67%,rgba(7,208,252,.12),transparent 49%);
+ filter:blur(26px);
+ opacity:.87;
+}
+.connect-section .connect-card::after{
+ content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+ background:linear-gradient(120deg,transparent 40%,rgba(92,204,255,.045) 68%,transparent 98%);
+}
+.connect-section .connect-text,
+.connect-section .connect-visuals{
+ position:relative!important;z-index:1!important;
+}
+.connect-section .connect-business-card{
+ padding:2px!important;
+ border:1px solid rgba(80,186,240,.32)!important;
+ border-radius:15px!important;
+ background:linear-gradient(145deg,rgba(21,142,199,.25),rgba(0,71,118,.12) 48%,rgba(10,118,173,.21))!important;
+ box-shadow:
+   0 18px 42px rgba(1,15,26,.25),
+   0 0 46px rgba(2,161,232,.25),
+   0 0 90px rgba(9,123,195,.13),
+   inset 0 0 9px rgba(57,192,243,.12)!important;
+}
+.connect-section .connect-business-card img{
+ border-radius:12px!important;
+ -webkit-mask-image:linear-gradient(to right,transparent 0%,#000 2%,#000 98%,transparent 100%),linear-gradient(to bottom,transparent 0%,#000 2%,#000 98%,transparent 100%)!important;
+ mask-image:linear-gradient(to right,transparent 0%,#000 2%,#000 98%,transparent 100%),linear-gradient(to bottom,transparent 0%,#000 2%,#000 98%,transparent 100%)!important;
+}
+@media(max-width:800px){
+ .connect-section .connect-card{
+  background:
+   radial-gradient(ellipse 90% 42% at 50% 70%,rgba(0,153,237,.27),transparent 84%),
+   radial-gradient(ellipse 65% 32% at 85% 50%,rgba(68,170,247,.20),transparent 92%),
+   linear-gradient(156deg,#041b26,#07334a 65%,#052230)!important;
+ }
+ .connect-section .connect-card::before{inset:28% -15% 5% -15%!important;}
+}
+
 @media(prefers-reduced-motion:reduce){
  .connect-section .connect-business-card{transition:none!important;transform:none!important}
 }
