@@ -735,3 +735,31 @@
 @media(prefers-reduced-motion:reduce){
   .hero-aside .skill-zoom-orb{transition:none!important}
 }
+
+
+/* V12: additional skills, responsive spacing for 23 orbiting badges. */
+.hero-aside .skill-track--inner .skill-node:nth-child(6) .skill-pill{--orb:63px;font-size:13px!important}
+.hero-aside .skill-track--inner .skill-node:nth-child(7) .skill-pill{--orb:69px;font-size:12.6px!important}
+.hero-aside .skill-track--middle .skill-node:nth-child(6) .skill-pill{--orb:86px;font-size:12.1px!important}
+.hero-aside .skill-track--middle .skill-node:nth-child(7) .skill-pill{--orb:99px;font-size:11.7px!important}
+.hero-aside .skill-track--middle .skill-node:nth-child(8) .skill-pill{--orb:85px;font-size:12.1px!important}
+.hero-aside .skill-track--outer .skill-node:nth-child(6) .skill-pill{--orb:106px;font-size:11.6px!important}
+.hero-aside .skill-track--outer .skill-node:nth-child(7) .skill-pill{--orb:98px;font-size:12px!important}
+.hero-aside .skill-track--outer .skill-node:nth-child(8) .skill-pill{--orb:105px;font-size:12px!important}
+@media(max-width:760px){
+  .hero-aside{height:744px!important;min-height:744px!important;margin:22px auto 18px!important}
+  .hero-aside .portrait-photo{width:154px!important;height:154px!important;min-width:154px!important;top:50%!important;left:50%!important;transform:translate(-50%,-50%)!important}
+  .hero-aside .skills-constellation{width:100%!important;height:100%!important}
+  .hero-aside .skill-track{inset:0!important;width:100%!important;height:100%!important}
+  .hero-aside .skill-node{top:var(--mobile-y)!important;left:var(--mobile-x)!important}
+  .hero-aside .skill-pill{pointer-events:auto!important}
+  .hero-aside .star-a{top:206px!important;left:9px!important}
+  .hero-aside .star-b{bottom:204px!important;right:9px!important}
+}
+@media(max-width:375px){
+  .hero-aside .skill-track--inner .skill-node:nth-child(1) .skill-pill{--orb:92px}
+  .hero-aside .skill-track--middle .skill-node:nth-child(4) .skill-pill{--orb:92px}
+  .hero-aside .skill-track--middle .skill-node:nth-child(7) .skill-pill{--orb:94px}
+  .hero-aside .skill-track--outer .skill-node:nth-child(6) .skill-pill{--orb:102px}
+  .hero-aside .skill-track--outer .skill-node:nth-child(8) .skill-pill{--orb:102px}
+}
