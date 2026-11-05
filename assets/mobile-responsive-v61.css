@@ -233,3 +233,34 @@
 @media(prefers-reduced-motion:reduce){
  .hero .hero-aside .neon-constellation .skill-pill{animation:none!important}
 }
+
+
+/* RadarTrust v62 — shift mobile radar downward and communicate double-tap gesture. */
+@media(max-width:1050px){
+ .hero .hero-content .radar-hero-lockup{
+   margin-top:clamp(20px,5vw,34px)!important;
+   margin-bottom:8px!important;
+ }
+ .hero .hero-content .radar-hero-lockup .radar-hero-center{
+   transform:translateY(18px)!important;
+ }
+ .hero .hero-aside .neon-constellation{
+   touch-action:pan-y!important;
+ }
+ .hero .hero-aside .neon-constellation .skill-node,
+ .hero .hero-aside .neon-constellation .skill-pill{
+   touch-action:pan-y!important;
+ }
+ .hero .hero-aside .neon-constellation::before{
+   content:"Double-tap a skill to view its projects and certificates";
+   display:block;grid-column:1/-1;
+   text-align:center;
+   color:#afe7d3;font:700 clamp(10px,2.5vw,12px)/1.5 Manrope,system-ui,sans-serif;
+   letter-spacing:.015em;
+   padding:4px 0 1px;
+ }
+ .hero .hero-aside .neon-constellation .skill-node.rt-await-second-tap .skill-pill{
+   box-shadow:0 0 0 3px rgba(184,255,139,.6),0 0 23px rgba(116,255,179,.65)!important;
+   border-color:#c3ff9b!important;
+ }
+}
