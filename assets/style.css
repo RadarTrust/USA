@@ -1144,3 +1144,83 @@
   .hero{padding-top:8px!important}
   .hero .hero-content .hero-kicker{margin-top:12px!important}
 }
+
+
+/* V20 — ICON-ONLY FLOATING RIGHT NAVIGATION; all page content remains in normal flow. */
+.site-header.floating-dock{
+  position:fixed!important;right:14px!important;left:auto!important;top:50%!important;
+  bottom:auto!important;transform:translateY(-50%)!important;
+  width:62px!important;height:auto!important;min-height:0!important;
+  margin:0!important;padding:8px 6px!important;
+  background:linear-gradient(145deg,rgba(4,39,45,.95),rgba(3,58,55,.91))!important;
+  border:1px solid rgba(143,255,201,.45)!important;
+  border-radius:24px!important;z-index:150!important;
+  backdrop-filter:blur(19px) saturate(1.2)!important;
+  -webkit-backdrop-filter:blur(19px) saturate(1.2)!important;
+  box-shadow:0 12px 38px rgba(0,22,25,.28),0 0 17px rgba(120,248,173,.11),inset 0 1px rgba(255,255,255,.12)!important;
+}
+.floating-dock .header-inner,
+.floating-dock .primary-nav,
+.floating-dock .header-controls{
+  display:flex!important;flex-direction:column!important;
+  align-items:center!important;justify-content:center!important;
+  width:100%!important;height:auto!important;min-width:0!important;
+  max-width:none!important;margin:0!important;padding:0!important;gap:7px!important;
+}
+.floating-dock .header-inner{gap:8px!important}
+.floating-dock .dock-navigation{
+  padding:8px 0!important;
+  border-top:1px solid rgba(195,255,224,.14)!important;
+  border-bottom:1px solid rgba(195,255,224,.14)!important;
+}
+.floating-dock .dock-link{
+  --dock-accent:#b5fc85;
+  position:relative!important;box-sizing:border-box!important;
+  display:grid!important;place-items:center!important;
+  flex:0 0 46px!important;
+  width:46px!important;height:46px!important;min-width:46px!important;
+  padding:0!important;margin:0!important;line-height:1!important;
+  border:1px solid color-mix(in srgb,var(--dock-accent) 43%,transparent)!important;
+  background:radial-gradient(circle at 25% 20%,color-mix(in srgb,var(--dock-accent) 19%,transparent),rgba(0,27,32,.68))!important;
+  color:var(--dock-accent)!important;border-radius:16px!important;
+  text-decoration:none!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.13),0 0 10px color-mix(in srgb,var(--dock-accent) 16%,transparent)!important;
+  transition:transform .25s ease,background .25s ease,box-shadow .25s ease!important;
+  cursor:pointer!important;
+}
+.floating-dock .dock-link svg{display:block;width:22px;height:22px;pointer-events:none}
+.floating-dock .dock-link:hover,
+.floating-dock .dock-link:focus-visible{
+  transform:translateX(-4px) scale(1.08)!important;
+  box-shadow:0 0 20px color-mix(in srgb,var(--dock-accent) 42%,transparent),inset 0 1px rgba(255,255,255,.26)!important;
+  outline:2px solid var(--dock-accent)!important;outline-offset:2px!important;
+}
+.floating-dock .dock-home{--dock-accent:#b6fb8e}
+.floating-dock .dock-about{--dock-accent:#68e6d7}
+.floating-dock .dock-expertise{--dock-accent:#efc278}
+.floating-dock .dock-credentials{--dock-accent:#8db9ff}
+.floating-dock .dock-connect{--dock-accent:#eb9edc}
+.floating-dock .dock-theme{--dock-accent:#baff8c;font-size:25px!important}
+.floating-dock .dock-trigger{--dock-accent:#baff8c;display:none!important}
+.floating-dock.scrolled{box-shadow:0 12px 38px rgba(0,22,25,.28),0 0 18px rgba(120,248,173,.15)!important}
+@media(max-width:760px){
+  .site-header.floating-dock{
+    top:82px!important;right:10px!important;transform:none!important;
+    width:60px!important;padding:7px 5px!important;border-radius:21px!important;
+  }
+  .floating-dock .header-inner{gap:5px!important}
+  .floating-dock .dock-trigger{display:grid!important;order:-1}
+  .floating-dock .dock-navigation,
+  .floating-dock .dock-home,
+  .floating-dock .dock-theme{display:none!important}
+  .floating-dock .dock-controls{order:-1}
+  .floating-dock .dock-navigation.open{display:flex!important;order:2}
+  .floating-dock:has(.dock-navigation.open) .dock-home{display:grid!important}
+  .floating-dock:has(.dock-navigation.open) .dock-theme{display:grid!important}
+  .floating-dock:has(.dock-navigation.open) .dock-controls{order:3}
+  .floating-dock:has(.dock-navigation.open) .dock-trigger{order:0}
+  .floating-dock .dock-link{height:45px!important;width:45px!important;min-width:45px!important;flex-basis:45px!important;border-radius:14px!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .floating-dock .dock-link{transition:none!important}
+}
