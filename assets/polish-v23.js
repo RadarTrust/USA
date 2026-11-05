@@ -39,13 +39,13 @@ function update(id,value){
  if(!el)return;
  const target=Math.max(0,Math.floor(Number(value)||0));
  el.dataset.countTarget=String(target);
- if(metricsVisible && !alreadyAnimated.has(id))animate(id,target);
+ if(metricsVisible && target>0 && !alreadyAnimated.has(id))animate(id,target);
  else if(metricsVisible && alreadyAnimated.has(id))paint(id,target);
 }
 window.RadarCounters={update};
 const area=document.querySelector(".hero-metrics");
 if(area){
- const visible=()=>{if(metricsVisible)return;metricsVisible=true;counterIDs.forEach(id=>animate(id,targetFor(id)));};
+ const visible=()=>{if(metricsVisible)return;metricsVisible=true;counterIDs.forEach(id=>{const n=targetFor(id);if(n>0 || id==="metric-years")animate(id,n);});};
  if(!("IntersectionObserver" in window)){visible();}
  else{
   const io=new IntersectionObserver(entries=>{if(entries.some(x=>x.isIntersecting)){io.disconnect();visible();}},{rootMargin:"0px 0px -25px 0px",threshold:.15});
@@ -71,6 +71,6 @@ if(badge){
  badge.src="https://visitor-badge.one9x.com/badge?"+q.toString();
 }
 
-/* Link to the standalone, private-destination contact page. */
+/* Contact delivery requires a recipient-verified provider access key; never expose the destination. */
 })();
 
