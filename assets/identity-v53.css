@@ -1,0 +1,41 @@
+/* RadarTrust v53 | reusable crystal-signature typography + uniform premium tooltips */
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@1,6..96,650;1,6..96,750&display=swap');
+:root{--rt-crystal-a:#074b54;--rt-crystal-b:#159f91;--rt-crystal-c:#75ffe0;--rt-crystal-d:#0a784f}
+.section-heading,.intro h2,.panel h2,.header-intro h2,
+section.container>h2,.container>h2,.ending strong,
+.rt-crystal-heading{
+ font-family:'Bodoni Moda',Georgia,serif!important;
+ font-style:italic!important;
+ font-weight:750!important;
+ letter-spacing:-.045em!important;
+ background-image:linear-gradient(115deg,#064951 0%,#128d83 17%,#a6ffdb 28%,#0b686c 39%,#18ae82 50%,#d2fff1 59%,#0d715e 74%,#80ffbc 89%,#07545d 100%)!important;
+ background-size:260% 100%!important;
+ background-position:0% 50%;
+ background-clip:text!important;
+ -webkit-background-clip:text!important;
+ color:transparent!important;
+ -webkit-text-fill-color:transparent!important;
+ filter:drop-shadow(1px 2px 0 rgba(1,35,42,.19)) drop-shadow(0 6px 9px rgba(5,115,100,.14));
+ animation:rt-crystal-wave 8s ease-in-out infinite alternate;
+}
+@keyframes rt-crystal-wave{from{background-position:0% 50%}to{background-position:100% 50%}}
+/* Dark surface sections need brighter illumination while keeping the same glass typography. */
+.hero .section-heading,.panel h2,.intro h2,.header-intro h2,.ending strong,
+body:not(.theme-light) .rt-crystal-dark{
+ background-image:linear-gradient(110deg,#eaffee,#5ff5dc 20%,#ecffdc 38%,#21c7ab 51%,#baff8c 68%,#eefff9 83%,#4df8c9)!important;
+ background-size:260% 100%!important;
+ filter:drop-shadow(0 2px 0 rgba(0,24,26,.58)) drop-shadow(0 4px 13px rgba(79,245,187,.26));
+}
+/* Exceptional legibility for headings on the light credential section */
+.credentials-section .section-heading{
+ background-image:linear-gradient(110deg,#092c34 0%,#15545a 24%,#3db5a4 41%,#0c5a52 55%,#1b8964 77%,#092e36)!important;
+ filter:drop-shadow(1px 2px 0 rgba(5,75,67,.15)) drop-shadow(0 7px 10px rgba(48,127,109,.09));
+}
+.credentials-section .section-heading{font-size:clamp(37px,4vw,60px)!important;line-height:1.19!important;overflow-wrap:anywhere}
+.rt-premium-tooltip-fallback{position:fixed;z-index:2147483600;pointer-events:none;max-width:230px;padding:9px 13px;border:1px solid rgba(157,255,211,.63);border-radius:13px;background:linear-gradient(135deg,rgba(4,43,48,.97),rgba(7,77,71,.97));color:#f2fff8;box-shadow:0 10px 29px rgba(0,31,30,.28),0 0 0 1px rgba(188,255,221,.06),0 0 12px rgba(115,250,185,.18);font:750 12px/1.35 Manrope,system-ui,sans-serif;letter-spacing:.005em;opacity:0;transition:opacity .14s}
+.rt-premium-tooltip-fallback.rt-show{opacity:1}
+.tippy-box[data-theme~="radar-premium"]{z-index:2147483600}
+@media(prefers-reduced-motion:reduce){
+ .section-heading,.intro h2,.panel h2,.header-intro h2,section.container>h2,.container>h2,.ending strong,.rt-crystal-heading{animation:none!important;background-position:50% 50%!important}
+ .rt-premium-tooltip-fallback{transition:none!important}
+}
