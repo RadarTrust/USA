@@ -230,12 +230,50 @@ if(badge && odo && digits.length===13){
   if(!node)return;
   location.hash="#/s/"+idFor(node.dataset.skill);
  }
+ /* v62 touch gesture: one tap is inert, a second tap on the SAME skill within
+    550 ms opens it. Pointer movement/cancellation is treated as page scrolling.
+    Desktop mouse clicks and accessible keyboard activation remain one action. */
+ let touchStart=null,lastTapNode=null,lastTapAt=0,lastTouchAt=-Infinity;
+ const mobileTouch=()=>matchMedia("(pointer:coarse)").matches;
  nodes.forEach(node=>{
-  node.setAttribute("aria-label","Open "+node.dataset.skill+" expertise, projects and certificates");
+  node.setAttribute("aria-label","Open "+node.dataset.skill+" expertise, projects and certificates. Double-tap on a touchscreen.");
   node.setAttribute("title","Explore "+node.dataset.skill+" expertise");
-  node.addEventListener("click",e=>{e.preventDefault();openSkill(node);});
   node.addEventListener("pointerdown",e=>{
-   if(e.pointerType==="touch"){e.preventDefault();e.stopImmediatePropagation();openSkill(node);}
+   if(e.pointerType!=="touch")return;
+   lastTouchAt=performance.now();
+   touchStart={node,id:e.pointerId,x:e.clientX,y:e.clientY,start:performance.now()};
+  },true);
+  node.addEventListener("pointerup",e=>{
+   if(e.pointerType!=="touch")return;
+   const start=touchStart;
+   touchStart=null;
+   lastTouchAt=performance.now();
+   if(!start||start.id!==e.pointerId||start.node!==node)return;
+   if(Math.hypot(e.clientX-start.x,e.clientY-start.y)>13||performance.now()-start.start>550){
+    lastTapNode=null;
+    return;
+   }
+   const now=performance.now();
+   if(lastTapNode===node&&now-lastTapAt<=550){
+    lastTapNode=null;
+    lastTapAt=0;
+    openSkill(node);
+   }else{
+    lastTapNode=node;
+    lastTapAt=now;
+    node.classList.add("rt-await-second-tap");
+    setTimeout(()=>node.classList.remove("rt-await-second-tap"),575);
+   }
+  },true);
+  node.addEventListener("pointercancel",e=>{
+   if(e.pointerType==="touch"){touchStart=null;lastTapNode=null;lastTouchAt=performance.now();}
+  },true);
+  node.addEventListener("click",e=>{
+   // Browser-generated clicks after touch are not navigation gestures.
+   if(mobileTouch()&&(performance.now()-lastTouchAt<1000||e.sourceCapabilities?.firesTouchEvents)){
+    e.preventDefault();e.stopImmediatePropagation();return;
+   }
+   e.preventDefault();openSkill(node);
   },true);
   node.addEventListener("keydown",e=>{
    if(e.key==="Enter"||e.key===" "){
