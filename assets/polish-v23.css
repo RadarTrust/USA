@@ -486,3 +486,20 @@ body:not(.theme-dark) .hero .hero-content{
 }
 @keyframes rt-typewriter-caret{50%{opacity:0}}
 @media(prefers-reduced-motion:reduce){.rt-typewriter.rt-writing::after{animation:none;opacity:0}}
+
+
+/* RadarTrust v42 — verified first-screen fit: reduce oversized logo footprint
+   rather than overlapping the circular Radar lettering with the biography. */
+@media(min-width:1051px){
+ .hero .hero-content .radar-hero-lockup{
+   width:min(410px,100%)!important;
+   margin-bottom:12px!important;
+ }
+ .hero .hero-copy{min-height:5.2em}
+}
+@media(min-width:761px) and (max-width:1050px){
+ .hero .hero-content .radar-hero-lockup{
+   width:min(410px,100%)!important;
+   margin-bottom:12px!important;
+ }
+}
