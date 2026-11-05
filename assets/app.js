@@ -1,4 +1,4 @@
-﻿"use strict";
+"use strict";
 (() => {
   const $ = (id) => document.getElementById(id);
   const elements = {
@@ -257,9 +257,9 @@
     state.records=unique([...archive,...original]);
     if(!state.records.length){elements.label.textContent="Credential directory is temporarily unavailable. Please try again.";return}
     elements.total.textContent=state.records.length;
-    $("metric-credentials").textContent=state.records.length;
-    $("metric-issuers").textContent=new Set(state.records.map(x=>x.issuer.replace(/\s*\/.*$/,""))).size;
-    $("metric-links").textContent=state.records.filter(x=>x.verificationUrl).length;
+    window.RadarCounters?.update("metric-credentials", state.records.length);
+    window.RadarCounters?.update("metric-issuers", new Set(state.records.map(x=>x.issuer.replace(/\s*\/.*$/,""))).size);
+    window.RadarCounters?.update("metric-links", state.records.filter(x=>x.verificationUrl).length);
     buildFilters();render();
   }
   elements.search.addEventListener("input",e=>{state.term=e.target.value.trim();state.page=1;render()});
