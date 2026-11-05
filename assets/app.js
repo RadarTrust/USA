@@ -334,6 +334,8 @@
       const text=document.createElement("span");
       text.className="skill-zoom-label";
       text.textContent=label;
+      const logo=original.querySelector(".neon-skill-icon");
+      if(logo){const copy=logo.cloneNode(true);copy.setAttribute("aria-hidden","true");expanded.append(copy);}
       expanded.append(text);
       current=node;
       openedByKeyboard=byKeyboard;
