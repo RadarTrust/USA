@@ -651,3 +651,87 @@
 @media(prefers-reduced-motion:reduce){
  .hero-aside .skills-constellation .skill-pill{animation:none!important;opacity:1!important}
 }
+
+
+/* Interactive orbit pause + 3× upright skill magnifier (V11). */
+.hero-aside .skills-constellation .skill-node,
+.hero-aside .skills-constellation .skill-pill{
+  pointer-events:auto!important;
+  cursor:zoom-in;
+}
+.hero-aside .skills-constellation .skill-node:focus-visible{
+  outline:2px solid #e1ffcf;
+  outline-offset:5px;
+  border-radius:50%;
+}
+.hero-aside.orbit-hover-freeze .skills-constellation .skill-track,
+.hero-aside.orbit-hover-freeze .skills-constellation .skill-pill,
+.hero-aside.orbit-hover-freeze .orbit-circle,
+.hero-aside.orbit-hover-freeze .orbit-star{
+  animation-play-state:paused!important;
+}
+.hero-aside.orbit-hover-freeze .skills-constellation .skill-node.is-zoom-source > .skill-pill{
+  visibility:hidden!important;
+}
+.hero-aside .skill-zoom-orb{
+  position:absolute!important;
+  width:var(--zoom-diameter)!important;
+  height:var(--zoom-diameter)!important;
+  min-width:var(--zoom-diameter)!important;
+  min-height:var(--zoom-diameter)!important;
+  box-sizing:border-box!important;
+  top:var(--zoom-y)!important;
+  left:var(--zoom-x)!important;
+  z-index:30!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  padding:9px!important;
+  border-radius:50%!important;
+  border:2px solid rgba(215,255,230,.93)!important;
+  color:#fff!important;
+  background:radial-gradient(circle at 30% 24%,rgba(90,205,155,.54),rgba(6,47,51,.76) 80%)!important;
+  box-shadow:0 0 0 3px rgba(188,255,213,.1),0 12px 35px rgba(0,22,25,.53),0 0 37px rgba(142,255,189,.4)!important;
+  -webkit-backdrop-filter:blur(8px);
+  backdrop-filter:blur(8px);
+  transform:translate(-50%,-50%) scale(.333);
+  transform-origin:center center;
+  opacity:.72;
+  transition:transform .34s cubic-bezier(.2,.85,.2,1),opacity .3s ease;
+  pointer-events:auto!important;
+  cursor:zoom-out;
+  text-align:center!important;
+  overflow:hidden;
+}
+.hero-aside .skill-zoom-orb.zoom-visible{
+  transform:translate(-50%,-50%) scale(1);
+  opacity:1;
+}
+.hero-aside .skill-zoom-orb .skill-zoom-label{
+  display:block!important;
+  transform:none!important;
+  rotate:0deg!important;
+  animation:none!important;
+  font:800 var(--zoom-font,22px)/1.18 Manrope,system-ui,sans-serif!important;
+  letter-spacing:-.01em;
+  white-space:normal;
+  overflow-wrap:normal;
+  word-break:normal;
+  color:#f5fff9!important;
+  -webkit-text-fill-color:#f5fff9;
+  text-shadow:0 1px 3px #002522,0 0 10px rgba(232,255,241,.45);
+  max-width:98%;
+  pointer-events:none;
+}
+.hero-aside .skill-zoom-orb.zoom-middle{
+  background:radial-gradient(circle at 30% 24%,rgba(75,171,209,.59),rgba(5,43,71,.78) 80%)!important;
+}
+.hero-aside .skill-zoom-orb.zoom-outer{
+  background:radial-gradient(circle at 30% 24%,rgba(160,209,98,.54),rgba(27,66,51,.75) 80%)!important;
+}
+@media(max-width:760px){
+  .hero-aside .skill-zoom-orb{z-index:31!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-aside .skill-zoom-orb{transition:none!important}
+}
