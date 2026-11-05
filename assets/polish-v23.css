@@ -215,3 +215,13 @@ body{overscroll-behavior-y:contain}
 .contact-human-label{font:800 10px Manrope,system-ui,sans-serif;color:#c4f8dd;letter-spacing:.15em}
 #contact-turnstile{max-width:100%;min-height:65px}
 .contact-submit:disabled{opacity:.48}
+
+/* RadarTrust contact: two-piece international telephone field, identity-compatible. */
+.contact-phone-group{display:flex;flex-direction:column;gap:9px}
+.contact-phone-group-label{font:750 11px Manrope,sans-serif;color:#d8eae2;letter-spacing:.015em}
+.contact-phone-group-label>span{color:#baff8c}
+.contact-phone-pair{display:grid;grid-template-columns:minmax(116px,.34fr) minmax(0,1fr);gap:13px;align-items:end}
+.contact-phone-pair label{min-width:0}
+.contact-phone-pair input{min-width:0}
+.contact-phone-help{font:500 10px/1.65 Manrope,sans-serif;color:#9fbcaf}
+@media(max-width:390px){.contact-phone-pair{grid-template-columns:minmax(100px,.42fr) minmax(0,1fr);gap:8px}}
