@@ -209,3 +209,9 @@ body{overscroll-behavior-y:contain}
 @media(max-width:960px){.footer-inner{grid-template-columns:1fr 1fr;row-gap:18px!important}.footer-inner>.visitor-widget{grid-column:1/-1;grid-row:2}.footer-inner>p{grid-column:2;grid-row:1}}
 @media(max-width:600px){.footer-inner{grid-template-columns:1fr!important;justify-items:center!important;gap:19px!important}.footer-inner>div:first-child,.footer-inner>p,.footer-inner>.visitor-widget{grid-column:1!important;grid-row:auto!important;justify-self:center!important;text-align:center!important}.footer-logo{margin:auto}.footer-inner>div:first-child p{text-align:center}.footer-inner>.visitor-widget{order:2}.footer-inner>p{order:3}.odometer-machine{padding:8px}.odo-digit{min-width:27px;height:37px;font-size:25px}.radar-arc-top{font-size:52px}.radar-arc-bottom{font-size:29px}}
 @media(prefers-reduced-motion:reduce){.odo-digit.flip{animation:none!important}}
+
+/* Contact form protection visual: native Turnstile widget integrated into RadarTrust's dark theme. */
+.contact-human-check{display:flex;flex-direction:column;gap:10px;align-items:flex-start;background:linear-gradient(105deg,#062c32,#0d45448a);padding:15px 16px;border:1px solid #438c79a0;border-radius:14px;box-shadow:inset 0 1px 0 #baff8a17}
+.contact-human-label{font:800 10px Manrope,system-ui,sans-serif;color:#c4f8dd;letter-spacing:.15em}
+#contact-turnstile{max-width:100%;min-height:65px}
+.contact-submit:disabled{opacity:.48}
