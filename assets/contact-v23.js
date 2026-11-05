@@ -41,7 +41,11 @@ form.addEventListener("submit",async event=>{
  const local=form.elements.phone_local?.value.trim();
  const digits=local?.replace(/[^0-9]/g,"")||"";
  const phone=code&&digits?code+" "+digits:"";
- const message=form.elements.message?.value.trim();
+ const typedMessage=form.elements.message?.value.trim();
+ const tz=form.elements.visitor_timezone.value.slice(0,100);
+ const locale=form.elements.visitor_locale.value.slice(0,40);
+ const context=`\n\n--- Browser context (approximate, not GPS) ---\nTime zone: ${tz||"Unavailable"}\nBrowser language: ${locale||"Unavailable"}`;
+ const message=typedMessage&&typedMessage.length+context.length<=5000?typedMessage+context:typedMessage;
  if(!/^\\+[0-9]{1,4}$/.test(code||"")||digits.length<6||digits.length>15){
   notice("Enter a valid country code and mobile number.","error");return;
  }
