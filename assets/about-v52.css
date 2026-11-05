@@ -48,3 +48,62 @@ footer{padding:25px 5vw;color:#9cbdb5;font-size:11px;display:flex;gap:12px;justi
 @media(max-width:880px){.hero{grid-template-columns:1fr;padding:50px 25px}.portrait{width:230px}.grid{grid-template-columns:1fr 1fr}.workflows{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:560px){.grid{grid-template-columns:1fr}.band{grid-template-columns:repeat(2,1fr)}.band div:nth-child(2){border-right:0}.band div:nth-child(-n+2){border-bottom:1px solid #76cba34e}.engagement{grid-template-columns:1fr;gap:8px}.workflows{grid-template-columns:repeat(2,1fr)}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;scroll-behavior:auto!important}}
+
+
+/* RadarTrust About v68 — genuine three-QR card with seamless cyan/blue diffusion. */
+.about-card-section{
+ position:relative;isolation:isolate;overflow:hidden;
+ padding:clamp(48px,6.5vw,96px) clamp(18px,5vw,70px);
+ background:
+  radial-gradient(ellipse 63% 46% at 56% 64%,rgba(4,112,186,.34),transparent 77%),
+  radial-gradient(ellipse 54% 58% at 85% 39%,rgba(10,183,240,.19),transparent 74%),
+  radial-gradient(ellipse 44% 64% at 18% 82%,rgba(5,109,131,.22),transparent 78%),
+  linear-gradient(155deg,#061d2a 0%,#082d45 49%,#061c2c 100%);
+ border-block:1px solid rgba(68,181,222,.21);
+}
+.about-card-section:before{
+ content:"";position:absolute;inset:10% -8%;pointer-events:none;z-index:-1;
+ background:radial-gradient(ellipse at 50% 58%,rgba(8,144,245,.24),transparent 58%);
+ filter:blur(44px);
+}
+.about-card-container{width:min(1180px,100%);margin:auto;position:relative;z-index:1;}
+.about-card-heading{text-align:center;max-width:920px;margin:0 auto clamp(20px,3vw,35px);}
+.about-card-heading h2{
+ font-size:clamp(29px,4.6vw,56px)!important;
+ line-height:1.25!important;
+ margin:12px auto 10px!important;
+ color:#eafff4;
+}
+.about-card-heading p{margin:0;color:#b3dfe6;font-size:clamp(12px,1.2vw,15px);}
+.about-card-frame{
+ display:block;position:relative;isolation:isolate;
+ width:100%;max-width:1080px;margin-inline:auto;padding:3px;
+ background:linear-gradient(128deg,rgba(115,218,251,.55),rgba(1,99,189,.22) 46%,rgba(65,219,248,.43));
+ border:1px solid rgba(107,219,251,.38);border-radius:20px;overflow:hidden;
+ box-shadow:0 25px 64px rgba(0,10,24,.49),0 0 52px rgba(4,148,236,.21),0 0 92px rgba(8,137,196,.12);
+ transform:translateZ(0);transition:transform .3s ease,box-shadow .3s ease;
+}
+.about-card-frame:before{
+ content:"";position:absolute;inset:-10%;z-index:-1;pointer-events:none;
+ background:radial-gradient(ellipse at center,rgba(53,183,255,.33),transparent 66%);filter:blur(25px);
+}
+.about-card-frame img{
+ display:block;width:100%;height:auto;object-fit:contain;border-radius:16px;
+ -webkit-mask-image:linear-gradient(90deg,transparent,#000 1.5%,#000 98.5%,transparent),linear-gradient(0deg,transparent,#000 2%,#000 98%,transparent);
+ mask-image:linear-gradient(90deg,transparent,#000 1.5%,#000 98.5%,transparent),linear-gradient(0deg,transparent,#000 2%,#000 98%,transparent);
+ -webkit-mask-composite:source-in;mask-composite:intersect;
+}
+.about-card-frame:hover,.about-card-frame:focus-visible{
+ transform:translateY(-4px);
+ box-shadow:0 30px 72px rgba(0,10,24,.55),0 0 57px rgba(25,180,251,.32);
+}
+.about-card-caption{text-align:center;color:#acd7dc;font-size:12px;margin-top:17px;letter-spacing:.015em;}
+.about-card-spark{color:#baff8c;font-size:17px;margin-right:5px;}
+@media(max-width:640px){
+ .about-card-section{padding:37px 12px 43px;}
+ .about-card-frame{padding:2px;border-radius:11px;}
+ .about-card-frame img{border-radius:9px;}
+ .about-card-heading{margin-bottom:19px;}
+ .about-card-heading h2{font-size:clamp(27px,7.6vw,38px)!important;}
+}
+@media(prefers-reduced-motion:reduce){.about-card-frame{transition:none!important;}}
