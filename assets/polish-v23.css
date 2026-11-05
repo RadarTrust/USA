@@ -503,3 +503,24 @@ body:not(.theme-dark) .hero .hero-content{
    margin-bottom:12px!important;
  }
 }
+
+
+/* RadarTrust v45 — the complete first screen stays within its own dark hero.
+   Fill the remaining viewport height instead of exposing the next white section. */
+.hero{
+  min-height:100vh!important;
+  min-height:100svh!important;
+  display:flex!important;
+  flex-direction:column!important;
+}
+.hero .hero-layout{
+  width:100%!important;
+  flex:1 0 auto!important;
+}
+.hero .hero-metrics{
+  flex:0 0 auto!important;
+  margin-bottom:0!important;
+}
+@media(max-width:760px){
+  .hero .hero-layout{flex:1 0 auto!important}
+}
