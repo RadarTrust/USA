@@ -412,3 +412,76 @@ body:not(.theme-dark) .hero .hero-content{
  .hero .hero-metrics .metric strong{font-size:clamp(23px,6vw,28px)!important}
  .hero .hero-metrics .metric>span{font-size:9px!important}
 }
+
+
+/* RadarTrust v41 — first fold composition and slim professional KPI ribbon. */
+.hero .hero-copy{
+  margin-top:-44px!important;
+  margin-bottom:0!important;
+  max-width:575px;
+  font-size:clamp(14px,1.04vw,16px);
+  line-height:1.72;
+}
+.hero .hero-trust{
+  margin-top:13px!important;
+  margin-bottom:0!important;
+  font-size:11px;
+}
+.hero .hero-metrics{
+  margin-top:0!important;
+  padding:5px clamp(10px,2vw,28px)!important;
+  background:linear-gradient(120deg,rgba(7,60,61,.91),rgba(5,35,45,.93))!important;
+  box-shadow:inset 0 1px rgba(183,255,219,.07),0 -5px 21px rgba(1,18,23,.1);
+}
+.hero .hero-metrics .metric{
+  padding:6px clamp(10px,1.7vw,22px)!important;
+  gap:0!important;
+}
+.hero .hero-metrics .metric strong{
+  font-size:clamp(21px,2vw,28px)!important;
+  line-height:1!important;
+}
+.hero .hero-metrics .metric>span{
+  font-size:clamp(8px,.62vw,9px)!important;
+  margin-top:3px!important;
+  line-height:1.24!important;
+}
+.hero .hero-content{margin-top:-10px!important}
+.hero .hero-actions{display:none!important}
+@media(min-width:1680px){
+ .hero .hero-layout{min-height:640px!important}
+ .hero .hero-aside{height:635px!important;min-height:635px!important}
+ .hero .hero-aside .universe-stage{transform:translate(-50%,-50%) scale(.60)!important}
+}
+@media(min-width:1240px) and (max-width:1679px){
+ .hero .hero-layout{min-height:555px!important}
+ .hero .hero-aside{height:555px!important;min-height:555px!important}
+ .hero .hero-aside .universe-stage{transform:translate(-50%,-50%) scale(.51)!important}
+}
+@media(min-width:1051px) and (max-width:1239px){
+ .hero .hero-layout{min-height:550px!important}
+ .hero .hero-aside{height:545px!important;min-height:545px!important}
+ .hero .hero-aside .universe-stage{transform:translate(-50%,-50%) scale(.48)!important}
+}
+@media(min-width:761px) and (max-width:1050px){
+ .hero .hero-copy{margin-top:-12px!important}
+ .hero .hero-layout{gap:6px!important}
+ .hero .hero-aside{height:605px!important;min-height:605px!important}
+ .hero .hero-aside .universe-stage{transform:translate(-50%,-50%) scale(.52)!important}
+}
+@media(max-width:760px){
+ .hero .hero-copy{margin-top:0!important;margin-bottom:0!important}
+ .hero .hero-trust{margin-top:12px!important}
+ .hero .hero-metrics{padding:5px 9px!important}
+ .hero .hero-metrics .metric{padding:8px 10px!important}
+ .hero .hero-metrics .metric strong{font-size:24px!important}
+ .hero .hero-metrics .metric>span{font-size:8px!important}
+}
+.rt-typewriter.rt-writing::after{
+  content:"";display:inline-block;width:2px;height:.95em;
+  background:#baff8c;margin-left:3px;vertical-align:-.10em;
+  box-shadow:0 0 8px rgba(186,255,140,.55);
+  animation:rt-typewriter-caret .65s steps(1,end) infinite;
+}
+@keyframes rt-typewriter-caret{50%{opacity:0}}
+@media(prefers-reduced-motion:reduce){.rt-typewriter.rt-writing::after{animation:none;opacity:0}}
