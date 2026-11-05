@@ -802,3 +802,18 @@
  .hero-aside .orbit-star.star-a{top:32%!important}
  .hero-aside .orbit-star.star-b{bottom:32%!important}
 }
+
+
+/* V15: tablet adopts the collision-free skill grid while retaining all 34 badges. */
+@media(min-width:761px) and (max-width:1100px){
+ .hero .hero-layout{display:block!important;min-height:0!important}
+ .hero-aside{display:block!important;position:relative!important;transform:none!important;isolation:isolate!important;width:min(100%,530px)!important;height:1140px!important;min-height:1140px!important;max-height:none!important;margin:32px auto 25px!important;padding:0!important;overflow:visible!important}
+ .hero-aside .portrait-photo{position:absolute!important;top:50%!important;left:50%!important;transform:translate(-50%,-50%)!important;width:175px!important;height:175px!important;min-width:175px!important;z-index:5!important}
+ .hero-aside .skills-constellation{position:absolute!important;display:block!important;inset:0!important;top:0!important;left:0!important;width:100%!important;height:100%!important;overflow:visible!important;z-index:6!important;pointer-events:none!important}
+ .hero-aside .skill-track{display:block!important;position:absolute!important;inset:0!important;width:100%!important;height:100%!important;transform:none!important;animation:none!important}
+ .hero-aside .skill-node{position:absolute!important;top:var(--mobile-y)!important;left:var(--mobile-x)!important;transform:translate(-50%,-50%)!important}
+ .hero-aside .skill-pill{pointer-events:auto!important;animation:mobile-skill-float 4.6s ease-in-out infinite,readable-orb-glow var(--spark-speed,3.6s) ease-in-out infinite alternate!important;animation-delay:var(--spark-delay,-.5s),var(--spark-delay,-.5s)!important}
+ .hero-aside .orbit-circle{display:block!important}
+ .hero-aside .orbit-star.star-a{top:32%!important;left:14px!important}
+ .hero-aside .orbit-star.star-b{bottom:32%!important;right:14px!important}
+}
