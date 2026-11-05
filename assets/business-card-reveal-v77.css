@@ -1,0 +1,33 @@
+/* RadarTrust v77 · Professional cards remain gently veiled until viewed.
+   Scoped strictly to the two official business-card images, not certificates. */
+:is(.connect-section .connect-business-card,.about-card-section .about-card-frame){
+  -webkit-tap-highlight-color:transparent;
+  cursor:zoom-in;
+}
+:is(.connect-section .connect-business-card,.about-card-section .about-card-frame) > img{
+  opacity:.57!important;
+  filter:blur(2.4px) saturate(.60) brightness(.82)!important;
+  transition:opacity .55s ease,filter .55s ease,transform .55s ease!important;
+  transform:scale(.992);
+  transform-origin:center;
+}
+:is(.connect-section .connect-business-card,.about-card-section .about-card-frame):is(:hover,:focus-visible,.rt-card-revealed) > img{
+  opacity:1!important;
+  filter:blur(0) saturate(1) brightness(1)!important;
+  transform:scale(1);
+}
+:is(.connect-section .connect-business-card,.about-card-section .about-card-frame):focus-visible{
+  outline:2px solid #b3ffb0;
+  outline-offset:5px;
+}
+@media(hover:none) and (pointer:coarse){
+  :is(.connect-section .connect-business-card,.about-card-section .about-card-frame):not(.rt-card-revealed) > img{
+    opacity:.67!important;
+    filter:blur(1.8px) saturate(.78) brightness(.9)!important;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  :is(.connect-section .connect-business-card,.about-card-section .about-card-frame) > img{
+    transition:none!important;
+  }
+}
