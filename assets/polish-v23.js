@@ -231,7 +231,7 @@ if(badge && odo && digits.length===13){
   location.hash="#/s/"+idFor(node.dataset.skill);
  }
  /* v62 touch gesture: one tap is inert, a second tap on the SAME skill within
-    550 ms opens it. Pointer movement/cancellation is treated as page scrolling.
+    1200 ms opens it. Pointer movement/cancellation is treated as page scrolling.
     Desktop mouse clicks and accessible keyboard activation remain one action. */
  let touchStart=null,lastTapNode=null,lastTapAt=0,lastTouchAt=-Infinity;
  const mobileTouch=()=>matchMedia("(pointer:coarse)").matches;
@@ -249,12 +249,12 @@ if(badge && odo && digits.length===13){
    touchStart=null;
    lastTouchAt=performance.now();
    if(!start||start.id!==e.pointerId||start.node!==node)return;
-   if(Math.hypot(e.clientX-start.x,e.clientY-start.y)>13||performance.now()-start.start>550){
+   if(Math.hypot(e.clientX-start.x,e.clientY-start.y)>13||performance.now()-start.start>2000){
     lastTapNode=null;
     return;
    }
    const now=performance.now();
-   if(lastTapNode===node&&now-lastTapAt<=550){
+   if(lastTapNode===node&&now-lastTapAt<=1200){
     lastTapNode=null;
     lastTapAt=0;
     openSkill(node);
@@ -262,7 +262,7 @@ if(badge && odo && digits.length===13){
     lastTapNode=node;
     lastTapAt=now;
     node.classList.add("rt-await-second-tap");
-    setTimeout(()=>node.classList.remove("rt-await-second-tap"),575);
+    setTimeout(()=>node.classList.remove("rt-await-second-tap"),1220);
    }
   },true);
   node.addEventListener("pointercancel",e=>{
