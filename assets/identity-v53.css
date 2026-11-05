@@ -290,3 +290,19 @@ body:not(.theme-light) .rt-crystal-dark{
  .rt-orb-directory .rt-orb-facebook .rt-orb-core,
  .rt-orb-directory .rt-orb-youtube .rt-youtube-letter{font-size:23px!important}
 }
+
+/* RadarTrust v67 — optical vertical centering of Facebook F only.
+   Preserve sphere lighting, YouTube Y, and all other platform badges. */
+.profiles-directory .profile-links .social-facebook .social-facebook-f{
+ transform:translateY(-4px)!important;
+}
+.rt-orb-directory .rt-orb-facebook .rt-orb-core{
+ position:relative!important;
+ top:-3px!important;
+}
+@media(max-width:760px){
+ .profiles-directory .profile-links .social-facebook .social-facebook-f{
+  transform:translateY(-3px)!important;
+ }
+ .rt-orb-directory .rt-orb-facebook .rt-orb-core{top:-2px!important}
+}
