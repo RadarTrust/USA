@@ -1,0 +1,50 @@
+/* RadarTrust About v52 — editorial enterprise portfolio inspired by premium US ERP product sites */
+:root{color-scheme:dark;--lime:#baff8c;--mint:#66f2cb;--ink:#061d26;--glass:rgba(8,56,57,.72)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:#e9fff5;background:radial-gradient(circle at 75% 4%,#1d6c5c55,transparent 28%),linear-gradient(165deg,#041b24,#072b30 68%,#061c23);font:500 15px/1.68 Manrope,system-ui,sans-serif}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:3px solid #baff8c;outline-offset:3px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:12px;top:12px;z-index:20;padding:9px 14px;background:#baff8c;color:#08342b}
+.topbar{height:68px;padding:0 clamp(18px,4vw,70px);display:flex;align-items:center;justify-content:space-between;background:#061e26ec;border-bottom:1px solid #3e8f784e}
+.brand{font:800 15px Oxanium,sans-serif;letter-spacing:.17em;color:#dafff0;text-decoration:none}.brand b{color:var(--lime)}
+.back{border:1px solid #78e8bb63;border-radius:10px;padding:9px 14px;color:#d2ffea;font:750 12px Manrope,sans-serif;text-decoration:none;background:#12514744}
+.hero{min-height:min(680px,90svh);display:grid;grid-template-columns:minmax(0,1.22fr) minmax(260px,.78fr);gap:40px;align-items:center;padding:70px max(5vw,24px);position:relative;isolation:isolate;overflow:hidden;border-bottom:1px solid #9affbc40}
+.hero:before{content:"";position:absolute;inset:0;z-index:-2;background:linear-gradient(90deg,#05212ce8,#052731b5 52%,#042b2baa),url('./server-room.jpg') center/cover}
+.hero:after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(circle at 70% 45%,#2befb833,transparent 38%);pointer-events:none}
+.kicker{color:var(--mint);letter-spacing:.21em;font:800 11px Manrope,sans-serif;text-transform:uppercase}
+h1{font:800 clamp(43px,6vw,88px)/1.03 Oxanium,Manrope,sans-serif;letter-spacing:-.055em;margin:23px 0 17px;color:#eaffec}
+h1 em{font-style:normal;color:var(--lime)}
+.lead{font-size:clamp(16px,1.5vw,20px);max-width:680px;color:#c4e7db;line-height:1.76}
+.hero-pills{display:flex;gap:9px;flex-wrap:wrap;margin:28px 0}.hero-pills span{border:1px solid #89e4b356;background:#032f3188;border-radius:40px;padding:7px 12px;color:#d3fae6;font-size:11px;font-weight:800}
+.cta{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 19px;border-radius:11px;text-decoration:none;background:#baff8c;color:#052f2c;font-weight:900;font-size:13px;box-shadow:0 12px 36px #62ff9c37}
+.cta.secondary{background:#103d3be0;color:#dcffea;border:1px solid #8fdeb65e;box-shadow:none}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+.portrait{width:min(390px,100%);aspect-ratio:1;margin:auto;border:2px solid #b3ffd2;border-radius:50%;padding:13px;background:radial-gradient(circle,#0b786d82,#07393f8f 60%,#102a34);box-shadow:0 0 0 13px #baff8c12,0 0 0 30px #37dbad12,0 0 80px #36e6bd55;position:relative}
+.portrait img{display:block;width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:center 26%;opacity:.83}
+.portrait:before,.portrait:after{content:"";position:absolute;inset:-17%;border:1px dashed #85f3b870;border-radius:50%;animation:spin 22s linear infinite}.portrait:after{inset:-9%;border-style:solid;opacity:.45;animation-direction:reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.container{max-width:1280px;margin:auto;padding:64px clamp(20px,5vw,68px)}
+.section-tag{font:850 11px Manrope,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--lime)}
+h2{font:800 clamp(29px,3vw,43px)/1.18 Oxanium,Manrope,sans-serif;letter-spacing:-.035em;color:#e1fff1;margin:12px 0 18px}
+.muted{color:#aecfc5}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.card{border:1px solid #6cc4a465;border-radius:18px;background:linear-gradient(145deg,#114744b3,#082a30c7);padding:25px;box-shadow:0 8px 45px #041c2430}
+.card .num{font:800 13px Oxanium,sans-serif;color:var(--lime);letter-spacing:.08em}
+.card h3{font-size:18px;color:#f0fff4;margin:11px 0}.card p{font-size:13px;color:#b8d7cd;line-height:1.8;margin:0}
+.header-intro{max-width:840px;margin-bottom:30px}
+.band{margin-top:35px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border:1px solid #85d3ae56;border-radius:17px;background:linear-gradient(110deg,#13544d7b,#082f36e8);overflow:hidden}
+.band div{text-align:center;padding:19px 11px;border-right:1px solid #76cba34e}.band div:last-child{border:0}
+.band strong{display:block;color:#baff8c;font:800 clamp(20px,2.4vw,31px) Oxanium,sans-serif}.band span{display:block;color:#b8d8cd;font-size:10px;font-weight:750;letter-spacing:.08em;text-transform:uppercase;margin-top:3px}
+.timeline{display:grid;gap:14px;margin-top:28px}
+.engagement{display:grid;grid-template-columns:200px 1fr;gap:22px;align-items:start;border:1px solid #78bfa45d;border-radius:15px;background:#092f34ca;padding:23px}
+.engagement time{font:850 12px Oxanium;color:var(--lime)}.engagement h3{margin:0 0 6px;font:800 17px Manrope;color:#e6fff0}.engagement p{margin:0;font-size:13px;color:#b8d8cd}
+.workflows{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:25px 0}
+.step{padding:18px 11px;text-align:center;background:#11514b9c;border:1px solid #63bfa265;border-radius:14px;font-size:12px;font-weight:800;color:#d8ffe8}
+.step small{display:block;color:var(--lime);font:900 11px Oxanium;margin-bottom:6px}
+.ending{border-top:1px solid #74cfa346;background:linear-gradient(100deg,#10443b,#082631);padding:45px 5vw;display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.ending strong{font:800 23px Oxanium;color:#c2ff95}
+footer{padding:25px 5vw;color:#9cbdb5;font-size:11px;display:flex;gap:12px;justify-content:space-between;flex-wrap:wrap}
+@media(max-width:880px){.hero{grid-template-columns:1fr;padding:50px 25px}.portrait{width:230px}.grid{grid-template-columns:1fr 1fr}.workflows{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:560px){.grid{grid-template-columns:1fr}.band{grid-template-columns:repeat(2,1fr)}.band div:nth-child(2){border-right:0}.band div:nth-child(-n+2){border-bottom:1px solid #76cba34e}.engagement{grid-template-columns:1fr;gap:8px}.workflows{grid-template-columns:repeat(2,1fr)}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;scroll-behavior:auto!important}}
