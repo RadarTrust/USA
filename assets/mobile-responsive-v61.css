@@ -532,3 +532,22 @@
    will-change:auto!important;
  }
 }
+
+
+/* RadarTrust v76 — remove the five legacy concentric orbit circles on
+   mobile only. These were falsely visible behind our nine moving waves
+   because the original desktop CSS had a higher-specificity !important. */
+@media(max-width:1050px){
+ .hero .hero-aside .universe-stage .orbit-circle,
+ .hero .hero-aside .universe-stage .orbit-one,
+ .hero .hero-aside .universe-stage .orbit-two,
+ .hero .hero-aside .universe-stage .orbit-three,
+ .hero .hero-aside .universe-stage .orbit-four,
+ .hero .hero-aside .universe-stage .orbit-five{
+   display:none!important;
+   visibility:hidden!important;
+   animation:none!important;
+   border:0!important;
+   box-shadow:none!important;
+ }
+}
