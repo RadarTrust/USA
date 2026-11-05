@@ -577,3 +577,77 @@
  .hero-aside .orbit-star,
  .hero-aside .skills-constellation .skill-pill{animation:none!important;opacity:1!important}
 }
+
+
+/* V10 — content-fitted translucent skill orbs with readable type. */
+.hero-aside .skills-constellation .skill-pill{
+  --orb:54px;
+  width:var(--orb)!important;
+  min-width:var(--orb)!important;
+  max-width:var(--orb)!important;
+  height:var(--orb)!important;
+  min-height:var(--orb)!important;
+  max-height:var(--orb)!important;
+  aspect-ratio:1 / 1;
+  padding:2px!important;
+  font:800 12.5px/1.09 Manrope,system-ui,sans-serif!important;
+  letter-spacing:-.025em!important;
+  color:#f5fff9!important;
+  -webkit-text-fill-color:#f5fff9;
+  text-shadow:0 1px 2px #001d22,0 0 7px rgba(1,31,32,.85)!important;
+  border:1.5px solid rgba(183,255,220,.76)!important;
+  background:radial-gradient(circle at 30% 22%,rgba(91,205,155,.31),rgba(8,66,63,.19) 76%)!important;
+  backdrop-filter:blur(3px) saturate(1.18);
+  -webkit-backdrop-filter:blur(3px) saturate(1.18);
+  box-shadow:0 1px 8px #001e2770,0 0 9px rgba(102,255,179,.16),inset 0 0 8px rgba(144,255,211,.12)!important;
+}
+.hero-aside .skill-track--middle .skill-pill{
+  background:radial-gradient(circle at 28% 18%,rgba(84,188,219,.30),rgba(5,57,80,.19) 78%)!important;
+  border-color:rgba(144,224,255,.75)!important;
+}
+.hero-aside .skill-track--outer .skill-pill{
+  background:radial-gradient(circle at 28% 18%,rgba(178,214,105,.25),rgba(27,68,52,.17) 78%)!important;
+  border-color:rgba(201,253,177,.76)!important;
+}
+/* Each orb follows its lettering instead of leaving a large empty circle. */
+.hero-aside .skill-track--inner .skill-node:nth-child(1) .skill-pill{--orb:97px;font-size:12.1px!important} /* Cybersecurity */
+.hero-aside .skill-track--inner .skill-node:nth-child(2) .skill-pill{--orb:35px;font-size:13.4px!important} /* AI */
+.hero-aside .skill-track--inner .skill-node:nth-child(3) .skill-pill{--orb:35px;font-size:13.4px!important} /* SI */
+.hero-aside .skill-track--inner .skill-node:nth-child(4) .skill-pill{--orb:62px;font-size:13px!important} /* Python */
+.hero-aside .skill-track--inner .skill-node:nth-child(5) .skill-pill{--orb:76px;font-size:12.5px!important} /* Data Analysis */
+.hero-aside .skill-track--middle .skill-node:nth-child(1) .skill-pill{--orb:90px;font-size:12.3px!important} /* Networking */
+.hero-aside .skill-track--middle .skill-node:nth-child(2) .skill-pill{--orb:38px;font-size:13.2px!important} /* N+ */
+.hero-aside .skill-track--middle .skill-node:nth-child(3) .skill-pill{--orb:38px;font-size:13.2px!important} /* A+ */
+.hero-aside .skill-track--middle .skill-node:nth-child(4) .skill-pill{--orb:101px;font-size:12.1px!important} /* Maintenance */
+.hero-aside .skill-track--middle .skill-node:nth-child(5) .skill-pill{--orb:44px;font-size:12.8px!important} /* ERP */
+.hero-aside .skill-track--outer .skill-node:nth-child(1) .skill-pill{--orb:79px;font-size:12.8px!important} /* Full Stack */
+.hero-aside .skill-track--outer .skill-node:nth-child(2) .skill-pill{--orb:44px;font-size:13px!important} /* SQL */
+.hero-aside .skill-track--outer .skill-node:nth-child(3) .skill-pill{--orb:66px;font-size:13px!important} /* Oracle */
+.hero-aside .skill-track--outer .skill-node:nth-child(4) .skill-pill{--orb:69px;font-size:12.8px!important} /* Project */
+.hero-aside .skill-track--outer .skill-node:nth-child(5) .skill-pill{--orb:63px;font-size:12.2px!important} /* UI / UX */
+/* Twinkle the glass edge and halo, not the words themselves. */
+@keyframes readable-orb-glow{
+  0%,100%{opacity:1;filter:brightness(.97) drop-shadow(0 0 2px rgba(129,255,182,.24))}
+  50%{opacity:1;filter:brightness(1.16) drop-shadow(0 0 9px rgba(152,255,199,.66))}
+}
+.hero-aside .skill-track .skill-pill{
+  animation-name:skill-upright,readable-orb-glow!important;
+  animation-duration:var(--orbit-duration),var(--spark-speed,3.6s)!important;
+  animation-timing-function:linear,ease-in-out!important;
+  animation-iteration-count:infinite,infinite!important;
+  animation-direction:reverse,alternate!important;
+  animation-delay:0s,var(--spark-delay,0s)!important;
+}
+.hero-aside .skill-track--middle .skill-pill{animation-direction:normal,alternate!important}
+@media(max-width:760px){
+ .hero-aside .skills-constellation .skill-pill{
+   --orb:54px;
+   font-size:12px!important;
+   padding:2px!important;
+   animation:mobile-skill-float 4.6s ease-in-out infinite,readable-orb-glow var(--spark-speed,3.6s) ease-in-out infinite alternate!important;
+   animation-delay:var(--spark-delay,-.5s),var(--spark-delay,-.5s)!important;
+ }
+}
+@media(prefers-reduced-motion:reduce){
+ .hero-aside .skills-constellation .skill-pill{animation:none!important;opacity:1!important}
+}
