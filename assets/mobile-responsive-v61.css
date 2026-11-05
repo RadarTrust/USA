@@ -245,11 +245,11 @@
    transform:translateY(18px)!important;
  }
  .hero .hero-aside .neon-constellation{
-   touch-action:pan-y!important;
+   touch-action:manipulation!important;
  }
  .hero .hero-aside .neon-constellation .skill-node,
  .hero .hero-aside .neon-constellation .skill-pill{
-   touch-action:pan-y!important;
+   touch-action:manipulation!important;
  }
  .hero .hero-aside .neon-constellation::before{
    content:"Double-tap a skill to view its projects and certificates";
