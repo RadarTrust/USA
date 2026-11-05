@@ -674,7 +674,7 @@ body:not(.theme-dark) .hero .hero-content{
     flex:0 0 83.333svh!important;
   }
   .hero .hero-aside .universe-stage{
-    transform:translate(-50%,-50%) scale(.72)!important;
+    transform:translate(-50%,-50%) scale(.68)!important;
   }
   .hero .hero-content .radar-hero-lockup{
     width:min(525px,100%)!important;
