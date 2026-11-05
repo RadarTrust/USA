@@ -416,7 +416,7 @@ body:not(.theme-dark) .hero .hero-content{
 
 /* RadarTrust v41 — first fold composition and slim professional KPI ribbon. */
 .hero .hero-copy{
-  margin-top:-44px!important;
+  margin-top:-12px!important;
   margin-bottom:0!important;
   max-width:575px;
   font-size:clamp(14px,1.04vw,16px);
