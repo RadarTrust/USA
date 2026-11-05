@@ -535,6 +535,7 @@ body:not(.theme-dark) .hero .hero-content{
     display:flex!important;
     flex-direction:column!important;
     background:#062e33!important;
+    padding-top:0!important;
     overflow:hidden!important;
   }
   .hero .hero-ambient{
