@@ -119,3 +119,36 @@ if(badge && odo && digits.length===7){
 /* Contact delivery requires a recipient-verified provider access key; never expose the destination. */
 })();
 
+
+/* v32 — opaque hash route for the public contact view. This is URL presentation, not encryption. */
+(()=>{
+ "use strict";
+ const route="#/c/8f2a91";
+ const surface=document.getElementById("radar-hash-route");
+ const frame=document.getElementById("radar-route-frame");
+ const close=document.getElementById("radar-route-close");
+ if(!surface||!frame||!close)return;
+ let before=null;
+ const isContact=()=>window.location.hash===route;
+ function update(){
+  const active=isContact();
+  surface.hidden=!active;
+  document.body.classList.toggle("radar-route-open",active);
+  if(active){
+   if(!frame.getAttribute("src"))frame.setAttribute("src","./contact.html");
+   before=before||document.activeElement;
+   document.title="Contact Us | RadarTrust";
+   close.focus({preventScroll:true});
+  }else{
+   document.title="Zeiad G. Yazaji — Professional Portfolio & Credentials";
+   if(before&&document.contains(before)){before.focus({preventScroll:true});}
+   before=null;
+  }
+ }
+ close.addEventListener("click",()=>{window.location.hash="#connect";});
+ window.addEventListener("hashchange",update);
+ document.addEventListener("keydown",event=>{
+  if(event.key==="Escape"&&isContact()){event.preventDefault();window.location.hash="#connect";}
+ });
+ update();
+})();
