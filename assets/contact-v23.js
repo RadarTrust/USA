@@ -49,6 +49,9 @@ form.addEventListener("submit",async event=>{
    signal:controller.signal
   });
   const data=await response.json().catch(()=>({}));
+  if(response.status===429){
+   throw new Error("RATE_LIMITED");
+  }
   if(!response.ok||data.success!==true){
    throw new Error(data.error||"The message was not accepted by the delivery provider");
   }
@@ -56,7 +59,7 @@ form.addEventListener("submit",async event=>{
   notice("Your message was accepted for delivery. Thank you for contacting RadarTrust!","success");
  }catch(error){
   const msg=String(error?.message||"");
-  notice(msg==="Security verification failed"?"Verification failed or expired. Please try again.":"Your message could not be confirmed as sent. Please retry after verification.","error");
+  notice(msg==="RATE_LIMITED"?"Too many messages have been submitted. Please wait one minute before trying again.":msg==="Security verification failed"?"Verification failed or expired. Please try again.":"Your message could not be confirmed as sent. Please retry after verification.","error");
  }finally{
   clearTimeout(timeout);busy=false;resetChallenge();
  }
