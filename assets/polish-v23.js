@@ -106,7 +106,7 @@ const badge=document.getElementById("visitor-counter-badge");
 const odo=document.getElementById("odometer-machine");
 const digits=[...document.querySelectorAll("#odometer-digits .odo-digit")];
 const countStatus=document.getElementById("visitor-counter-status");
-if(badge && odo && digits.length===7){
+if(badge && odo && digits.length===13){
  const page_id="RadarTrust-USA-Portfolio",namespace="radartrust";
  const params=new URLSearchParams({page_id,namespace});
  const base="https://visitor-badge.one9x.com";
@@ -114,9 +114,9 @@ if(badge && odo && digits.length===7){
  const showStatus=(message)=>{if(countStatus)countStatus.textContent=message;};
  function draw(number){
   const n=Math.max(0,Math.floor(number));
-  const visual=String(n).padStart(7,"0").slice(-7);
+  const visual=String(n).padStart(13,"0").slice(-13);
   let current=digits.map(x=>x.textContent).join("");
-  // Cascade like seven individual mechanical number reels.
+  // Cascade like thirteen individual mechanical number reels.
   let step=0;
   for(let idx=0;idx<digits.length;idx++){
    const digit=digits[idx];
@@ -133,7 +133,7 @@ if(badge && odo && digits.length===7){
    step=Math.max(step,delay+transitions*65);
   }
   odo.setAttribute("aria-label",n.toLocaleString("en-US")+" recorded page views");
-  if(n>9999999)showStatus("Displaying the last seven digits of the total.");
+  if(n>9999999999999)showStatus("Displaying the last thirteen digits of the total.");
   else showStatus("Recorded page views · independent counter");
  }
  async function readCounter(){
