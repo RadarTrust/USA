@@ -53,22 +53,67 @@ if(area){
  }
 }
 
-/* A freely hosted, shared, third-party page-view badge. Counts requests, not verified unique humans.
-   If the independent service fails, never fabricate a number. */
+/* Same original independent visit counter; hidden badge records the page view.
+   /count?read=true exposes the actual stored integer; no invented display totals. */
 const badge=document.getElementById("visitor-counter-badge");
-if(badge){
- const status=document.getElementById("visitor-counter-status");
- badge.addEventListener("load",()=>{if(status)status.textContent="";});
- badge.addEventListener("error",()=>{badge.hidden=true;if(status)status.textContent="Counter temporarily unavailable";});
- const q=new URLSearchParams({
-   page_id:"RadarTrust-USA-Portfolio",
-   namespace:"radartrust",
-   left_text:"visits",
-   left_color:"083e39",
-   right_color:"1c987a",
-   t:String(Date.now())
- });
- badge.src="https://visitor-badge.one9x.com/badge?"+q.toString();
+const odo=document.getElementById("odometer-machine");
+const digits=[...document.querySelectorAll("#odometer-digits .odo-digit")];
+const countStatus=document.getElementById("visitor-counter-status");
+if(badge && odo && digits.length===7){
+ const page_id="RadarTrust-USA-Portfolio",namespace="radartrust";
+ const params=new URLSearchParams({page_id,namespace});
+ const base="https://visitor-badge.one9x.com";
+ const readURL=base+"/count?"+params+"&read=true&_="+Date.now();
+ const showStatus=(message)=>{if(countStatus)countStatus.textContent=message;};
+ function draw(number){
+  const n=Math.max(0,Math.floor(number));
+  const visual=String(n).padStart(7,"0").slice(-7);
+  let current=digits.map(x=>x.textContent).join("");
+  // Cascade like seven individual mechanical number reels.
+  let step=0;
+  for(let idx=0;idx<digits.length;idx++){
+   const digit=digits[idx];
+   if(digit.textContent===visual[idx])continue;
+   const old=Number(digit.textContent);
+   const next=Number(visual[idx]);
+   const transitions=Number.isInteger(old)?Math.min(8,((next-old+10)%10)||10):Math.min(7,next+1);
+   const delay=(digits.length-idx-1)*105;
+   const from=Number.isInteger(old)?old:0;
+   for(let k=1;k<=transitions;k++){
+    const result=k===transitions?next:(from+k)%10;
+    window.setTimeout(()=>{digit.textContent=String(result);digit.classList.remove("flip");void digit.offsetWidth;digit.classList.add("flip");},delay+(k-1)*65);
+   }
+   step=Math.max(step,delay+transitions*65);
+  }
+  odo.setAttribute("aria-label",n.toLocaleString("en-US")+" recorded page views");
+  if(n>9999999)showStatus("Displaying the last seven digits of the total.");
+  else showStatus("Recorded page views · independent counter");
+ }
+ async function readCounter(){
+  const options={cache:"no-store",headers:{Accept:"application/json"}};
+  const urls=[readURL,"https://proxy.cors.dev/"+readURL];
+  for(const url of urls){
+   try{
+    const controller=new AbortController();
+    const timer=setTimeout(()=>controller.abort(),6500);
+    let response;
+    try{response=await fetch(url,{...options,signal:controller.signal})}
+    finally{clearTimeout(timer)}
+    if(!response.ok)continue;
+    const data=await response.json();
+    const value=Number(data?.value);
+    if(!Number.isSafeInteger(value)||value<0)continue;
+    draw(value);return;
+   }catch(e){/* Retry read-only request from public CORS relay. */}
+  }
+  showStatus("Live visit total temporarily unavailable");
+  odo.setAttribute("aria-label","Live visit total temporarily unavailable");
+ }
+ badge.onload=()=>{readCounter()};
+ badge.onerror=()=>{showStatus("Visit tracking offline; fetching last recorded total");readCounter()};
+ const badgeParams=new URLSearchParams({page_id,namespace,left_text:"visits",left_color:"083e39",right_color:"1c987a",t:String(Date.now())});
+ badge.src=base+"/badge?"+badgeParams;
+ // Do not increment again during fallback: badges record once; count endpoint is read-only.
 }
 
 /* Contact delivery requires a recipient-verified provider access key; never expose the destination. */
