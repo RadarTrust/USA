@@ -1,4 +1,4 @@
-"use strict";
+﻿"use strict";
 (() => {
   const $ = (id) => document.getElementById(id);
   const elements = {
@@ -397,5 +397,37 @@
   }
   initSkillOrbitMagnifier();
 
+  function initProfessionalTooltips(){
+    // Tippy.js v6: proper keyboard focus, viewport-aware placement and no native title boxes.
+    if(typeof window.tippy!=="function")return;
+    const nodes=document.querySelectorAll(".floating-dock .dock-link, .profiles-directory .social-link, .footer-logo, .back-top");
+    nodes.forEach(el=>{
+      const social=el.classList.contains("social-link");
+      let name=social?(el.querySelector(".social-copy b")?.textContent||el.getAttribute("aria-label")):
+        (el.getAttribute("aria-label")||"Back to top");
+      if(!name)return;
+      name=name.replace(/\s*:\s*.*$/,"");
+      el.removeAttribute("title");
+      window.tippy(el,{
+        content:name,
+        theme:"radar-premium",
+        arrow:true,
+        animation:"fade",
+        duration:[180,110],
+        delay:[110,0],
+        placement:social?"top":"left",
+        trigger:"mouseenter focus",
+        touch:false,
+        interactive:false,
+        appendTo:()=>document.body,
+        maxWidth:205,
+        offset:[0,11],
+        popperOptions:{modifiers:[{name:"preventOverflow",options:{padding:10}},{name:"flip",options:{fallbackPlacements:social?["bottom","left"]:["right","top"]}}]}
+      });
+    });
+  }
+  initProfessionalTooltips();
+
   load();
 })();
+
