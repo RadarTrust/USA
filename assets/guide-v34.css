@@ -1,5 +1,5 @@
 /* RadarTrust Knowledge Guide v34 — CSS-only animated holographic 3D-style avatar. */
-.rt-guide-launch{position:fixed;right:24px;bottom:24px;z-index:9997;border:1px solid #86ffc4a8;border-radius:26px;background:linear-gradient(140deg,#062830,#07564a);box-shadow:0 0 0 1px #44f5bc30,0 15px 42px #001517dd,0 0 28px #51ffb94d;display:flex;align-items:center;gap:12px;padding:10px 17px 10px 10px;color:#eaffed;cursor:pointer;font:800 12px Manrope,system-ui,sans-serif;transition:transform .2s}
+.rt-guide-launch{position:fixed;right:24px;bottom:24px;z-index:2147483500;border:1px solid #86ffc4a8;border-radius:26px;background:linear-gradient(140deg,#062830,#07564a);box-shadow:0 0 0 1px #44f5bc30,0 15px 42px #001517dd,0 0 28px #51ffb94d;display:flex;align-items:center;gap:12px;padding:10px 17px 10px 10px;color:#eaffed;cursor:pointer;font:800 12px Manrope,system-ui,sans-serif;transition:transform .2s}
 .rt-guide-launch:hover{transform:translateY(-3px)}
 .rt-guide-launch .rt-bot{width:45px;height:45px;flex:none}
 .rt-guide-launch .rt-label{display:flex;flex-direction:column;align-items:start;gap:1px}.rt-guide-launch .rt-label small{color:#9cdbcd;font-size:10px}
@@ -14,7 +14,7 @@
 .rt-bot-aura{position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle,#55ffb022,transparent 66%);animation:rt-glow 2.8s infinite alternate}
 @keyframes rt-float{50%{transform:translateY(-5px) rotateY(14deg) rotateX(-4deg)}}@keyframes rt-ring{to{transform:rotate(360deg)}}@keyframes rt-blink{0%,94%,98%,100%{height:13%}96%{height:1%}}@keyframes rt-talk{from{height:3%}to{height:13%}}@keyframes rt-glow{to{opacity:.45}}
 .rt-guide[hidden],.rt-guide-launch[hidden]{display:none!important}
-.rt-guide{position:fixed;right:22px;bottom:94px;z-index:9998;width:min(425px,calc(100vw - 24px));height:min(645px,calc(100dvh - 120px));display:flex;flex-direction:column;overflow:hidden;color:#edfff5;font:500 13px/1.6 Manrope,system-ui,sans-serif;background:linear-gradient(162deg,#083638,#04252b 63%,#061a24);border:1px solid #79d9b69a;border-radius:22px;box-shadow:0 26px 80px #000b,0 0 38px #40f6b42e;isolation:isolate}
+.rt-guide{position:fixed;right:22px;bottom:94px;z-index:2147483501;width:min(425px,calc(100vw - 24px));height:min(645px,calc(100dvh - 120px));display:flex;flex-direction:column;overflow:hidden;color:#edfff5;font:500 13px/1.6 Manrope,system-ui,sans-serif;background:linear-gradient(162deg,#083638,#04252b 63%,#061a24);border:1px solid #79d9b69a;border-radius:22px;box-shadow:0 26px 80px #000b,0 0 38px #40f6b42e;isolation:isolate}
 .rt-guide-head{display:flex;align-items:center;gap:8px;min-height:89px;padding:8px 15px;background:linear-gradient(100deg,#07584c,#062a33);border-bottom:1px solid #a4ffb32f}
 .rt-guide-head .rt-bot{width:70px;height:70px;flex:none}.rt-guide-head strong{font-size:15px;color:#e8ffe6}.rt-guide-head small{display:block;font-size:10px;color:#bbdfd3}
 .rt-guide-controls{display:flex;gap:6px;margin-left:auto;align-self:flex-start}
