@@ -120,35 +120,85 @@ if(badge && odo && digits.length===7){
 })();
 
 
-/* v32 — opaque hash route for the public contact view. This is URL presentation, not encryption. */
+/* v33 — 34 non-descriptive skill routes + contact route; routes aren't security controls. */
 (()=>{
  "use strict";
- const route="#/c/8f2a91";
+ const contactRoute="#/c/8f2a91";
  const surface=document.getElementById("radar-hash-route");
  const frame=document.getElementById("radar-route-frame");
  const close=document.getElementById("radar-route-close");
+ const back=surface?.querySelector(".radar-route-back");
+ const caption=surface?.querySelector(".radar-route-domain");
  if(!surface||!frame||!close)return;
- let before=null;
- const isContact=()=>window.location.hash===route;
+ const idFor=name=>{
+  let h=2166136261;
+  for(const c of name){h^=c.charCodeAt(0);h=Math.imul(h,16777619);}
+  return (h>>>0).toString(16).padStart(8,"0").slice(0,6);
+ };
+ const nodes=[...document.querySelectorAll(".skills-constellation .skill-node[data-skill]")];
+ const skillRoutes=new Map(nodes.map(node=>[idFor(node.dataset.skill),node.dataset.skill]));
+ function current(){
+  if(location.hash===contactRoute)return{src:"./contact.html",title:"Contact Us",kind:"contact"};
+  const match=location.hash.match(/^#\/s\/([a-f0-9]{6})$/);
+  if(match&&skillRoutes.has(match[1]))return{
+   src:"./skills/"+match[1]+".html",
+   title:skillRoutes.get(match[1])+" | RadarTrust",
+   kind:"skill"
+  };
+  return null;
+ }
+ let priorFocus=null;
+ let activeKind="";
  function update(){
-  const active=isContact();
+  const view=current();
+  const active=Boolean(view);
   surface.hidden=!active;
   document.body.classList.toggle("radar-route-open",active);
   if(active){
-   if(!frame.getAttribute("src"))frame.setAttribute("src","./contact.html");
-   before=before||document.activeElement;
-   document.title="Contact Us | RadarTrust";
+   priorFocus=priorFocus||document.activeElement;
+   if(frame.getAttribute("src")!==view.src)frame.setAttribute("src",view.src);
+   frame.title=view.title;
+   surface.setAttribute("aria-label",view.title);
+   document.title=view.title;
+   activeKind=view.kind;
+   if(caption)caption.textContent=view.kind==="contact"?"RADARTRUST / SECURE CONTACT":"RADARTRUST / EXPERTISE PROFILE";
+   if(back)back.href=view.kind==="contact"?"#connect":"#home";
    close.focus({preventScroll:true});
   }else{
    document.title="Zeiad G. Yazaji — Professional Portfolio & Credentials";
-   if(before&&document.contains(before)){before.focus({preventScroll:true});}
-   before=null;
+   activeKind="";
+   if(priorFocus&&document.contains(priorFocus))priorFocus.focus({preventScroll:true});
+   priorFocus=null;
   }
  }
- close.addEventListener("click",()=>{window.location.hash="#connect";});
+ const dismiss=()=>{location.hash=activeKind==="contact"?"#connect":"#home";};
+ close.addEventListener("click",dismiss);
  window.addEventListener("hashchange",update);
- document.addEventListener("keydown",event=>{
-  if(event.key==="Escape"&&isContact()){event.preventDefault();window.location.hash="#connect";}
+ document.addEventListener("keydown",e=>{
+  if(e.key==="Escape"&&current()){e.preventDefault();dismiss();}
+ });
+ function openSkill(node){
+  if(!node)return;
+  location.hash="#/s/"+idFor(node.dataset.skill);
+ }
+ nodes.forEach(node=>{
+  node.setAttribute("aria-label","Open "+node.dataset.skill+" expertise, projects and certificates");
+  node.setAttribute("title","Explore "+node.dataset.skill+" expertise");
+  node.addEventListener("click",e=>{e.preventDefault();openSkill(node);});
+  node.addEventListener("pointerdown",e=>{
+   if(e.pointerType==="touch"){e.preventDefault();e.stopImmediatePropagation();openSkill(node);}
+  },true);
+  node.addEventListener("keydown",e=>{
+   if(e.key==="Enter"||e.key===" "){
+    e.preventDefault();e.stopImmediatePropagation();openSkill(node);
+   }
+  },true);
+ });
+ document.querySelector(".hero-aside")?.addEventListener("click",e=>{
+  const zoom=e.target.closest(".skill-zoom-orb");
+  if(!zoom)return;
+  const source=document.querySelector(".skills-constellation .skill-node.is-zoom-source");
+  if(source){e.preventDefault();openSkill(source);}
  });
  update();
 })();
