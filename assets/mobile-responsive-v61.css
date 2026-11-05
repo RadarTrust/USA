@@ -436,3 +436,11 @@
  }
  .hero .hero-content .radar-hero-lockup{margin-top:0!important}
 }
+
+
+/* v72 — radar dial artwork has z-index:5; portrait must be above it. */
+@media(max-width:1050px){
+ .hero .hero-content .radar-hero-center > .rt-mobile-portrait{
+   z-index:8!important;
+ }
+}
