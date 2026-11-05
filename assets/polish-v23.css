@@ -321,3 +321,94 @@ body:not(.theme-dark) .hero .hero-content{
  body:not(.theme-dark) .hero,
  body:not(.theme-dark) .hero .hero-ambient::after{transition:none!important}
 }
+
+
+/* RadarTrust v40 — compact premium first-fold / KPI dashboard.
+   Compress unused hero height, not the badge text or credential numbers. */
+.hero .hero-layout{
+  min-height:0!important;
+  align-items:start!important;
+}
+.hero .hero-content{
+  align-self:start!important;
+  margin-top:-12px!important;
+}
+.hero .hero-metrics{
+  box-sizing:border-box;
+  margin-top:0!important;
+  padding:12px clamp(14px,2.8vw,36px)!important;
+  border-top:1px solid rgba(162,255,201,.22)!important;
+  border-bottom:1px solid rgba(125,248,204,.16)!important;
+  border-radius:0!important;
+  background:linear-gradient(110deg,rgba(7,63,63,.82),rgba(6,39,47,.86))!important;
+  backdrop-filter:blur(12px) saturate(1.16);
+  -webkit-backdrop-filter:blur(12px) saturate(1.16);
+  box-shadow:inset 0 1px rgba(192,255,228,.055),0 -8px 30px rgba(2,20,29,.12);
+  gap:0!important;
+  align-items:stretch!important;
+}
+.hero .hero-metrics .metric{
+  min-width:0!important;
+  padding:9px clamp(10px,2vw,26px)!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:center!important;
+  gap:2px!important;
+  border-right:1px solid rgba(129,237,193,.19)!important;
+}
+.hero .hero-metrics .metric:last-child{border-right:0!important}
+.hero .hero-metrics .metric strong{
+  margin:0!important;
+  font:800 clamp(23px,2.3vw,32px)/1.06 Manrope,system-ui,sans-serif!important;
+  letter-spacing:-.065em!important;
+  color:#f3fff7!important;
+  white-space:nowrap!important;
+}
+.hero .hero-metrics .metric>span{
+  margin:4px 0 0!important;
+  font:750 clamp(8px,.72vw,10px)/1.35 Manrope,system-ui,sans-serif!important;
+  letter-spacing:.075em!important;
+  color:#a5cfc3!important;
+  text-wrap:balance;
+}
+@media(min-width:1680px){
+ .hero .hero-layout{min-height:740px!important}
+ .hero .hero-aside{height:735px!important;min-height:735px!important}
+ .hero .hero-aside .universe-stage{transform:translate(-50%,-50%) scale(.67)!important}
+}
+@media(min-width:1240px) and (max-width:1679px){
+ .hero .hero-layout{min-height:645px!important}
+ .hero .hero-aside{height:645px!important;min-height:645px!important}
+ .hero .hero-aside .universe-stage{transform:translate(-50%,-50%) scale(.58)!important}
+}
+@media(min-width:1051px) and (max-width:1239px){
+ .hero .hero-layout{min-height:610px!important}
+ .hero .hero-aside{height:605px!important;min-height:605px!important}
+ .hero .hero-aside .universe-stage{transform:translate(-50%,-50%) scale(.51)!important}
+}
+@media(min-width:761px) and (max-width:1050px){
+ .hero .hero-content{margin-top:0!important}
+ .hero .hero-layout{min-height:0!important;gap:8px!important}
+ .hero .hero-aside{height:640px!important;min-height:640px!important}
+ .hero .hero-aside .universe-stage{transform:translate(-50%,-50%) scale(.56)!important}
+ .hero .hero-metrics{margin-top:0!important}
+}
+@media(max-width:760px){
+ .hero .hero-content{margin-top:0!important}
+ .hero .hero-layout{gap:12px!important}
+ .hero .hero-aside{margin-bottom:0!important}
+ .hero .hero-metrics{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:0!important;
+    padding:10px 14px!important;
+    margin-top:0!important;
+ }
+ .hero .hero-metrics .metric{
+    padding:11px 12px!important;
+    border-bottom:1px solid rgba(129,237,193,.16)!important;
+ }
+ .hero .hero-metrics .metric:nth-child(even){border-right:0!important}
+ .hero .hero-metrics .metric:nth-child(n+3){border-bottom:0!important}
+ .hero .hero-metrics .metric strong{font-size:clamp(23px,6vw,28px)!important}
+ .hero .hero-metrics .metric>span{font-size:9px!important}
+}
