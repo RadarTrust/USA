@@ -246,3 +246,49 @@ body.radar-route-open{overflow:hidden!important}
 .radar-route-close:hover{background:#37725a}
 .radar-route iframe{display:block;border:0;width:100%;height:100%;min-height:0;flex:1;background:#061c23}
 @media(max-width:540px){.radar-route-domain{display:none}.radar-route-toolbar{min-height:49px;padding:7px 12px}}
+
+
+/* RadarTrust v35 — translucent glass skill orbs and a softer central portrait.
+   Preserve orbit transforms: the JS magnifier is 1.5x rather than 3x. */
+.hero .hero-aside .neon-constellation .skill-pill,
+.hero .hero-aside .neon-constellation .skill-track--middle .skill-pill,
+.hero .hero-aside .neon-constellation .skill-track--fourth .skill-pill{
+  background:radial-gradient(circle at 29% 17%,rgba(96,245,199,.33) 0%,rgba(12,134,134,.27) 43%,rgba(2,41,51,.39) 100%)!important;
+  border-color:rgba(139,255,224,.68)!important;
+  box-shadow:inset 0 2px 13px rgba(183,255,223,.13),inset 0 -5px 19px rgba(3,29,44,.24),0 0 13px rgba(80,255,190,.33)!important;
+  backdrop-filter:blur(5px) saturate(1.15)!important;
+  -webkit-backdrop-filter:blur(5px) saturate(1.15)!important;
+  opacity:.88!important;
+}
+.hero .hero-aside .neon-constellation .skill-pill .neon-skill-icon,
+.hero .hero-aside .neon-constellation .skill-pill .neon-skill-label{
+  opacity:1!important;
+  filter:drop-shadow(0 1px 3px rgba(0,21,28,.7));
+}
+.hero .hero-aside .universe-stage .portrait-photo{
+  background:radial-gradient(circle at 35% 20%,rgba(34,145,128,.35),rgba(3,40,47,.53) 80%)!important;
+  box-shadow:0 0 0 10px rgba(23,249,174,.07),0 0 0 17px rgba(184,255,150,.08),0 0 28px rgba(102,255,180,.37)!important;
+}
+.hero .hero-aside .universe-stage .portrait-photo .hero-photo{
+  opacity:.84!important;
+  filter:contrast(1.02) saturate(.94) brightness(1.06)!important;
+}
+.hero .hero-aside .skill-zoom-orb,
+.hero .hero-aside .skill-zoom-orb.zoom-middle,
+.hero .hero-aside .skill-zoom-orb.zoom-outer{
+  background:radial-gradient(circle at 28% 22%,rgba(92,239,195,.36),rgba(4,68,73,.54) 78%)!important;
+  border-color:rgba(188,255,224,.77)!important;
+  box-shadow:0 0 0 2px rgba(188,255,213,.07),0 8px 25px rgba(0,22,25,.30),0 0 22px rgba(142,255,189,.28)!important;
+  opacity:.95;
+  cursor:pointer!important;
+}
+.hero .hero-aside .skill-zoom-orb .neon-skill-icon{
+  width:30px!important;height:30px!important;min-height:30px!important;margin-bottom:2px!important;
+}
+.hero .hero-aside .skill-zoom-orb .skill-zoom-label{
+  max-width:92%!important;font-size:clamp(10px,1vw,15px)!important;line-height:1.15!important;
+}
+@media(max-width:620px){
+ .hero .hero-aside .skill-zoom-orb .neon-skill-icon{width:25px!important;height:25px!important;min-height:25px!important}
+ .hero .hero-aside .skill-zoom-orb .skill-zoom-label{font-size:11px!important}
+}
