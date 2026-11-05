@@ -176,3 +176,36 @@ body{overscroll-behavior-y:contain}
 @media(max-width:760px){.radar-hero-lockup{width:min(390px,100%);margin:0 auto 20px}.radar-arc-top{font-size:34px}.radar-arc-bottom{font-size:20px}.radar-hero-center{width:52%}.footer-logo{width:220px!important}}
 @media(max-width:400px){.radar-arc-top{font-size:31px}.radar-arc-bottom{font-size:18px}}
 @media(prefers-reduced-motion:reduce){.radar-circular-ring.outer,.radar-lockup-spark{animation:none!important}.credentials-note.ownership-note{transition:none!important}}
+
+/* RadarTrust v25: museum-grade seven-reel mechanical counter and radial wordmark. */
+.footer-inner{display:grid!important;grid-template-columns:minmax(180px,1fr) minmax(270px,1fr) minmax(240px,1fr);align-items:center!important;gap:clamp(14px,3vw,42px)!important;flex-wrap:unset!important;padding-top:25px!important;padding-bottom:29px!important}
+.footer-inner>div:first-child{justify-self:start}
+.footer-inner>p{justify-self:end;text-align:right;max-width:350px}
+.footer-inner>.visitor-widget{grid-column:2;grid-row:1;justify-self:center;align-self:center;flex:none!important;width:auto!important;margin:0!important;padding:0!important;border:0!important;min-width:0;display:flex;flex-direction:column;gap:9px;align-items:center}
+.odometer-heading{font:800 9px/1.3 Manrope,system-ui;letter-spacing:.22em;color:#286e58;display:flex;gap:8px;align-items:center;white-space:nowrap}
+.odometer-heading small{color:#77958a;font:700 8px Manrope,system-ui;letter-spacing:.1em}
+.odo-led{width:6px;height:6px;border-radius:50%;background:#62e6aa;box-shadow:0 0 0 3px #6de8a223,0 0 10px #53eeb6}
+.odometer-machine{position:relative;isolation:isolate;overflow:hidden;padding:9px 11px;border-radius:12px;border:1px solid #0f3c39;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#153e42 0%,#05292e 27%,#011c24 52%,#0b3036 78%,#1c5454 100%);box-shadow:inset 0 2px 0 #a3fff183,inset 0 -4px 7px #001417,0 3px 0 #073d3c,0 8px 0 #08312f,0 12px 19px #01372f47,0 0 0 3px #9ceec426}
+.odometer-machine::before,.odometer-machine::after{content:"";position:absolute;top:10px;bottom:9px;width:3px;border-radius:4px;background:linear-gradient(90deg,#a0ffe1,#1b7776,#001c24);box-shadow:0 0 4px #64e9af44}
+.odometer-machine::before{left:4px}.odometer-machine::after{right:4px}
+.odometer-sheen{pointer-events:none;position:absolute;z-index:3;inset:2px 5px;border-radius:9px;background:linear-gradient(180deg,#effff630,transparent 21%,transparent 70%,#2adbad0d);box-shadow:inset 0 1px 0 #f5fff754}
+.odometer-digits{display:flex;gap:3px;white-space:nowrap;perspective:800px}
+.odo-digit{position:relative;display:flex;align-items:center;justify-content:center;min-width:29px;height:39px;border:1px solid #367a73;border-radius:4px;color:#d7ffe4;font:800 27px/1 Oxanium,ui-monospace,monospace;font-variant-numeric:tabular-nums;text-shadow:0 2px 0 #002d25,0 0 9px #b0ff9866;background:linear-gradient(180deg,#24514d 0%,#0e3439 44%,#051b26 49%,#0b3438 54%,#13443f 100%);box-shadow:inset 0 2px 2px #b0ff9b40,inset 0 -3px 3px #000c15b5,2px 0 4px #00151f70}
+.odo-digit::after{content:"";position:absolute;top:49%;height:1px;left:0;right:0;background:#00191ebd;box-shadow:0 1px #a0ffc321}
+.odo-digit:nth-child(2n){color:#b9f4fa;text-shadow:0 0 7px #55cef777}
+.odo-digit:nth-child(3n){color:#c9ff9b;text-shadow:0 0 7px #86ff9977}
+.odo-digit.flip{animation:odo-reel-flip .38s cubic-bezier(.2,.8,.2,1)}
+@keyframes odo-reel-flip{0%{transform:rotateX(-56deg);filter:brightness(1.7)}45%{transform:rotateX(22deg)}100%{transform:rotateX(0)}}
+.visitor-tracking-pixel{position:absolute!important;width:1px!important;height:1px!important;opacity:0!important;pointer-events:none!important}
+.visitor-counter-status{font:600 9px Manrope,sans-serif;color:#687f74;min-height:12px;text-align:center}
+.radar-arc-top,.radar-arc-bottom{font-family:Oxanium,Manrope,system-ui,sans-serif;font-weight:800;letter-spacing:-.035em;paint-order:stroke fill;stroke:#103a3a;stroke-width:1.1px}
+.radar-arc-top{font-size:55px;fill:#effff4;filter:drop-shadow(0 0 5px #8cffe055)}
+.radar-arc-bottom{font-size:31px;fill:#b5ff96;filter:drop-shadow(0 0 5px #96ffc055)}
+.radar-circular-ring.halo{stroke:#78e5ce;stroke-width:.6;stroke-dasharray:1 14;opacity:.55}
+.radar-tech-decoration{fill:none;stroke:#9affb0;stroke-width:2;stroke-linecap:round;opacity:.75}
+.radar-arc-stars{fill:#a8ffb5;filter:drop-shadow(0 0 6px #8efbc6)}
+.radar-hero-lockup{width:min(510px,100%);filter:drop-shadow(0 12px 22px #073d3d25)}
+.radar-hero-center{width:49%}
+@media(max-width:960px){.footer-inner{grid-template-columns:1fr 1fr;row-gap:18px!important}.footer-inner>.visitor-widget{grid-column:1/-1;grid-row:2}.footer-inner>p{grid-column:2;grid-row:1}}
+@media(max-width:600px){.footer-inner{grid-template-columns:1fr!important;justify-items:center!important;gap:19px!important}.footer-inner>div:first-child,.footer-inner>p,.footer-inner>.visitor-widget{grid-column:1!important;grid-row:auto!important;justify-self:center!important;text-align:center!important}.footer-logo{margin:auto}.footer-inner>div:first-child p{text-align:center}.footer-inner>.visitor-widget{order:2}.footer-inner>p{order:3}.odometer-machine{padding:8px}.odo-digit{min-width:27px;height:37px;font-size:25px}.radar-arc-top{font-size:52px}.radar-arc-bottom{font-size:29px}}
+@media(prefers-reduced-motion:reduce){.odo-digit.flip{animation:none!important}}
