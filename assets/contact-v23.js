@@ -33,10 +33,18 @@ form.addEventListener("submit",async event=>{
  if(busy||!form.reportValidity())return;
  if(form.elements.botcheck?.checked){notice("Unable to process this request.","error");return;}
  if(!verifiedToken){notice("Complete the security check before sending.","error");return;}
+ form.elements.visitor_timezone.value=Intl.DateTimeFormat().resolvedOptions().timeZone||"";
+ form.elements.visitor_locale.value=navigator.language||"";
  const name=form.elements.name?.value.trim();
  const email=form.elements.email?.value.trim();
- const phone=form.elements.phone?.value.trim();
+ const code=form.elements.dial_code?.value.trim();
+ const local=form.elements.phone_local?.value.trim();
+ const digits=local?.replace(/[^0-9]/g,"")||"";
+ const phone=code&&digits?code+" "+digits:"";
  const message=form.elements.message?.value.trim();
+ if(!/^\\+[0-9]{1,4}$/.test(code||"")||digits.length<6||digits.length>15){
+  notice("Enter a valid country code and mobile number.","error");return;
+ }
  if(!name||!email||!phone||!message)return;
  busy=true;ready();notice("Submitting your message securely…");
  const controller=new AbortController();
