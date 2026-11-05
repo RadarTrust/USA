@@ -1224,3 +1224,25 @@
 @media(prefers-reduced-motion:reduce){
   .floating-dock .dock-link{transition:none!important}
 }
+
+
+/* V21 mobile dock safety: neutralize original absolute dropdown positioning. */
+@media(max-width:760px){
+  .floating-dock .dock-navigation,
+  .floating-dock .dock-navigation.open{
+    position:static!important;top:auto!important;right:auto!important;bottom:auto!important;left:auto!important;
+    width:100%!important;min-height:0!important;
+    transform:none!important;
+    box-shadow:none!important;background:transparent!important;
+    border-left:0!important;border-right:0!important;
+    margin:0!important;
+  }
+  .floating-dock .header-inner,
+  .floating-dock .dock-controls{
+    position:static!important;
+    top:auto!important;left:auto!important;
+  }
+  .floating-dock .dock-controls{
+    flex-shrink:0!important;
+  }
+}
