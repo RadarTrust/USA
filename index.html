@@ -23,7 +23,138 @@
   <title>Zeiad G. Yazaji — Professional Portfolio & Credentials</title>
   <link rel="stylesheet" href="./assets/guide-v34.css?v=34">
   <link rel="stylesheet" href="./assets/identity-v53.css?v=54">
-  <link rel="stylesheet" href="./assets/power-orbs-v56.css?v=56">
+  <style id="rt-power-orbs-v57">
+/* RadarTrust v56 — glass-crystal headline + seven live, clickable 3D profile orbs. */
+.about-section .rt-power-kicker{
+  font:850 clamp(10px,.9vw,13px)/1.5 Manrope,system-ui,sans-serif;
+  letter-spacing:.145em;color:#07534d;margin:0 0 12px;
+}
+.about-section .rt-power-kicker span{color:#52c7b5;padding:0 .35em}
+.about-section .about-main h2.rt-power-title,
+.about-section .section-heading.rt-power-title{
+  display:flex!important;flex-direction:column!important;align-items:flex-start!important;
+  font-family:'Bodoni Moda',Georgia,serif!important;
+  font-style:italic!important;font-weight:750!important;
+  font-size:clamp(49px,5vw,89px)!important;line-height:1.02!important;
+  letter-spacing:-.06em!important;max-width:100%!important;
+  margin:0 0 7px!important;padding:0 0 .13em!important;
+  text-align:left!important;overflow:visible!important;
+  background:none!important;-webkit-text-fill-color:initial!important;
+  color:#0b756e!important;filter:none!important;
+  animation:none!important;
+}
+.about-section .rt-power-title span{
+  display:block;white-space:nowrap;position:relative;
+  background:linear-gradient(108deg,#03464f 0%,#0c746d 14%,#b3fff0 29%,#025e67 41%,#11ac95 56%,#a0fce2 68%,#086f67 84%,#60dfb0 100%);
+  background-size:280% 100%;background-clip:text;-webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;
+  filter:drop-shadow(1px 2px 0 rgba(0,59,59,.27)) drop-shadow(0 9px 8px rgba(6,110,98,.14));
+  animation:rt-power-shimmer 7s ease-in-out infinite alternate;
+}
+.about-section .rt-power-title span:nth-child(2){animation-delay:-2.4s}
+@keyframes rt-power-shimmer{from{background-position:0% 50%;transform:translateY(0)}to{background-position:100% 50%;transform:translateY(-2px)}}
+.rt-power-trail{width:min(520px,94%);height:24px;position:relative;margin:3px 0 22px;overflow:visible}
+.rt-power-trail:before{
+  content:"";position:absolute;left:0;right:0;top:13px;height:2px;border-radius:100%;
+  background:linear-gradient(90deg,transparent,#1c8c83 25%,#9fffe0 56%,#12837b 80%,transparent);
+  box-shadow:0 0 7px #65ffcb6b;transform:skewY(-2deg);
+}
+.rt-power-trail i{
+  position:absolute;width:15px;height:15px;top:5px;left:0;border-radius:50%;
+  background:#eefff9;box-shadow:0 0 12px 5px #62ffd6,0 0 20px #baff8c;
+  animation:rt-power-gleam 5.8s linear infinite alternate;
+}
+.rt-power-trail b,.rt-power-trail em{
+  position:absolute;width:14px;height:14px;top:-7px;left:74%;transform:rotate(45deg);
+  background:radial-gradient(circle,#f5fff8 0 9%,#bbffe2 20%,transparent 65%);
+  filter:drop-shadow(0 0 7px #40eed1);
+  animation:rt-power-twinkle 3s ease-in-out infinite;
+}
+.rt-power-trail em{left:14%;top:18px;width:10px;height:10px;animation-delay:-1.5s}
+@keyframes rt-power-gleam{0%{left:0%;opacity:.65}100%{left:98%;opacity:1}}
+@keyframes rt-power-twinkle{0%,100%{opacity:.35;scale:.7}50%{opacity:1;scale:1.5}}
+
+/* Decorative multi-layer bubbles are genuine accessible links with separate hit targets. */
+.rt-orb-directory{display:flex;align-items:center;justify-content:center;gap:clamp(5px,.65vw,12px);width:max-content;max-width:100%;align-self:center;position:relative;z-index:3}
+.rt-profile-orb{
+  --rt-ball-a:#eb9c38;--rt-ball-b:#dd4a0a;
+  position:relative;display:grid;place-items:center;isolation:isolate;
+  width:clamp(38px,3.5vw,54px);height:clamp(38px,3.5vw,54px);
+  border-radius:50%;flex:none;text-decoration:none!important;
+  background:
+   radial-gradient(ellipse at 31% 20%,rgba(255,255,255,.95),transparent 28%),
+   radial-gradient(circle at 72% 78%,rgba(2,24,41,.34),transparent 48%),
+   radial-gradient(circle at 35% 26%,var(--rt-ball-a),var(--rt-ball-b) 75%);
+  border:1px solid rgba(204,255,236,.73);
+  box-shadow:inset -5px -7px 13px #002b406b,inset 4px 4px 10px #ffffffa1,
+    0 5px 12px #001d26ab,0 0 11px #92ffcf6b;
+  transform:translateZ(0);transition:transform .3s cubic-bezier(.18,.7,.22,1),box-shadow .3s;
+  animation:rt-orb-hover 4s ease-in-out infinite;
+  animation-delay:calc(var(--i,0) * -.41s);
+}
+.rt-profile-orb:before{
+  content:"";position:absolute;inset:3px;border-radius:50%;z-index:2;pointer-events:none;
+  border-top:1.8px solid rgba(255,255,255,.92);border-left:1px solid rgba(255,255,255,.45);
+  box-shadow:inset 0 2px 8px #ffffff35;
+}
+.rt-profile-orb:after{
+  content:"";position:absolute;z-index:-1;width:72%;height:13%;border-radius:50%;
+  bottom:-14%;background:#6af8c6a6;filter:blur(6px);opacity:.72;
+}
+.rt-orb-core{display:flex;align-items:center;justify-content:center;width:66%;height:66%;
+  position:relative;z-index:1;color:#fff;font:850 clamp(19px,2vw,29px)/1 Manrope,system-ui,sans-serif;
+  text-shadow:0 2px 5px rgba(0,21,30,.25)}
+.rt-orb-core svg{width:78%;height:78%;display:block}
+.rt-orb-credly{--rt-ball-a:#ffba42;--rt-ball-b:#e86a09;--i:0}
+.rt-orb-linkedin{--rt-ball-a:#37bdff;--rt-ball-b:#0953b2;--i:1}
+.rt-orb-coursera{--rt-ball-a:#2790ff;--rt-ball-b:#0032bd;--i:2}
+.rt-orb-career{--rt-ball-a:#2fd7b1;--rt-ball-b:#006758;--i:3}
+.rt-orb-google{--rt-ball-a:#f9fffd;--rt-ball-b:#b0d6d1;--i:4}
+.rt-orb-google .rt-orb-core{color:#4285f4;text-shadow:1px 1px #34a853,-1px -1px #ea4335;font-weight:900}
+.rt-orb-accredible{--rt-ball-a:#9d89ee;--rt-ball-b:#1879c4;--i:5}
+.rt-orb-facebook{--rt-ball-a:#42bdff;--rt-ball-b:#064dea;--i:6}
+.rt-profile-orb:hover,.rt-profile-orb:focus-visible{
+  animation-play-state:paused;transform:translateY(-7px) scale(1.14);
+  box-shadow:inset -5px -7px 13px #002b406b,inset 4px 4px 10px #ffffffb8,0 8px 20px #001d26ad,0 0 25px #a3ffd2a3;
+}
+.rt-profile-orb:focus-visible{outline:2px solid #caff98;outline-offset:4px}
+@keyframes rt-orb-hover{0%,100%{translate:0 1px}50%{translate:0 -3px}}
+
+/* Keep the five-sixths/one-sixth hero proportions at desktop; place the orbs alongside the biography. */
+@media(min-width:1051px){
+ .hero .hero-lower .hero-lower-intro{
+   display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;
+   grid-template-rows:auto auto!important;align-content:center!important;
+   align-items:center!important;justify-content:space-between!important;
+   column-gap:clamp(12px,2.5vw,42px)!important;row-gap:1px!important;
+   padding:4px clamp(14px,2.5vw,38px)!important;
+ }
+ .hero .hero-lower .hero-copy{grid-column:1;grid-row:1;max-width:100%!important;font-size:clamp(11px,.84vw,13px)!important;line-height:1.4!important}
+ .hero .hero-lower .hero-trust{grid-column:1;grid-row:2;margin:1px 0 0!important;font-size:9px!important}
+ .hero .hero-lower .rt-orb-directory{grid-column:2;grid-row:1/span 2}
+}
+@media(min-width:1051px) and (max-width:1300px){
+ .rt-profile-orb{width:39px;height:39px}
+ .rt-orb-directory{gap:5px}
+ .hero .hero-lower .hero-copy{font-size:11px!important}
+}
+@media(max-width:1050px){
+ .hero .hero-lower .rt-orb-directory{margin:14px auto 4px;flex-wrap:wrap;justify-content:center;width:100%}
+ .rt-profile-orb{width:47px;height:47px}
+}
+@media(max-width:600px){
+ .about-section .rt-power-title span{white-space:normal}
+ .about-section .about-main h2.rt-power-title{font-size:clamp(43px,10vw,68px)!important}
+ .rt-profile-orb{width:40px;height:40px}
+ .rt-orb-directory{gap:7px}
+}
+@media(prefers-reduced-motion:reduce){
+ .about-section .rt-power-title span,.rt-power-trail i,.rt-power-trail b,.rt-power-trail em,.rt-profile-orb{animation:none!important;translate:none!important}
+}
+
+/* Fail-safe: never leave biography invisible when animations are delayed. */
+.hero .hero-copy.rt-typewriter:not(.rt-finished){visibility:visible!important}
+</style>
 </head>
 <body>
   <a class="skip-link" href="#credentials">Skip to credentials</a>
@@ -293,7 +424,7 @@
   <script src="./assets/vendor/tippy-bundle.umd.min.js?v=6.3.7" defer></script>
   <script src="./assets/app.js?v=20261105v35" defer></script>
 <script src="./assets/polish-v23.js?v=52" defer></script>  <script src="./assets/guide-v34.js?v=34" defer></script>
-<script src="./assets/hero-typewriter-v41.js?v=44" defer></script>
+<script src="./assets/hero-typewriter-v41.js?v=57" defer></script>
   <script src="./assets/tooltips-v53.js?v=53" defer></script>
 </body></html>
 
