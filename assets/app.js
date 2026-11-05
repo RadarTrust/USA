@@ -367,11 +367,11 @@
       node.addEventListener("pointerenter",e=>{
         if(e.pointerType==="mouse"||e.pointerType==="pen")open(node);
       });
+      // On coarse touchscreens the skill list is scrollable; never consume a
+      // touch pointerdown or magnify a sphere when a visitor is swiping.
+      // The dedicated mobile double-tap handler in polish-v23.js owns navigation.
       node.addEventListener("pointerdown",e=>{
-        if(e.pointerType==="touch"){
-          e.preventDefault();
-          if(current===node)close();else open(node);
-        }
+        if(e.pointerType==="touch")return;
       });
       node.addEventListener("keydown",e=>{
         if(e.key==="Escape"){close();return;}
