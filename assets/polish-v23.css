@@ -663,3 +663,99 @@ body:not(.theme-dark) .hero .hero-content{
 @media(max-width:760px){
  .hero .hero-lower-intro{padding:15px 16px 12px!important}
 }
+
+
+/* RadarTrust v49 — cinematic 5/6 server scene + 1/6 animated technology floor. */
+@media(min-width:1051px){
+  .hero .hero-ambient{height:83.333svh!important}
+  .hero .hero-layout{
+    height:83.333svh!important;
+    max-height:83.333svh!important;
+    flex:0 0 83.333svh!important;
+  }
+  .hero .hero-aside .universe-stage{
+    transform:translate(-50%,-50%) scale(.72)!important;
+  }
+  .hero .hero-content .radar-hero-lockup{
+    width:min(525px,100%)!important;
+  }
+  .hero .hero-lower{
+    height:16.667svh!important;
+    flex:0 0 16.667svh!important;
+    overflow:hidden!important;
+    isolation:isolate!important;
+    background:
+      radial-gradient(ellipse at 23% 95%,rgba(42,213,167,.16),transparent 55%),
+      linear-gradient(100deg,#063339,#083f3e 45%,#052b34)!important;
+  }
+  .hero .hero-lower::before{
+    content:"";
+    position:absolute;inset:-90% -12% -70%;
+    z-index:-1;pointer-events:none;
+    background-image:
+       linear-gradient(rgba(124,254,204,.22) 1px,transparent 1px),
+       linear-gradient(90deg,rgba(124,254,204,.22) 1px,transparent 1px);
+    background-size:44px 44px;
+    transform:perspective(510px) rotateX(62deg) translateY(-4%);
+    animation:rt-floor-drift 10s linear infinite;
+    mask-image:linear-gradient(to bottom,transparent 7%,#000 36%,#000 74%,transparent 97%);
+    opacity:.44;
+  }
+  .hero .hero-lower::after{
+    content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+    background:radial-gradient(ellipse at 68% 110%,rgba(165,255,195,.19),transparent 53%);
+    animation:rt-floor-breath 5.5s ease-in-out infinite alternate;
+  }
+  .hero .hero-lower-intro{
+    justify-content:center!important;
+    flex:1 1 auto!important;
+    padding:2px clamp(18px,3vw,46px) 0!important;
+    min-height:0!important;
+  }
+  .hero .hero-lower .hero-copy{
+    width:100%!important;
+    max-width:1150px!important;
+    font-size:clamp(12px,.94vw,14px)!important;
+    line-height:1.46!important;
+    margin:0!important;
+  }
+  .hero .hero-lower .hero-trust{
+    margin:3px 0 0!important;
+    font-size:10px!important;
+    line-height:1.3!important;
+  }
+  .hero .hero-lower .hero-metrics{
+    width:100%!important;
+    max-width:none!important;
+    margin:0!important;
+    padding:1px 22px!important;
+    min-height:0!important;
+    flex:0 0 auto!important;
+  }
+  .hero .hero-lower .hero-metrics .metric{
+    padding:4px clamp(8px,2vw,26px)!important;
+  }
+  .hero .hero-lower .hero-metrics .metric strong{font-size:clamp(20px,1.65vw,26px)!important}
+  .hero .hero-lower .hero-metrics .metric>span{font-size:8px!important;margin-top:2px!important}
+}
+@media(min-width:1051px) and (max-width:1250px){
+ .hero .hero-aside .universe-stage{transform:translate(-50%,-50%) scale(.60)!important}
+ .hero .hero-content .radar-hero-lockup{width:min(445px,100%)!important}
+ .hero .hero-lower .hero-copy{font-size:12px!important}
+}
+@media(min-width:1051px) and (max-height:670px){
+ .hero .hero-content .radar-hero-lockup{width:min(430px,100%)!important}
+ .hero .hero-aside .universe-stage{transform:translate(-50%,-50%) scale(.59)!important}
+ .hero .hero-lower .hero-copy{font-size:12px!important;line-height:1.35!important}
+ .hero .hero-lower .hero-trust{margin-top:2px!important;font-size:9px!important}
+ .hero .hero-lower .hero-metrics .metric{padding:2px 14px!important}
+ .hero .hero-lower .hero-metrics .metric strong{font-size:19px!important}
+}
+@keyframes rt-floor-drift{
+  0%{background-position:0 0,0 0}
+  100%{background-position:0 44px,44px 0}
+}
+@keyframes rt-floor-breath{from{opacity:.44}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){
+  .hero .hero-lower::before,.hero .hero-lower::after{animation:none!important}
+}
