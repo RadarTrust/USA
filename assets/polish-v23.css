@@ -270,7 +270,7 @@ body.radar-route-open{overflow:hidden!important}
   box-shadow:0 0 0 10px rgba(23,249,174,.07),0 0 0 17px rgba(184,255,150,.08),0 0 28px rgba(102,255,180,.37)!important;
 }
 .hero .hero-aside .universe-stage .portrait-photo .hero-photo{
-  opacity:.59!important;
+  opacity:.413!important;
   filter:contrast(1.02) saturate(.94) brightness(1.06)!important;
 }
 .hero .hero-aside .skill-zoom-orb,
