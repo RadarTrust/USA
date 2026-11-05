@@ -6,13 +6,14 @@
  const mq=window.matchMedia("(max-width: 1050px)");
  const portrait=document.querySelector(".hero .hero-aside .universe-stage .portrait-photo");
  const stage=portrait?.parentElement;
- const lockup=document.querySelector(".hero .hero-content .radar-hero-lockup");
- if(!portrait||!stage||!lockup)return;
+ const radarCenter=document.querySelector(".hero .hero-content .radar-hero-lockup .radar-hero-center");
+ if(!portrait||!stage||!radarCenter)return;
  const home=portrait.nextSibling;
  function sync(){
   if(mq.matches){
-   if(portrait.parentElement!==lockup.parentElement)
-    lockup.parentElement.insertBefore(portrait,lockup);
+   // Place the SAME interactive portrait directly on top of the radar dial.
+   // Absolute positioning means the hero height does not increase.
+   if(portrait.parentElement!==radarCenter)radarCenter.appendChild(portrait);
    portrait.classList.add("rt-mobile-portrait");
   }else{
    portrait.classList.remove("rt-mobile-portrait");
