@@ -123,3 +123,93 @@ body:not(.theme-light) .rt-crystal-dark{
 @media(prefers-reduced-motion:reduce){
  .radar-circular-title .rt-meteor{display:none!important}
 }
+
+
+/* RadarTrust v58 — 3D crystal spheres in the original seven-profile directory.
+   Scoped exclusively to .profiles-directory so hero orbs, skill nodes and links are untouched. */
+.profiles-directory .profile-links{
+ gap:clamp(10px,1.55vw,22px)!important;
+ perspective:850px;
+}
+.profiles-directory .profile-links .social-link{
+ --orb-light:#47e8b5;
+ --orb-dark:#087867;
+ width:82px!important;height:82px!important;flex:0 0 82px!important;
+ position:relative!important;isolation:isolate!important;
+ overflow:visible!important;
+ border-radius:50%!important;
+ background:
+ radial-gradient(ellipse at 30% 17%,rgba(255,255,255,.96) 0%,rgba(255,255,255,.2) 29%,transparent 48%),
+ linear-gradient(135deg,rgba(246,255,251,.91),rgba(215,245,233,.72) 64%,rgba(152,214,194,.71))!important;
+ border:1px solid rgba(124,212,172,.60)!important;
+ box-shadow:inset 3px 4px 10px #fff, inset -5px -8px 14px #378d7940,
+ 0 12px 22px #123f3635,0 0 16px #a7ffd35d!important;
+ transform-style:preserve-3d;
+ animation:rt-dir-float 5.8s ease-in-out infinite!important;
+ animation-delay:calc(var(--profile-index,0) * -.55s)!important;
+ transition:transform .28s ease,box-shadow .28s ease,border-color .28s!important;
+}
+.profiles-directory .profile-links .social-link:before{
+ content:"";position:absolute;inset:3px!important;
+ background:linear-gradient(142deg,#ffffff9c,transparent 43%,#a7f3cc25 70%,#ffffff45);
+ border-radius:50%!important;z-index:2;pointer-events:none;
+ box-shadow:inset 0 2px 1px #ffffffd6;
+}
+.profiles-directory .profile-links .social-link:after{
+ content:"";position:absolute;z-index:-1;pointer-events:none;
+ width:62%;height:9px;border-radius:50%;
+ left:19%;bottom:-10px;background:#11ae857a;filter:blur(7px);
+}
+.profiles-directory .profile-links .social-link .social-icon{
+ width:60px!important;height:60px!important;
+ border-radius:50%!important;
+ display:grid!important;place-items:center!important;
+ position:relative!important;z-index:1;
+ border:1px solid #d3fff49c!important;
+ background:
+ radial-gradient(ellipse at 29% 16%,#ffffffd6,transparent 33%),
+ radial-gradient(circle at 77% 82%,#001c3750,transparent 45%),
+ linear-gradient(145deg,var(--orb-light),var(--orb-dark) 80%)!important;
+ box-shadow:inset 3px 4px 7px #ffffff7d,inset -6px -7px 11px #001d3f52,0 5px 9px #0b42354d,0 0 13px #89ffe463!important;
+ text-shadow:0 2px 4px #0016224a;
+ transform:translateZ(6px);
+}
+.profiles-directory .profile-links .social-icon:before{
+ content:"";position:absolute;pointer-events:none;z-index:2;
+ top:5px;left:10px;width:43%;height:16%;
+ border-radius:50%;background:#ffffffe0;filter:blur(2px);
+ transform:rotate(-27deg);
+}
+.profiles-directory .profile-links .social-icon svg{width:26px!important;height:26px!important;position:relative;z-index:3}
+.profiles-directory .profile-links .social-monogram{font-size:27px!important;position:relative;z-index:3}
+.profiles-directory .profile-links .social-credly{--orb-light:#ffc64d;--orb-dark:#f1780c}
+.profiles-directory .profile-links .social-linkedin{--orb-light:#47b7ff;--orb-dark:#0756b9}
+.profiles-directory .profile-links .social-coursera{--orb-light:#3b95fc;--orb-dark:#063ebc}
+.profiles-directory .profile-links .social-careercircle{--orb-light:#53e4c3;--orb-dark:#008474}
+.profiles-directory .profile-links .social-google{--orb-light:#fff;--orb-dark:#e6eeeb}
+.profiles-directory .profile-links .social-google .social-icon{border-color:#c6e7d8!important}
+.profiles-directory .profile-links .social-google .social-icon .social-google-g{
+ background:conic-gradient(#4285f4 0 95deg,#34a853 95deg 168deg,#fbbc05 168deg 224deg,#ea4335 224deg 276deg,#4285f4 276deg);
+ background-clip:text;-webkit-background-clip:text;color:transparent;-webkit-text-fill-color:transparent;
+ text-shadow:none;
+}
+.profiles-directory .profile-links .social-accredible{--orb-light:#a59dfd;--orb-dark:#2186c8}
+.profiles-directory .profile-links .social-facebook{--orb-light:#54b8ff;--orb-dark:#0750dc}
+.profiles-directory .profile-links .social-link:hover,
+.profiles-directory .profile-links .social-link:focus-visible{
+ animation-play-state:paused!important;
+ transform:translateY(-7px) scale(1.12)!important;
+ border-color:#adffe0!important;
+ box-shadow:inset 3px 4px 10px #fff,inset -5px -8px 14px #378d7940,0 16px 28px #123f3651,0 0 24px #86ffe7ab!important;
+ z-index:9!important;
+}
+.profiles-directory .profile-links .social-link:focus-visible{outline:2px solid #2dab80;outline-offset:4px}
+@keyframes rt-dir-float{0%,100%{transform:translateY(2px) rotateX(0deg)}50%{transform:translateY(-4px) rotateX(3deg)}}
+@media(max-width:760px){
+ .profiles-directory .profile-links .social-link{width:66px!important;height:66px!important;flex-basis:66px!important}
+ .profiles-directory .profile-links .social-link .social-icon{width:49px!important;height:49px!important}
+ .profiles-directory .profile-links .social-monogram{font-size:22px!important}
+}
+@media(prefers-reduced-motion:reduce){
+ .profiles-directory .profile-links .social-link{animation:none!important}
+}
