@@ -3,54 +3,101 @@
 "use strict";
 const reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const counterIDs=["metric-years","metric-credentials","metric-issuers","metric-links"];
-let metricsVisible=false;
-let alreadyAnimated=new Set();
 const counterGenerations=new Map();
 const targetFor=id=>Math.max(0,Math.floor(Number(document.getElementById(id)?.dataset.countTarget)||0));
+let metricsVisible=false,cycleTimeout=null,started=false;
+const pauseAfterCount=3800;
+const cycleLength=6200;
 function paint(id,number){
- const el=document.getElementById(id);
- if(!el)return;
- const label=el.querySelector(".count-value");
+ const label=document.getElementById(id)?.querySelector(".count-value");
  if(label)label.textContent=Math.round(number).toLocaleString("en-US");
 }
-function animate(id,value){
+function invalidate(){
+ for(const id of counterIDs)counterGenerations.set(id,(counterGenerations.get(id)||0)+1);
+}
+function animate(id,target){
  const el=document.getElementById(id);
  if(!el)return;
- const target=Math.max(0,Math.floor(Number(value)||0));
- if(reduced){paint(id,target);el.closest(".metric")?.classList.add("counted");alreadyAnimated.add(id);return;}
+ const finalValue=Math.max(0,Math.floor(Number(target)||0));
  const generation=(counterGenerations.get(id)||0)+1;
  counterGenerations.set(id,generation);
- const started=performance.now(),length=1550+(Math.min(500,target)*1.4);
  const card=el.closest(".metric");
+ card?.classList.remove("counted");
  card?.classList.add("is-counting");
- const step=(now)=>{
-   if(counterGenerations.get(id)!==generation)return;
-   const progress=Math.min(1,(now-started)/length);
-   const eased=1-Math.pow(1-progress,3.4);
-   const jitter=progress<.7?Math.round(Math.sin(progress*66)*Math.min(2,target*.04)*(1-progress)):0;
-   paint(id,Math.max(0,Math.min(target,Math.round(target*eased+jitter))));
-   if(progress<1)requestAnimationFrame(step);
-   else{paint(id,target);card?.classList.remove("is-counting");card?.classList.add("counted");alreadyAnimated.add(id);}
+ const duration=1600+Math.min(550,finalValue*1.2);
+ const startedAt=performance.now();
+ const tick=now=>{
+  if(counterGenerations.get(id)!==generation)return;
+  const progress=Math.min(1,(now-startedAt)/duration);
+  const eased=1-Math.pow(1-progress,3.2);
+  paint(id,Math.min(finalValue,Math.round(finalValue*eased)));
+  if(progress<1)requestAnimationFrame(tick);
+  else{
+   paint(id,finalValue);
+   card?.classList.remove("is-counting");
+   card?.classList.add("counted");
+  }
  };
- requestAnimationFrame(step);
+ requestAnimationFrame(tick);
+}
+function stopCycle(){
+ if(cycleTimeout!==null){clearTimeout(cycleTimeout);cycleTimeout=null;}
+ invalidate();
+ for(const id of counterIDs){
+  document.getElementById(id)?.closest(".metric")?.classList.remove("is-counting");
+ }
+ started=false;
+}
+function cycle(){
+ if(!metricsVisible||document.hidden||reduced)return;
+ invalidate();
+ for(const id of counterIDs){
+  const card=document.getElementById(id)?.closest(".metric");
+  card?.classList.remove("counted","is-counting");
+  paint(id,0);
+ }
+ for(const id of counterIDs)animate(id,targetFor(id));
+ started=true;
+ cycleTimeout=setTimeout(cycle,cycleLength);
 }
 function update(id,value){
  const el=document.getElementById(id);
  if(!el)return;
  const target=Math.max(0,Math.floor(Number(value)||0));
  el.dataset.countTarget=String(target);
- if(metricsVisible && target>0 && !alreadyAnimated.has(id))animate(id,target);
- else if(metricsVisible && alreadyAnimated.has(id))paint(id,target);
+ if(reduced){paint(id,target);return;}
+ if(metricsVisible&&!document.hidden){
+  // If data arrives after the first cycle starts, animate its genuine final total.
+  if(target>0&&!started)cycle();
+  else if(target>0)animate(id,target);
+ }
 }
 window.RadarCounters={update};
 const area=document.querySelector(".hero-metrics");
 if(area){
- const visible=()=>{if(metricsVisible)return;metricsVisible=true;counterIDs.forEach(id=>{const n=targetFor(id);if(n>0 || id==="metric-years")animate(id,n);});};
- if(!("IntersectionObserver" in window)){visible();}
+ const resume=()=>{
+  metricsVisible=true;
+  if(reduced){counterIDs.forEach(id=>paint(id,targetFor(id)));return;}
+  if(!document.hidden&&cycleTimeout===null)cycle();
+ };
+ const suspend=()=>{
+  metricsVisible=false;
+  stopCycle();
+  if(reduced)return;
+  counterIDs.forEach(id=>paint(id,targetFor(id)));
+ };
+ if(!("IntersectionObserver" in window))resume();
  else{
-  const io=new IntersectionObserver(entries=>{if(entries.some(x=>x.isIntersecting)){io.disconnect();visible();}},{rootMargin:"0px 0px -25px 0px",threshold:.15});
+  const io=new IntersectionObserver(entries=>{
+   if(entries.some(entry=>entry.isIntersecting))resume();
+   else suspend();
+  },{rootMargin:"0px 0px -25px 0px",threshold:.12});
   io.observe(area);
  }
+ document.addEventListener("visibilitychange",()=>{
+  if(document.hidden)stopCycle();
+  else if(metricsVisible)resume();
+ });
 }
 
 /* Same original independent visit counter; hidden badge records the page view.
