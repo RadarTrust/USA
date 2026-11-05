@@ -144,3 +144,35 @@ background:radial-gradient(circle at 20% 9%,#12504e 0,transparent 36%),radial-gr
  .signature-flourish,.contact-orbit{animation:none!important;transition:none!important}
 }
 .hero h1 .radar-title-word{margin-left:.14em}.connect-art{opacity:.49!important}
+
+/* v24: radial editorial masthead, signature identity, precision scrollbar. */
+html{scrollbar-gutter:stable;scrollbar-color:#41cdb5 #082c32;scrollbar-width:thin}
+body{overscroll-behavior-y:contain}
+.radar-hero-lockup{position:relative;display:grid;place-items:center;width:min(460px,100%);aspect-ratio:1;margin:7px 0 22px;isolation:isolate}
+.radar-hero-accessible{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important}
+.radar-circular-title{position:absolute;inset:0;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 14px rgba(94,255,193,.16))}
+.radar-circular-ring{fill:none;stroke:#58dbbb;stroke-width:.9;stroke-dasharray:3 10;opacity:.3}
+.radar-circular-ring.outer{stroke:#a3ff9f;stroke-dasharray:1.5 13;opacity:.38;animation:radar-halo-turn 75s linear infinite;transform-origin:center}
+.radar-arc-top,.radar-arc-bottom{font-family:Manrope,system-ui,sans-serif;font-weight:850;fill:#edfef3;letter-spacing:-.025em}
+.radar-arc-top{font-size:36px}.radar-arc-bottom{font-size:22px;fill:#b7ff97;letter-spacing:-.015em}
+.radar-hero-center{position:relative;z-index:2;display:grid;place-items:center;width:52%;transform:translateY(-3px)}
+.hero .hero-content .radar-hero-center .radar-display-v23{width:100%!important;margin:0!important}
+.radar-hero-center .radar-3d-svg{width:100%!important;max-width:230px}
+.radar-lockup-spark{position:absolute;width:7px;height:7px;border-radius:50%;background:#c5ff8b;box-shadow:0 0 15px 4px #78fbb66a}
+.spark-one{top:26%;left:16%;animation:radar-spark 3s ease-in-out infinite alternate}
+.spark-two{bottom:28%;right:13%;animation:radar-spark 4s ease-in-out infinite alternate-reverse}
+@keyframes radar-spark{to{opacity:.3;transform:scale(.6)}}@keyframes radar-halo-turn{to{transform:rotate(360deg)}}
+.footer-logo{width:clamp(205px,20vw,290px)!important;min-height:76px!important}
+.footer-logo .signature-full{width:100%!important;min-height:76px!important;overflow:visible}
+.footer-logo .signature-text{font-family:'Segoe Script','Brush Script MT','Apple Chancery',cursive;font-weight:400;letter-spacing:-4px}
+.credentials-note.ownership-note{transition:box-shadow .3s,transform .3s}
+.credentials-note.ownership-note:hover{box-shadow:0 23px 48px #1c775b22,inset 0 1px #fff;transform:translateY(-2px)}
+.ownership-shield{filter:drop-shadow(0 12px 11px #1e705c62)}
+.ownership-shield svg{filter:drop-shadow(0 2px 2px #033f33aa)}
+::-webkit-scrollbar{width:12px}
+::-webkit-scrollbar-track{background:linear-gradient(#07232c,#123d42)}
+::-webkit-scrollbar-thumb{border-radius:15px;border:3px solid #082e35;background:linear-gradient(180deg,#c3ff9e,#38cbb1,#168a9c)}
+::-webkit-scrollbar-thumb:active{background:linear-gradient(#e2ffc5,#44e0c0)}
+@media(max-width:760px){.radar-hero-lockup{width:min(390px,100%);margin:0 auto 20px}.radar-arc-top{font-size:34px}.radar-arc-bottom{font-size:20px}.radar-hero-center{width:52%}.footer-logo{width:220px!important}}
+@media(max-width:400px){.radar-arc-top{font-size:31px}.radar-arc-bottom{font-size:18px}}
+@media(prefers-reduced-motion:reduce){.radar-circular-ring.outer,.radar-lockup-spark{animation:none!important}.credentials-note.ownership-note{transition:none!important}}
