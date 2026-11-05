@@ -295,5 +295,95 @@
     $("header").classList.toggle("scrolled",window.scrollY>10);
     raf=false;
   })},{passive:true});
+
+  // On hover, freeze every orbit and present an upright 3x circle.
+  // Touch uses tap to expand, tap outside to resume. Keyboard uses Enter/Space/Escape.
+  function initSkillOrbitMagnifier(){
+    const aside=document.querySelector(".hero-aside");
+    const constellation=aside?.querySelector(".skills-constellation");
+    if(!aside||!constellation)return;
+    let current=null,zoom=null,openedByKeyboard=false;
+    const nodes=[...constellation.querySelectorAll(".skill-node")];
+    function close(){
+      zoom?.remove();
+      zoom=null;
+      current?.classList.remove("is-zoom-source");
+      current=null;
+      aside.classList.remove("orbit-hover-freeze");
+      openedByKeyboard=false;
+    }
+    function open(node,byKeyboard=false){
+      if(current===node)return;
+      close();
+      const original=node.querySelector(".skill-pill");
+      if(!original)return;
+      aside.classList.add("orbit-hover-freeze");
+      const r=original.getBoundingClientRect(),a=aside.getBoundingClientRect();
+      const diameter=Math.round(r.width*3);
+      const label=original.textContent.trim();
+      const expanded=document.createElement("div");
+      expanded.className="skill-zoom-orb";
+      if(node.closest(".skill-track--middle"))expanded.classList.add("zoom-middle");
+      if(node.closest(".skill-track--outer"))expanded.classList.add("zoom-outer");
+      expanded.setAttribute("role","presentation");
+      expanded.setAttribute("aria-hidden","true");
+      expanded.style.setProperty("--zoom-x",(r.left+r.width/2-a.left)+"px");
+      expanded.style.setProperty("--zoom-y",(r.top+r.height/2-a.top)+"px");
+      expanded.style.setProperty("--zoom-diameter",diameter+"px");
+      expanded.style.setProperty("--zoom-font",Math.min(25,Math.max(17,diameter*.20))+"px");
+      const text=document.createElement("span");
+      text.className="skill-zoom-label";
+      text.textContent=label;
+      expanded.append(text);
+      current=node;
+      openedByKeyboard=byKeyboard;
+      node.classList.add("is-zoom-source");
+      aside.append(expanded);
+      zoom=expanded;
+      requestAnimationFrame(()=>expanded.classList.add("zoom-visible"));
+      expanded.addEventListener("pointerleave",e=>{
+        if(e.pointerType!=="touch"&&!openedByKeyboard)close();
+      });
+      expanded.addEventListener("pointerdown",e=>{
+        if(e.pointerType==="touch"){e.preventDefault();close();}
+      });
+    }
+    nodes.forEach(node=>{
+      node.tabIndex=0;
+      node.setAttribute("role","button");
+      node.setAttribute("aria-label","Magnify "+node.textContent.trim()+" skill");
+      node.addEventListener("pointerenter",e=>{
+        if(e.pointerType==="mouse"||e.pointerType==="pen")open(node);
+      });
+      node.addEventListener("pointerdown",e=>{
+        if(e.pointerType==="touch"){
+          e.preventDefault();
+          if(current===node)close();else open(node);
+        }
+      });
+      node.addEventListener("keydown",e=>{
+        if(e.key==="Escape"){close();return;}
+        if(e.key==="Enter"||e.key===" "){
+          e.preventDefault();
+          if(current===node)close();else open(node,true);
+        }
+      });
+      node.addEventListener("blur",()=>{
+        if(current===node&&openedByKeyboard)close();
+      });
+    });
+    aside.addEventListener("pointerleave",e=>{
+      if(e.pointerType!=="touch"&&!openedByKeyboard)close();
+    });
+    document.addEventListener("pointerdown",e=>{
+      if(current&&!aside.contains(e.target))close();
+    });
+    document.addEventListener("keydown",e=>{
+      if(e.key==="Escape"&&current)close();
+    });
+    window.addEventListener("resize",close,{passive:true});
+  }
+  initSkillOrbitMagnifier();
+
   load();
 })();
