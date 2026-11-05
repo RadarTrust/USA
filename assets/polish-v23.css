@@ -759,3 +759,18 @@ body:not(.theme-dark) .hero .hero-content{
 @media(prefers-reduced-motion:reduce){
   .hero .hero-lower::before,.hero .hero-lower::after{animation:none!important}
 }
+
+
+/* RadarTrust v51 — compact concentric orbit radii, preserve orb and portrait sizes.
+   34 skills stay within the server panorama; orbit animations and click routes remain intact. */
+@media(min-width:1051px){
+ .hero .hero-aside .neon-constellation .skill-track--inner{--skill-radius:188px!important}
+ .hero .hero-aside .neon-constellation .skill-track--middle{--skill-radius:265px!important}
+ .hero .hero-aside .neon-constellation .skill-track--outer{--skill-radius:335px!important}
+ .hero .hero-aside .neon-constellation .skill-track--fourth{--skill-radius:398px!important}
+ .hero .hero-aside .orbit-one{--ring-diameter:340px!important}
+ .hero .hero-aside .orbit-two{--ring-diameter:475px!important}
+ .hero .hero-aside .orbit-three{--ring-diameter:600px!important}
+ .hero .hero-aside .orbit-four{--ring-diameter:725px!important}
+ .hero .hero-aside .orbit-five{--ring-diameter:835px!important}
+}
