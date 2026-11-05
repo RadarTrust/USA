@@ -524,3 +524,139 @@ body:not(.theme-dark) .hero .hero-content{
 @media(max-width:760px){
   .hero .hero-layout{flex:1 0 auto!important}
 }
+
+
+/* RadarTrust v46 — two-zone visual composition, ~2/3 server panorama + 1/3 green data panel.
+   The upper panorama and lower identity zone are physically separate DOM regions. */
+@media(min-width:1051px){
+  .hero{
+    height:100svh!important;
+    min-height:100svh!important;
+    display:flex!important;
+    flex-direction:column!important;
+    background:#062e33!important;
+    overflow:hidden!important;
+  }
+  .hero .hero-ambient{
+    height:66.667svh!important;
+    bottom:auto!important;
+    overflow:hidden!important;
+    background:transparent!important;
+  }
+  .hero .hero-ambient::after{
+    height:100%!important;
+    inset:0!important;
+    -webkit-mask-image:none!important;
+    mask-image:none!important;
+    background-size:100% 100%,cover!important;
+    background-position:center,center 29%!important;
+  }
+  .hero .hero-layout{
+    box-sizing:border-box!important;
+    height:66.667svh!important;
+    min-height:0!important;
+    max-height:66.667svh!important;
+    flex:0 0 66.667svh!important;
+    align-items:center!important;
+    overflow:visible!important;
+    position:relative!important;
+    z-index:2!important;
+  }
+  .hero .hero-content{
+    align-self:center!important;
+    margin-top:0!important;
+    padding-top:0!important;
+    max-height:100%!important;
+  }
+  .hero .hero-content .radar-hero-lockup{
+    width:min(455px,100%)!important;
+    margin:0!important;
+  }
+  .hero .hero-content .hero-kicker{margin-top:10px!important;margin-bottom:5px!important}
+  .hero .hero-aside{
+    height:100%!important;
+    min-height:0!important;
+    max-height:100%!important;
+    align-self:center!important;
+    overflow:visible!important;
+  }
+  .hero .hero-aside .universe-stage{
+    transform:translate(-50%,-50%) scale(.53)!important;
+  }
+  .hero .hero-lower{
+    position:relative!important;
+    z-index:3!important;
+    display:flex!important;
+    flex-direction:column!important;
+    box-sizing:border-box!important;
+    flex:0 0 33.333svh!important;
+    height:33.333svh!important;
+    min-height:0!important;
+    background:linear-gradient(135deg,#0b4645,#062b33 62%,#073137)!important;
+    border-top:1px solid rgba(144,255,210,.13)!important;
+    box-shadow:inset 0 15px 35px rgba(3,35,38,.13)!important;
+  }
+  .hero .hero-lower-intro{
+    display:flex!important;
+    flex-direction:column!important;
+    justify-content:center!important;
+    align-items:flex-start!important;
+    flex:1 1 auto!important;
+    width:100%!important;
+    box-sizing:border-box!important;
+    padding:8px 32px 5px!important;
+    min-height:0!important;
+  }
+  .hero .hero-lower .hero-copy{
+    margin:0!important;
+    padding:0!important;
+    min-height:0!important;
+    width:min(780px,100%)!important;
+    max-width:780px!important;
+    font-size:clamp(14px,1.12vw,16px)!important;
+    line-height:1.63!important;
+    color:#deede9!important;
+    text-shadow:0 1px 9px rgba(0,16,19,.26);
+  }
+  .hero .hero-lower .hero-trust{
+    margin:10px 0 0!important;
+    line-height:1.4!important;
+  }
+  .hero .hero-lower .hero-metrics{
+    box-sizing:border-box!important;
+    margin:0 auto!important;
+    padding:5px clamp(12px,2vw,28px)!important;
+    width:100%!important;
+    flex:0 0 auto!important;
+    min-height:0!important;
+    background:linear-gradient(120deg,rgba(4,38,43,.45),rgba(4,29,39,.65))!important;
+  }
+  .hero .hero-lower .hero-metrics .metric{padding:6px clamp(8px,1.5vw,20px)!important}
+}
+/* Avoid overlarge artwork at narrower desktop breakpoints. */
+@media(min-width:1051px) and (max-width:1250px){
+ .hero .hero-content .radar-hero-lockup{width:min(400px,100%)!important}
+ .hero .hero-aside .universe-stage{transform:translate(-50%,-50%) scale(.47)!important}
+}
+/* Preserve the existing stacked mobile/tablet design while supporting the new wrapper. */
+@media(max-width:1050px){
+ .hero .hero-lower{
+   position:relative!important;
+   z-index:3!important;
+   display:flex!important;
+   flex-direction:column!important;
+   background:linear-gradient(135deg,#0b4545,#062e36)!important;
+   border-top:1px solid rgba(144,255,210,.16)!important;
+ }
+ .hero .hero-lower-intro{
+   box-sizing:border-box!important;
+   padding:18px 24px 13px!important;
+   width:100%!important;
+ }
+ .hero .hero-lower .hero-copy{margin:0!important;min-height:0!important}
+ .hero .hero-lower .hero-trust{margin:12px 0 0!important}
+ .hero .hero-lower .hero-metrics{width:100%!important;margin-top:0!important}
+}
+@media(max-width:760px){
+ .hero .hero-lower-intro{padding:15px 16px 12px!important}
+}
