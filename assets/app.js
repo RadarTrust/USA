@@ -278,6 +278,16 @@
   const nav=$("main-nav"),menu=$("menu-toggle");
   menu.addEventListener("click",()=>{const open=nav.classList.toggle("open");menu.setAttribute("aria-expanded",String(open));menu.setAttribute("aria-label",open?"Close menu":"Open menu")});
   nav.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{nav.classList.remove("open");menu.setAttribute("aria-expanded","false")}));
+  document.addEventListener("pointerdown",e=>{
+    if(nav.classList.contains("open") && !document.getElementById("header").contains(e.target)){
+      nav.classList.remove("open");menu.setAttribute("aria-expanded","false");menu.setAttribute("aria-label","Open menu");
+    }
+  });
+  document.addEventListener("keydown",e=>{
+    if(e.key==="Escape"&&nav.classList.contains("open")){
+      nav.classList.remove("open");menu.setAttribute("aria-expanded","false");menu.setAttribute("aria-label","Open menu");menu.focus();
+    }
+  });
   const toggle=$("theme-toggle");
   try{if(localStorage.getItem("zy-theme")==="dark")document.body.classList.add("theme-dark")}catch{}
   function updateTheme(){toggle.setAttribute("aria-label",document.body.classList.contains("theme-dark")?"Switch to light mode":"Switch to dark mode");$("theme-glyph").textContent=document.body.classList.contains("theme-dark")?"☀":"☾"}
