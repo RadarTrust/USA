@@ -444,8 +444,8 @@
  border:1.5px solid rgba(177,255,209,.45)!important;
  border-style:solid!important;border-radius:50%!important;
  z-index:1!important;pointer-events:none!important;
- opacity:.6!important;transform:translate(-50%,-50%)!important;
- box-shadow:0 0 14px rgba(120,255,184,.10)!important;
+ opacity:.6;transform:translate(-50%,-50%);
+ box-shadow:0 0 14px rgba(120,255,184,.10);
  animation:portrait-five-ripple 6.8s ease-in-out infinite!important;
  animation-delay:var(--ring-delay)!important;
 }
