@@ -225,3 +225,10 @@ body{overscroll-behavior-y:contain}
 .contact-phone-pair input{min-width:0}
 .contact-phone-help{font:500 10px/1.65 Manrope,sans-serif;color:#9fbcaf}
 @media(max-width:390px){.contact-phone-pair{grid-template-columns:minmax(100px,.42fr) minmax(0,1fr);gap:8px}}
+
+/* v31: full country / territory dialing code selector */
+#professional-contact-form .contact-phone-pair select{width:100%;min-width:0;max-width:100%;height:47px;padding:11px 8px;border-radius:11px;border:1px solid #578575a8;background:#052b30;color:#f6fffb;font:600 12px Manrope,system-ui,sans-serif;outline:none;cursor:pointer}
+#professional-contact-form .contact-phone-pair select:focus-visible{border-color:#baff89;box-shadow:0 0 0 3px #baff8929}
+#professional-contact-form .contact-phone-pair select option{color:#14352c;background:#fff}
+.contact-phone-pair{grid-template-columns:minmax(170px,.9fr) minmax(0,1fr)}
+@media(max-width:600px){.contact-phone-pair{grid-template-columns:minmax(145px,.9fr) minmax(0,1fr);gap:9px}}
