@@ -458,3 +458,77 @@
   filter:saturate(1.07) contrast(1.08) brightness(1.05)!important;
  }
 }
+
+
+/* RadarTrust v75 — nine organically phased expanding radio signals.
+   Each signal starts at a point, expands to ~98% viewport width, fades away
+   and repeats independently; GPU transform/opacity only. Mobile only. */
+.rt-mobile-signal-field{display:none}
+@media(max-width:1050px){
+ .hero .hero-aside .neon-constellation{
+   isolation:isolate!important;
+ }
+ .hero .hero-aside .neon-constellation .rt-mobile-signal-field{
+   display:block!important;
+   position:absolute!important;
+   inset:0!important;
+   width:100%!important;
+   height:100%!important;
+   overflow:hidden!important;
+   z-index:0!important;
+   pointer-events:none!important;
+   contain:paint!important;
+   border-radius:8px!important;
+ }
+ .hero .hero-aside .neon-constellation .rt-mobile-signal-wave{
+   position:absolute!important;
+   left:var(--wave-x,50%)!important;
+   top:var(--wave-y,50%)!important;
+   display:block!important;
+   width:min(98vw,620px)!important;
+   height:auto!important;
+   aspect-ratio:1!important;
+   border:1.8px solid rgba(121,255,215,.77)!important;
+   border-radius:50%!important;
+   background:radial-gradient(circle,transparent 67%,rgba(70,239,190,.025) 93%,transparent 100%)!important;
+   box-shadow:
+      inset 0 0 10px rgba(50,246,188,.11),
+      0 0 10px rgba(46,255,200,.27),
+      0 0 24px rgba(55,225,187,.10)!important;
+   opacity:0;
+   transform:translate(-50%,-50%) scale(.015);
+   transform-origin:center center!important;
+   will-change:transform,opacity;
+   backface-visibility:hidden;
+   animation:rt-mobile-signal-expand var(--wave-time,6.8s) cubic-bezier(.25,.13,.54,.98) var(--wave-offset,0s) infinite both!important;
+   pointer-events:none!important;
+ }
+ /* Suppress older rotating ring decal and the single recycled pulse;
+    the nine waves are now the sole radar-signal background. */
+ .hero .hero-aside .neon-constellation::after,
+ .hero .hero-aside .universe-stage::before{
+   display:none!important;
+   content:none!important;
+ }
+ .hero .hero-aside .neon-constellation .skill-node{
+   position:relative!important;
+   z-index:2!important;
+ }
+}
+@keyframes rt-mobile-signal-expand{
+ 0%{transform:translate(-50%,-50%) scale(.015);opacity:0}
+ 6%{opacity:.76}
+ 15%{opacity:.63}
+ 42%{opacity:.46}
+ 68%{opacity:.22}
+ 92%{opacity:.055}
+ 100%{transform:translate(-50%,-50%) scale(1.02);opacity:0}
+}
+@media(prefers-reduced-motion:reduce){
+ .hero .hero-aside .neon-constellation .rt-mobile-signal-wave{
+   animation:none!important;
+   transform:translate(-50%,-50%) scale(.52)!important;
+   opacity:.12!important;
+   will-change:auto!important;
+ }
+}
