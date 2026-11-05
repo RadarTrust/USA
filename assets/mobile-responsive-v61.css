@@ -444,3 +444,17 @@
    z-index:8!important;
  }
 }
+
+
+/* RadarTrust v73 — clearly visible but translucent portrait over mobile radar. */
+@media(max-width:1050px){
+ .hero .hero-content .radar-hero-center > .rt-mobile-portrait{
+  z-index:12!important;
+  background:rgba(3,46,53,.10)!important;
+  border-color:rgba(173,255,228,.72)!important;
+ }
+ .hero .hero-content .radar-hero-center > .rt-mobile-portrait .hero-photo{
+  opacity:.72!important;
+  filter:saturate(1.07) contrast(1.08) brightness(1.05)!important;
+ }
+}
