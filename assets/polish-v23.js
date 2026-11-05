@@ -171,6 +171,7 @@ if(badge && odo && digits.length===7){
 (()=>{
  "use strict";
  const contactRoute="#/c/8f2a91";
+ const aboutRoute="#/a/6db3e1";
  const surface=document.getElementById("radar-hash-route");
  const frame=document.getElementById("radar-route-frame");
  const close=document.getElementById("radar-route-close");
@@ -186,6 +187,7 @@ if(badge && odo && digits.length===7){
  const skillRoutes=new Map(nodes.map(node=>[idFor(node.dataset.skill),node.dataset.skill]));
  function current(){
   if(location.hash===contactRoute)return{src:"./contact.html",title:"Contact Us",kind:"contact"};
+  if(location.hash===aboutRoute)return{src:"./about.html",title:"About Zeiad G. Yazaji | RadarTrust",kind:"about"};
   const match=location.hash.match(/^#\/s\/([a-f0-9]{6})$/);
   if(match&&skillRoutes.has(match[1]))return{
    src:"./skills/"+match[1]+".html",
@@ -208,7 +210,7 @@ if(badge && odo && digits.length===7){
    surface.setAttribute("aria-label",view.title);
    document.title=view.title;
    activeKind=view.kind;
-   if(caption)caption.textContent=view.kind==="contact"?"RADARTRUST / SECURE CONTACT":"RADARTRUST / EXPERTISE PROFILE";
+   if(caption)caption.textContent=view.kind==="contact"?"RADARTRUST / SECURE CONTACT":view.kind==="about"?"RADARTRUST / ABOUT":"RADARTRUST / EXPERTISE PROFILE";
    if(back)back.href=view.kind==="contact"?"#connect":"#home";
    close.focus({preventScroll:true});
   }else{
@@ -241,6 +243,47 @@ if(badge && odo && digits.length===7){
    }
   },true);
  });
+ /* v52: portrait is a link-like target. Hover reveals for two seconds, expands 1.5x, opens About. */
+ const portrait=document.querySelector(".hero .hero-aside .portrait-photo");
+ if(portrait){
+  portrait.classList.add("rt-about-target");
+  portrait.setAttribute("role","link");
+  portrait.setAttribute("tabindex","0");
+  portrait.setAttribute("aria-label","Explore Zeiad G. Yazaji's professional About page");
+  portrait.setAttribute("title","About Zeiad — hover to explore or click to open");
+  let clearTimer=null,navTimer=null,openStarted=false;
+  const clear=()=>{
+   if(clearTimer!==null)clearTimeout(clearTimer);
+   if(navTimer!==null)clearTimeout(navTimer);
+   clearTimer=null;navTimer=null;openStarted=false;
+   portrait.classList.remove("rt-peek","rt-expanding");
+  };
+  const proceed=()=>{
+   if(location.hash===aboutRoute)return;
+   clear();
+   location.hash=aboutRoute;
+  };
+  const reveal=(immediate=false)=>{
+   if(openStarted)return;
+   openStarted=true;
+   portrait.classList.add("rt-peek");
+   const reduced=matchMedia("(prefers-reduced-motion: reduce)").matches;
+   if(reduced){proceed();return;}
+   clearTimer=setTimeout(()=>{
+    portrait.classList.add("rt-expanding");
+    navTimer=setTimeout(proceed,700);
+   },immediate?60:2000);
+  };
+  portrait.addEventListener("pointerenter",e=>{if(e.pointerType==="mouse"||e.pointerType==="pen")reveal();});
+  portrait.addEventListener("pointerleave",clear);
+  portrait.addEventListener("click",e=>{e.preventDefault();if(!openStarted)reveal(true);else if(!portrait.classList.contains("rt-expanding")){clear();reveal(true);}});
+  portrait.addEventListener("keydown",e=>{
+   if(e.key==="Enter"||e.key===" "){e.preventDefault();clear();reveal(true);}
+   if(e.key==="Escape")clear();
+  });
+  window.addEventListener("hashchange",clear);
+  document.addEventListener("visibilitychange",()=>{if(document.hidden)clear();});
+ }
  document.querySelector(".hero-aside")?.addEventListener("click",e=>{
   const zoom=e.target.closest(".skill-zoom-orb");
   if(!zoom)return;
