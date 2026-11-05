@@ -774,3 +774,58 @@ body:not(.theme-dark) .hero .hero-content{
  .hero .hero-aside .orbit-four{--ring-diameter:725px!important}
  .hero .hero-aside .orbit-five{--ring-diameter:835px!important}
 }
+
+
+/* RadarTrust v52 — smaller portrait, tighter concentric skill system, cinematic reveal. */
+@media(min-width:1051px){
+ .hero .hero-aside .universe-stage .portrait-photo{
+   width:244px!important;height:244px!important;min-width:244px!important;
+   border-width:4px!important;
+   box-shadow:0 0 0 6px #17f9ae12,0 0 0 12px #b8ff961f,0 0 24px #66ffb47a!important;
+ }
+ .hero .hero-aside .neon-constellation .skill-track--inner{--skill-radius:163px!important}
+ .hero .hero-aside .neon-constellation .skill-track--middle{--skill-radius:232px!important}
+ .hero .hero-aside .neon-constellation .skill-track--outer{--skill-radius:298px!important}
+ .hero .hero-aside .neon-constellation .skill-track--fourth{--skill-radius:359px!important}
+ .hero .hero-aside .orbit-one{--ring-diameter:300px!important}
+ .hero .hero-aside .orbit-two{--ring-diameter:415px!important}
+ .hero .hero-aside .orbit-three{--ring-diameter:540px!important}
+ .hero .hero-aside .orbit-four{--ring-diameter:650px!important}
+ .hero .hero-aside .orbit-five{--ring-diameter:755px!important}
+}
+.hero .hero-aside .universe-stage .portrait-photo.rt-about-target{
+  cursor:pointer!important;
+  pointer-events:auto!important;
+  outline-offset:8px;
+  transition:box-shadow .5s ease,transform .65s cubic-bezier(.16,.8,.2,1),border-color .35s!important;
+  will-change:transform;
+}
+.hero .hero-aside .universe-stage .portrait-photo.rt-about-target:focus-visible{
+ outline:3px solid #baff8c!important;
+}
+.hero .hero-aside .universe-stage .portrait-photo.rt-about-target .hero-photo{
+ transition:opacity .44s ease,filter .44s ease!important;
+}
+.hero .hero-aside .universe-stage .portrait-photo.rt-about-target.rt-peek .hero-photo,
+.hero .hero-aside .universe-stage .portrait-photo.rt-about-target:focus-visible .hero-photo,
+.hero .hero-aside .universe-stage .portrait-photo.rt-about-target.rt-expanding .hero-photo{
+ opacity:1!important;
+ filter:contrast(1.08) saturate(1.05) brightness(1.06)!important;
+}
+.hero .hero-aside .universe-stage .portrait-photo.rt-about-target.rt-peek{
+ border-color:#caffad!important;
+ box-shadow:0 0 0 8px #71ffb42d,0 0 0 18px #8cffc022,0 0 48px #74ffb6ad!important;
+}
+.hero .hero-aside .universe-stage .portrait-photo.rt-about-target.rt-expanding{
+ transform:translate(-50%,-50%) scale(1.5)!important;
+ z-index:30!important;
+}
+@media(max-width:1050px){
+ .hero .hero-aside .universe-stage .portrait-photo.rt-about-target{
+   transition:box-shadow .3s,transform .55s!important;
+ }
+}
+@media(prefers-reduced-motion:reduce){
+ .hero .hero-aside .universe-stage .portrait-photo.rt-about-target,
+ .hero .hero-aside .universe-stage .portrait-photo.rt-about-target .hero-photo{transition:none!important}
+}
