@@ -2,6 +2,9 @@
  * Public catalog only. No third-party API, secrets, or invented verification links. */
 (()=>{
  "use strict";
+ // Keep the shared expertise total accurate when new profile pages are added.
+ const expertiseIndex=document.querySelector(".hero-index");
+ if(expertiseIndex&&/\bOF 34\b/.test(expertiseIndex.textContent))expertiseIndex.textContent=expertiseIndex.textContent.replace(/\bOF 34\b/,"OF 36");
  const entries=[...document.querySelectorAll(".credentials .credential")];
  if(!entries.length)return;
  const node=(tag,cl,text)=>{
