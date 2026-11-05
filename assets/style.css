@@ -763,3 +763,42 @@
   .hero-aside .skill-track--outer .skill-node:nth-child(6) .skill-pill{--orb:102px}
   .hero-aside .skill-track--outer .skill-node:nth-child(8) .skill-pill{--orb:102px}
 }
+
+
+/* V13: fourth skill orbit for networking infrastructure credentials */
+.hero-aside .skill-track--fourth{
+  --skill-radius:298px;
+  animation-direction:reverse;
+}
+.hero-aside .skill-track--fourth .skill-pill{
+  background:radial-gradient(circle at 28% 18%,rgba(43,168,158,.30),rgba(9,58,73,.18) 78%)!important;
+  border-color:rgba(127,242,228,.80)!important;
+  animation-direction:normal,alternate!important;
+}
+.hero-aside .skill-track--fourth .skill-node:nth-child(1) .skill-pill{--orb:60px;font-size:12.8px!important}
+.hero-aside .skill-track--fourth .skill-node:nth-child(2) .skill-pill{--orb:81px;font-size:11.9px!important}
+.hero-aside .skill-track--fourth .skill-node:nth-child(3) .skill-pill{--orb:77px;font-size:12px!important}
+.hero-aside .skill-track--fourth .skill-node:nth-child(4) .skill-pill{--orb:62px;font-size:13px!important}
+.hero-aside .skill-track--fourth .skill-node:nth-child(5) .skill-pill{--orb:77px;font-size:12.5px!important}
+.hero-aside .skill-track--fourth .skill-node:nth-child(6) .skill-pill{--orb:66px;font-size:12.5px!important}
+.hero-aside .skill-track--fourth .skill-node:nth-child(7) .skill-pill{--orb:73px;font-size:12.5px!important}
+.hero-aside .skill-track--fourth .skill-node:nth-child(8) .skill-pill{--orb:77px;font-size:12px!important}
+.hero-aside .skill-track--fourth .skill-node:nth-child(9) .skill-pill{--orb:76px;font-size:12.2px!important}
+.hero-aside .skill-track--fourth .skill-node:nth-child(10) .skill-pill{--orb:106px;font-size:11.5px!important}
+.hero-aside .skill-track--fourth .skill-node:nth-child(11) .skill-pill{--orb:55px;font-size:13px!important}
+@media(min-width:1101px){
+ .hero .hero-layout{min-height:690px}
+ .hero-aside{height:650px}
+}
+@media(min-width:761px) and (max-width:1100px){
+ .hero-aside .skill-track--fourth{--skill-radius:215px}
+}
+@media(max-width:760px){
+ .hero-aside{height:1140px!important;min-height:1140px!important;max-height:none!important}
+ .hero-aside .skill-track--fourth{position:absolute!important;display:block!important;inset:0!important;width:100%!important;height:100%!important;transform:none!important;animation:none!important}
+ .hero-aside .skill-track--fourth .skill-pill{animation:mobile-skill-float 4.6s ease-in-out infinite,readable-orb-glow var(--spark-speed,3.6s) ease-in-out infinite alternate!important}
+ .hero-aside .skill-track--fourth .skill-node{position:absolute!important;transform:translate(-50%,-50%)!important}
+ .hero-aside .skills-constellation{height:100%!important;overflow:visible!important}
+ .hero-aside .orbit-star.star-a{top:32%!important}
+ .hero-aside .orbit-star.star-b{bottom:32%!important}
+}
