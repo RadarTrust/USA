@@ -2,6 +2,8 @@
    Native title tooltip text is migrated into accessible styled tooltips. */
 (()=>{
 "use strict";
+if(document.documentElement.dataset.rtTooltipV53==="1")return;
+document.documentElement.dataset.rtTooltipV53="1";
 const SELECTOR='a[title],button[title],[role="button"][title],[role="link"][title],[data-tooltip],.portrait-photo.rt-about-target,.skills-constellation .skill-node,.floating-dock [aria-label],.rt-guide [aria-label],.rt-guide-launch[aria-label],.rt-cert-interactive[aria-label],.rt-cert-zoom-controls button[aria-label],.rt-cert-close[aria-label],.back[aria-label],.topbar button[aria-label]';
 const instances=new WeakSet();
 let fallback=null;
