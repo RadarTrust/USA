@@ -213,3 +213,43 @@ body:not(.theme-light) .rt-crystal-dark{
 @media(prefers-reduced-motion:reduce){
  .profiles-directory .profile-links .social-link{animation:none!important}
 }
+
+
+/* RadarTrust v59 — eighth 3D YouTube sphere with transparent Coming Soon semantics. */
+.profiles-directory .profile-links .social-youtube{--orb-light:#ff7777;--orb-dark:#bf0019}
+.profiles-directory .profile-links .social-youtube .social-icon svg{width:28px!important;height:28px!important;color:#fff}
+.profiles-directory .profile-links .social-coming-soon{
+ cursor:default!important;
+}
+.profiles-directory .profile-links .social-coming-soon:focus-visible{
+ outline:2px solid #27aa83!important;outline-offset:4px!important;
+}
+.profiles-directory .profile-links .social-coming-soon .social-copy{display:none!important}
+.rt-orb-youtube{--rt-ball-a:#ff797b;--rt-ball-b:#d60b2c;--i:7}
+.rt-orb-youtube .rt-orb-core svg{width:78%;height:78%;color:#fff}
+.rt-orb-coming-soon{cursor:default!important}
+.rt-orb-coming-soon:focus-visible{outline:2px solid #baff8c;outline-offset:4px}
+/* Thirteen physical reels with a narrower but readable responsive face. */
+.footer-inner>.visitor-widget{max-width:100%!important}
+#odometer-machine{
+ max-width:100%!important;
+ box-sizing:border-box!important;
+ padding:8px 10px!important;
+}
+#odometer-digits{gap:2px!important;max-width:100%!important}
+#odometer-digits .odo-digit{
+ min-width:clamp(18px,1.47vw,24px)!important;
+ width:clamp(18px,1.47vw,24px)!important;
+ height:36px!important;
+ font-size:clamp(17px,1.55vw,23px)!important;
+}
+@media(min-width:961px) and (max-width:1290px){
+ .footer-inner{grid-template-columns:minmax(180px,1fr) minmax(330px,1.25fr) minmax(190px,1fr)!important;gap:14px!important}
+ #odometer-digits .odo-digit{min-width:22px!important;width:22px!important;font-size:20px!important}
+}
+@media(max-width:600px){
+ #odometer-machine{padding:7px!important}
+ #odometer-digits{gap:1.6px!important}
+ #odometer-digits .odo-digit{min-width:clamp(18px,5.6vw,21px)!important;width:clamp(18px,5.6vw,21px)!important;height:33px!important;font-size:19px!important}
+ .odometer-heading{letter-spacing:.12em!important;font-size:8px!important}
+}
