@@ -74,3 +74,52 @@ body:not(.theme-light) .rt-crystal-dark{
  content:"";position:absolute;left:calc(50% - 7px);bottom:-8px;
  border-top:8px solid #0a5248;border-left:7px solid transparent;border-right:7px solid transparent;
 }
+
+
+/* RadarTrust v54 · left-aligned, single-line expertise title and cinematic star pathways */
+.expertise-section .section-top{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:flex-start!important;
+  justify-content:flex-start!important;
+  gap:13px!important;
+  text-align:left!important;
+}
+.expertise-section .section-top .section-heading{
+  display:block!important;
+  width:100%!important;
+  margin:0!important;
+  padding:0!important;
+  text-align:left!important;
+  white-space:nowrap!important;
+  font-size:clamp(24px,3.55vw,51px)!important;
+  line-height:1.3!important;
+  letter-spacing:-.047em!important;
+  overflow-wrap:normal!important;
+}
+.expertise-section .section-top .section-heading i{
+  display:inline!important;
+  font:inherit!important;
+  font-style:inherit!important;
+  color:inherit!important;
+  -webkit-text-fill-color:inherit!important;
+}
+.radar-circular-title .rt-meteor-guide{
+  fill:none;
+  stroke-width:1.15px;
+  stroke-linecap:round;
+  stroke-dasharray:3 7;
+  filter:drop-shadow(0 0 3px rgba(156,255,204,.5));
+}
+.radar-circular-title .rt-meteor{filter:drop-shadow(0 0 5px #c8ffe7) drop-shadow(0 0 9px #a3ffa3)}
+@media(max-width:740px){
+  .expertise-section .section-top .section-heading{
+    font-size:clamp(18px,4vw,29px)!important;
+    letter-spacing:-.05em!important;
+    white-space:normal!important;
+    text-wrap:balance;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+ .radar-circular-title .rt-meteor{display:none!important}
+}
