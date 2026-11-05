@@ -35,8 +35,8 @@
   if(document.hidden){finish();return;}
   if(!previous)previous=time;
   const elapsed=time-previous;
-  if(elapsed>=21){
-   const count=Math.max(1,Math.min(4,Math.floor(elapsed/21)));
+  if(elapsed>=15){
+   const count=Math.max(1,Math.min(6,Math.floor(elapsed/15)));
    for(let n=0;n<count&&position<queue.length;n++){
     const {write,character}=queue[position++];
     write.textContent+=character;
