@@ -1127,3 +1127,20 @@
  .hero .hero-aside .orbit-star.star-a{top:38%!important;left:14%!important}
  .hero .hero-aside .orbit-star.star-b{bottom:38%!important;right:12%!important}
 }
+
+
+/* V19: tighten only the introductory copy placement; leave skill orbits intact. */
+@media(min-width:1051px){
+  .hero{padding-top:14px!important}
+  .hero .hero-layout{align-items:start!important}
+  .hero .hero-content{align-self:start!important;padding-top:0!important}
+  .hero .hero-content .hero-kicker{margin-top:15px!important}
+}
+@media(min-width:761px) and (max-width:1050px){
+  .hero{padding-top:12px!important}
+  .hero .hero-content .hero-kicker{margin-top:14px!important}
+}
+@media(max-width:760px){
+  .hero{padding-top:8px!important}
+  .hero .hero-content .hero-kicker{margin-top:12px!important}
+}
