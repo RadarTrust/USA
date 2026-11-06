@@ -14,7 +14,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
 
-EXPECTED_SKILLS = 34
+EXPECTED_SKILLS = 36
 HEX_ROUTE = re.compile(r"^#/s/[0-9a-f]{6}$")
 
 
