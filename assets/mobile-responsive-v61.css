@@ -454,7 +454,7 @@
   border-color:rgba(173,255,228,.72)!important;
  }
  .hero .hero-content .radar-hero-center > .rt-mobile-portrait .hero-photo{
-  opacity:.72!important;
+  opacity:.50!important; /* 30% lower opacity on mobile than .72 */
   filter:saturate(1.07) contrast(1.08) brightness(1.05)!important;
  }
 }
