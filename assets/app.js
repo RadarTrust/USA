@@ -51,8 +51,8 @@
       source:"Certificate scan available in public view-only gallery",
       pdfOnline:false,
       pdfPath:"",
-      previewPath:typeof r.previewPath==="string" && /^\.\/assets\/previews\/archive-[0-9]+\.webp$/.test(r.previewPath)?r.previewPath:"",
-      viewImage:typeof r.viewImage==="string" && /^\.\/assets\/certificates-full\/archive-[0-9]+\.webp$/.test(r.viewImage)?r.viewImage:"",
+      previewPath:typeof r.previewPath==="string" && /^\.\/assets\/previews\/archive-[0-9]+\.(?:webp|svg)$/.test(r.previewPath)?r.previewPath:"",
+      viewImage:typeof r.viewImage==="string" && /^\.\/assets\/certificates-full\/archive-[0-9]+\.(?:webp|svg)$/.test(r.viewImage)?r.viewImage:"",
       featured:r.level==="Program & specialization"
     };
   }
@@ -62,16 +62,16 @@
       title:String(r.title||"").trim(),
       issuer:String(r.issuer||"Other").trim(),
       category:deriveCategory(String(r.title||"")),
-      type: r.status==="Issuer link"?"Course completion":r.title?.includes("ECSA")?"Professional certification":"Additional professional record",
+      type: r.type || (r.status==="Issuer link"?"Course completion":r.title?.includes("ECSA")?"Professional certification":"Additional professional record"),
       verificationUrl:linkSafe(r.url||""),
       status:r.status||"Additional record",
       source:"Previously cataloged professional record",
       pdfOnline:false,
       pdfPath:"",
-      previewPath:typeof r.previewPath==="string" && /^\.\/assets\/(featured-certs|previews)\/[a-z0-9_-]+\.webp$/.test(r.previewPath)?r.previewPath:"",
-      viewImage:typeof r.viewImage==="string" && /^\.\/assets\/(featured-certs|certificates-full)\/[a-z0-9_-]+\.webp$/.test(r.viewImage)?r.viewImage:"",
+      previewPath:typeof r.previewPath==="string" && /^\.\/assets\/(featured-certs|previews)\/[a-z0-9_-]+\.(?:webp|svg)$/.test(r.previewPath)?r.previewPath:"",
+      viewImage:typeof r.viewImage==="string" && /^\.\/assets\/(featured-certs|certificates-full)\/[a-z0-9_-]+\.(?:webp|svg)$/.test(r.viewImage)?r.viewImage:"",
       badgeImage:typeof r.badgeImage==="string" && /^\.\/assets\/featured-certs\/[a-z0-9-]+\.webp$/.test(r.badgeImage)?r.badgeImage:"",
-      featured:!!r.title?.includes("ECSA")||r.id==="cred-001"
+      featured:!!r.title?.includes("ECSA")||r.id==="cred-001"||r.id==="cred-016"
     };
   }
   function unique(records) {
