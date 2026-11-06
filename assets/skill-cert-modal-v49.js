@@ -20,7 +20,7 @@
      return url.protocol==="https:" && !url.username && !url.password ? url.href : "";
    }catch{return "";}
  };
- const pathImage=v=>typeof v==="string" && /^\.\/assets\/(?:featured-certs|certificates-full|previews)\/[a-z0-9_-]+\.webp$/i.test(v)?"../"+v.slice(2):"";
+ const pathImage=v=>typeof v==="string" && /^\.\/assets\/(?:featured-certs|certificates-full|previews)\/[a-z0-9_-]+\.(?:webp|svg)$/i.test(v)?"../"+v.slice(2):"";
  let records=[];
  const catalog=Promise.allSettled([
   fetch("../data/credentials.json",{cache:"no-cache"}).then(r=>r.ok?r.json():[]),
