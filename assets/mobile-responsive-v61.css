@@ -551,3 +551,10 @@
    box-shadow:none!important;
  }
 }
+
+/* RadarTrust v78: radar center marker stays 70% transparent over mobile portrait. */
+@media(max-width:1050px){
+ .hero .hero-content .radar-hero-center .radar-3d-svg .radar-center-dot{
+  opacity:.30!important;
+ }
+}
