@@ -138,7 +138,8 @@ if(badge && odo && digits.length===13){
  }
  async function readCounter(){
   const options={cache:"no-store",headers:{Accept:"application/json"}};
-  const urls=[readURL,"https://proxy.cors.dev/"+readURL];
+  // Read directly from the counter service; never disclose visitor requests via a public CORS relay.
+  const urls=[readURL];
   for(const url of urls){
    try{
     const controller=new AbortController();
@@ -151,7 +152,7 @@ if(badge && odo && digits.length===13){
     const value=Number(data?.value);
     if(!Number.isSafeInteger(value)||value<0)continue;
     draw(value);return;
-   }catch(e){/* Retry read-only request from public CORS relay. */}
+   }catch(e){/* Counter unavailable; preserve the privacy-safe offline state. */}
   }
   showStatus("Live visit total temporarily unavailable");
   odo.setAttribute("aria-label","Live visit total temporarily unavailable");
