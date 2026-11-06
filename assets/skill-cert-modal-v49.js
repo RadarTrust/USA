@@ -13,8 +13,14 @@
    if(text!==undefined)e.textContent=String(text);
    return e;
  };
- const escUrl=v=>typeof v==="string" && /^https:\/\//i.test(v)?v:"";
- const pathImage=v=>typeof v==="string" && /^\.\/assets\/[a-z0-9_./-]+$/i.test(v)?"../"+v.slice(2):"";
+ const escUrl=v=>{
+   if(typeof v!=="string")return "";
+   try{
+     const url=new URL(v);
+     return url.protocol==="https:" && !url.username && !url.password ? url.href : "";
+   }catch{return "";}
+ };
+ const pathImage=v=>typeof v==="string" && /^\.\/assets\/(?:featured-certs|certificates-full|previews)\/[a-z0-9_-]+\.webp$/i.test(v)?"../"+v.slice(2):"";
  let records=[];
  const catalog=Promise.allSettled([
   fetch("../data/credentials.json",{cache:"no-cache"}).then(r=>r.ok?r.json():[]),
