@@ -58,6 +58,17 @@ def audit(root: Path) -> tuple[list[str], dict[str, int]]:
         return ["Missing index.html"], report
 
     main = read_html(index)
+    # Regression guard: the large works CTA must NEVER be inside the
+    # clipped 16.667svh desktop hero floor (.hero-lower).
+    html = index.read_text(encoding="utf-8-sig")
+    hero_start = html.find('<section class="hero">')
+    hero_end = html.find("</section>", hero_start) if hero_start >= 0 else -1
+    feature_start = html.find('<section class="rt-works-feature"')
+    about_start = html.find('<section id="about"')
+    if not (0 <= hero_start < hero_end < feature_start < about_start):
+        errors.append("Works CTA must be a standalone section AFTER the radar hero and BEFORE about")
+    if html.count('class="rt-works-banner"') != 1:
+        errors.append("Expected exactly one publications/project CTA")
     report["skill_nodes"] = len(main.skills)
     if len(main.skills) != EXPECTED_SKILLS:
         errors.append(f"Expected {EXPECTED_SKILLS} skill buttons; found {len(main.skills)}")
