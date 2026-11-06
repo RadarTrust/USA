@@ -1,0 +1,14 @@
+
+/* RadarTrust — prominent Publications & Projects link; isolated from legacy radar CSS. */
+.rt-works-banner{display:block;position:relative;margin:25px 0 23px;max-width:720px;border-radius:22px;padding:3px;text-decoration:none!important;background:linear-gradient(120deg,#d4ff9b,#32c5b1 55%,#8bded7);box-shadow:0 15px 38px #031b223b;transition:transform .23s,box-shadow .23s}
+.rt-works-banner:hover,.rt-works-banner:focus-visible{transform:translateY(-4px);box-shadow:0 20px 50px #19bda755;outline-offset:5px}
+.rt-works-banner-inner{display:flex;align-items:center;gap:21px;border-radius:19px;background:linear-gradient(110deg,#073c3f,#0a5457);padding:18px 22px;min-height:104px}
+.rt-works-banner-icon{flex:0 0 74px;width:74px;height:74px;border-radius:18px;background:linear-gradient(145deg,#9effa5,#28bba9);box-shadow:0 10px 25px #a7ff952b;display:grid;place-items:center;color:#063d36}
+.rt-works-banner-icon svg{width:49px;height:49px;stroke:currentColor}
+.rt-works-banner-copy{display:flex;flex-direction:column;gap:5px;flex:1;min-width:0}
+.rt-works-banner-kicker{font:800 10px/1.3 Manrope,Arial,sans-serif;letter-spacing:.17em;color:#b7efce;text-transform:uppercase}
+.rt-works-banner-title{font:900 clamp(20px,2.4vw,29px)/1.18 Manrope,Arial,sans-serif;letter-spacing:-.035em;color:#f4fff7}
+.rt-works-banner-sub{font:600 12px/1.5 Manrope,Arial,sans-serif;color:#acd6c9}
+.rt-works-banner-arrow{font-size:30px;font-weight:800;color:#bbff94}
+@media(max-width:700px){.rt-works-banner{margin:20px 0;max-width:100%}.rt-works-banner-inner{gap:13px;padding:13px;min-height:92px}.rt-works-banner-icon{flex-basis:57px;width:57px;height:57px;border-radius:14px}.rt-works-banner-icon svg{width:37px;height:37px}.rt-works-banner-title{font-size:19px}.rt-works-banner-sub{font-size:11px}.rt-works-banner-arrow{font-size:24px}}
+@media(prefers-reduced-motion:reduce){.rt-works-banner{transition:none}}

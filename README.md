@@ -10,7 +10,7 @@
 
 **Zeiad G. Yazaji** — Electronics & Communications Engineering · Enterprise Technology · Cybersecurity · Automation · Software & AI
 
-[**Live website**](https://radartrust.github.io/USA/) · [**Browse credentials**](https://radartrust.github.io/USA/#credentials) · [**Ask Radar**](https://radartrust.github.io/USA/) · [**Secure contact**](https://radartrust.github.io/USA/#/c/8f2a91)
+[**My Publications & Projects**](https://radartrust.github.io/USA/works.html) · [**Live website**](https://radartrust.github.io/USA/) · [**Browse credentials**](https://radartrust.github.io/USA/#credentials) · [**Ask Radar**](https://radartrust.github.io/USA/) · [**Secure contact**](https://radartrust.github.io/USA/#/c/8f2a91)
 
 ![GitHub Pages](https://img.shields.io/badge/Hosting-GitHub%20Pages-0a524c?style=flat-square) ![Technologies](https://img.shields.io/badge/Frontend-HTML%20%7C%20CSS%20%7C%20JavaScript-baff8c?style=flat-square) ![Python](https://img.shields.io/badge/Tooling-Python%203-3addbc?style=flat-square) ![Cost](https://img.shields.io/badge/Infrastructure-Free%20tiers-185c53?style=flat-square)
 
