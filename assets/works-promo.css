@@ -12,3 +12,12 @@
 .rt-works-banner-arrow{font-size:30px;font-weight:800;color:#bbff94}
 @media(max-width:700px){.rt-works-banner{margin:20px 0;max-width:100%}.rt-works-banner-inner{gap:13px;padding:13px;min-height:92px}.rt-works-banner-icon{flex-basis:57px;width:57px;height:57px;border-radius:14px}.rt-works-banner-icon svg{width:37px;height:37px}.rt-works-banner-title{font-size:19px}.rt-works-banner-sub{font-size:11px}.rt-works-banner-arrow{font-size:24px}}
 @media(prefers-reduced-motion:reduce){.rt-works-banner{transition:none}}
+
+
+/* v2 layout contract: CTA is its own full-width section AFTER the 100svh hero.
+   Never place cards inside .hero-lower: desktop floor = 16.667svh and overflow:hidden. */
+.rt-works-feature{position:relative;z-index:1;isolation:isolate;background:linear-gradient(150deg,#082b33,#0b4948 55%,#062930);padding:clamp(23px,3.5vw,45px) 18px;border-top:1px solid rgba(158,255,206,.22);border-bottom:1px solid rgba(158,255,206,.18)}
+.rt-works-feature-inner{display:flex;align-items:center;justify-content:center;margin-inline:auto;width:100%;min-width:0}
+.rt-works-feature .rt-works-banner{flex:1 1 0;width:min(100%,900px);max-width:900px;margin:0;min-width:0;box-sizing:border-box}
+.rt-works-feature .rt-works-banner-inner{min-height:128px;padding:clamp(16px,2vw,28px)}
+@media(max-width:700px){.rt-works-feature{padding:19px 12px}.rt-works-feature .rt-works-banner{margin:0;max-width:100%}.rt-works-feature .rt-works-banner-inner{min-height:95px;padding:13px}}
