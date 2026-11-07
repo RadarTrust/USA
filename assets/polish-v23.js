@@ -102,11 +102,46 @@ if(area){
 
 /* Same original independent visit counter; hidden badge records the page view.
    /count?read=true exposes the actual stored integer; no invented display totals. */
+// Prefer the self-owned persistent D1 API once provisioned. Keep legacy fallback
+// until the new endpoint is verified and a historical baseline can be migrated.
+const ownedCounterURL = document.querySelector('meta[name="radartrust-counter-api"]')?.content || "";
+if (ownedCounterURL && /^https:\/\/[a-z0-9-]+\.[a-z0-9-]+\.workers\.dev\/api\/visits$/.test(ownedCounterURL)) {
+ const widget=document.querySelector(".visitor-widget");
+ const machine=document.getElementById("odometer-machine");
+ const status=document.getElementById("visitor-counter-status");
+ const reels=[...document.querySelectorAll("#odometer-digits .odo-digit")];
+ if(widget && machine && reels.length===13) {
+  const sessionKey="radartrust-visit-session-v1";
+  let visitId;
+  try {
+   visitId=sessionStorage.getItem(sessionKey);
+   if(!visitId){visitId=crypto.randomUUID();sessionStorage.setItem(sessionKey,visitId);}
+  } catch {visitId=crypto.randomUUID();}
+  (async()=>{
+   try {
+    const response=await fetch(ownedCounterURL,{
+     method:"POST",headers:{"Content-Type":"application/json"},
+     body:JSON.stringify({visitId,page:"/USA/"}),cache:"no-store"
+    });
+    if(!response.ok)throw Error("Counter unavailable");
+    const data=await response.json();
+    if(!Number.isSafeInteger(data.total)||data.total<0)throw Error("Invalid count");
+    const digits=String(data.total).padStart(13,"0").slice(-13);
+    reels.forEach((digit,index)=>{digit.textContent=digits[index]});
+    machine.setAttribute("aria-label",data.total.toLocaleString("en-US")+" recorded page views");
+    if(status)status.textContent="Recorded site visits";
+   } catch {
+    if(status)status.textContent="Live visit total temporarily unavailable";
+   }
+  })();
+ }
+}
+
 const badge=document.getElementById("visitor-counter-badge");
 const odo=document.getElementById("odometer-machine");
 const digits=[...document.querySelectorAll("#odometer-digits .odo-digit")];
 const countStatus=document.getElementById("visitor-counter-status");
-if(badge && odo && digits.length===13){
+if(!ownedCounterURL && badge && odo && digits.length===13){
  const page_id="RadarTrust-USA-Portfolio",namespace="radartrust";
  const params=new URLSearchParams({page_id,namespace});
  const base="https://visitor-badge.one9x.com";
