@@ -1,0 +1,17 @@
+/* RadarTrust Design Lab — original synthesis, progressive enhancement only.
+   Preserves the existing hero, portrait, radar, orbs, content, and JS hooks. */
+:root{--rt-design-accent:#3ad6ba;--rt-design-highlight:#baff8c;--rt-design-ink:#071b22;--rt-design-outline:rgba(54,167,143,.24)}
+html{scroll-padding-top:clamp(72px,8vw,100px)}
+body{font-feature-settings:"kern" 1;text-rendering:optimizeLegibility}
+.site-header{border-bottom:1px solid rgba(29,113,96,.18)}
+.hero{isolation:isolate}
+.hero-ambient{pointer-events:none}
+.hero .container{position:relative}
+.hero .hero-layout{gap:clamp(18px,3vw,48px)}
+.section-heading{text-wrap:balance}
+.hero h1{text-wrap:balance}
+.credentials-section :is(.card,.credential-card),.skills-section :is(.card,.skill-card){transition:border-color .25s,box-shadow .25s,transform .25s}
+.credentials-section :is(.card,.credential-card):hover,.skills-section :is(.card,.skill-card):hover{border-color:var(--rt-design-outline)}
+:where(a,button,input,select,textarea):focus-visible{outline:3px solid #18a88e;outline-offset:3px}
+@media(max-width:700px){.hero .hero-layout{gap:20px}.section-heading{overflow-wrap:anywhere}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}.credentials-section :is(.card,.credential-card),.skills-section :is(.card,.skill-card){transition:none!important}}
