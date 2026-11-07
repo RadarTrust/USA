@@ -1,0 +1,21 @@
+/* RadarTrust Design Lab v1 — original synthesis of precise editorial grids and restrained motion. */
+:root{--rt-ink:#071b22;--rt-mint:#baff8c;--rt-teal:#28c8ae;--rt-outline:rgba(27,101,91,.16);--rt-focus:#147b72}
+html{scroll-behavior:smooth}body{font-feature-settings:"kern" 1;text-rendering:optimizeLegibility}
+.header{border-bottom:1px solid rgba(181,250,217,.15);backdrop-filter:blur(18px)}
+.intro{position:relative;isolation:isolate;overflow:hidden}
+.intro:before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 82% 15%,rgba(52,223,183,.14),transparent 48%),linear-gradient(145deg,rgba(2,21,27,.1),rgba(5,41,48,.2))}
+.intro h1{letter-spacing:-.065em;text-wrap:balance}.intro .lead{max-width:62ch;text-wrap:pretty}
+.metrics{border-top:1px solid rgba(183,252,213,.18);padding-top:22px}
+.workbench{background:linear-gradient(180deg,#f4faf7 0%,#f8fbf9 100%)}
+.workspace-title h2{letter-spacing:-.055em;text-wrap:balance}
+.toolbar{gap:12px}.search-wrap,.filter{transition:border-color .2s ease,box-shadow .2s ease,transform .2s ease}
+.search-wrap:focus-within,.filter:focus-within{border-color:#198d7b;box-shadow:0 0 0 4px rgba(36,170,147,.12)}
+.cards{gap:clamp(16px,2vw,26px)}
+.work-card{border-color:var(--rt-outline);box-shadow:0 1px 2px rgba(6,40,35,.035),0 18px 38px rgba(6,40,35,.055);transition:transform .28s cubic-bezier(.2,.7,.2,1),box-shadow .28s,border-color .28s}
+.work-card:hover{transform:translateY(-5px);border-color:rgba(24,137,114,.35);box-shadow:0 20px 46px rgba(5,49,43,.14)}
+.work-cover{background:radial-gradient(circle at 30% 18%,#1d7775,#082d37 72%)}
+.work-cover img{transition:transform .55s cubic-bezier(.2,.7,.2,1)}.work-card:hover .work-cover img{transform:scale(1.035)}
+.work-card h3{text-wrap:balance}.work-action{transition:background .2s,transform .2s}.work-action:active{transform:scale(.985)}
+:where(a,button,input,select):focus-visible{outline:3px solid var(--rt-focus);outline-offset:3px}
+@media(max-width:680px){.intro h1{letter-spacing:-.055em}.metrics{padding-top:17px}.work-card:hover{transform:none}.work-cover img{transition:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.work-card,.work-cover img,.work-action{transition:none!important;transform:none!important}}
