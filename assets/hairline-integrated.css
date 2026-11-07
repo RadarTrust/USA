@@ -1,0 +1,26 @@
+/* RadarTrust integrated editorial component system.
+   Inspired by the visual language of minimalist interface libraries;
+   all styling is original and scoped to the existing portfolio. */
+:root{--hl-stroke:rgba(146,221,211,.22);--hl-ease:cubic-bezier(.22,.7,.25,1)}
+.expertise-section .expertise-grid{gap:clamp(12px,1.5vw,22px)!important}
+.expertise-section .expertise-card{position:relative;isolation:isolate;overflow:hidden;border:1px solid var(--hl-stroke)!important;border-radius:20px!important;transition:transform .3s var(--hl-ease),border-color .3s,box-shadow .3s!important}
+.expertise-section .expertise-card:before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(130deg,rgba(122,241,216,.09),transparent 55%);opacity:0;transition:opacity .3s}
+.expertise-section .expertise-card:hover,.expertise-section .expertise-card:focus-within{transform:translateY(-4px)!important;border-color:rgba(130,245,213,.58)!important;box-shadow:0 15px 35px rgba(0,14,23,.24)!important}
+.expertise-section .expertise-card:hover:before{opacity:1}
+.expertise-section .expertise-symbol{display:grid;place-items:center;min-height:100px;overflow:hidden}
+.expertise-section .skill-area-svg{width:76px!important;height:76px!important;filter:none!important;transition:transform .45s var(--hl-ease)}
+.expertise-section .expertise-card:hover .skill-area-svg{transform:translateY(-3px) scale(1.08)}
+.expertise-section .expertise-index{letter-spacing:.14em!important;font-size:10px!important}
+.credentials-section .filter-panel{border:1px solid var(--hl-stroke)!important;border-radius:18px!important;box-shadow:0 12px 35px rgba(0,16,26,.08)!important}
+.credentials-section .category-tabs{gap:8px!important}
+.credentials-section .category-tabs button{border-radius:12px!important;transition:background .2s,border-color .2s,transform .2s}
+.credentials-section .category-tabs button:hover{transform:translateY(-2px)}
+.credentials-section .credentials-grid>*{border-radius:18px!important;transition:transform .25s var(--hl-ease),box-shadow .25s,border-color .25s}
+.credentials-section .credentials-grid>*:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,16,25,.15)}
+.rt-works-feature .rt-works-banner{border-radius:20px!important;overflow:hidden;transition:transform .3s var(--hl-ease),box-shadow .3s}
+.rt-works-feature .rt-works-banner:hover{transform:translateY(-3px);box-shadow:0 16px 42px rgba(0,15,23,.25)}
+.rt-works-feature .rt-works-banner-icon svg{transition:transform .45s var(--hl-ease)}
+.rt-works-feature .rt-works-banner:hover .rt-works-banner-icon svg{transform:rotate(-6deg) scale(1.08)}
+:where(.expertise-section,.credentials-section,.rt-works-feature) :is(a,button,input,select):focus-visible{outline:3px solid #9cf8d6!important;outline-offset:3px!important}
+@media(max-width:600px){.expertise-section .expertise-card{border-radius:16px!important}.expertise-section .expertise-symbol{min-height:78px}.expertise-section .skill-area-svg{width:62px!important;height:62px!important}.credentials-section .filter-panel{border-radius:14px!important}}
+@media(prefers-reduced-motion:reduce){.expertise-section .expertise-card,.expertise-section .skill-area-svg,.credentials-section .credentials-grid>*,.rt-works-feature .rt-works-banner,.rt-works-feature .rt-works-banner-icon svg{transition:none!important;transform:none!important}}
