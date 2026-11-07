@@ -829,3 +829,4 @@ body:not(.theme-dark) .hero .hero-content{
  .hero .hero-aside .universe-stage .portrait-photo.rt-about-target,
  .hero .hero-aside .universe-stage .portrait-photo.rt-about-target .hero-photo{transition:none!important}
 }
+\n/* Visitor badge fallback when the third-party JSON endpoint is blocked by CORS. */\n.visitor-widget.counter-badge-fallback .odometer-machine{display:none!important}\n.visitor-widget.counter-badge-fallback .visitor-tracking-pixel{position:static!important;display:block!important;width:auto!important;max-width:100%!important;height:28px!important;opacity:1!important;pointer-events:none!important;margin:5px auto!important}\n
