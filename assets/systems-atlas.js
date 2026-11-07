@@ -25,7 +25,7 @@ const filters=[["all","All"],["systems","Infrastructure"],["security","Security"
 const cards=[];
 for(const x of data){
 const article=document.createElement("article");article.className="rt-atlas-card";article.dataset.category=x.category;article.dataset.search=(x.title+" "+x.category+" "+x.desc+" "+x.detail).toLowerCase();
-const visual=document.createElement("div");visual.className="rt-atlas-visual";visual.innerHTML='<svg viewBox="0 0 280 210" role="img" aria-label="'+x.title+' conceptual diagram">'+shapes[x.shape]+'</svg>';
+const visual=document.createElement("div");visual.className="rt-atlas-visual";visual.innerHTML='<svg viewBox="0 0 280 210" role="img">'+shapes[x.shape]+'</svg>';visual.querySelector("svg").setAttribute("aria-label",x.title+" conceptual diagram");
 const copy=document.createElement("div");copy.className="rt-atlas-copy";
 const label=document.createElement("span");label.className="rt-atlas-category";label.textContent=x.category;
 const h=document.createElement("h3");h.textContent=x.title;
