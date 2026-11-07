@@ -154,6 +154,15 @@ if(badge && odo && digits.length===13){
     draw(value);return;
    }catch(e){/* Counter unavailable; preserve the privacy-safe offline state. */}
   }
+  // JSON count reads may fail browser CORS while the actual counter badge succeeds.
+  // Show the provider's real SVG rather than blank digits or a fabricated number.
+  if(badge.complete && badge.naturalWidth>0){
+   badge.removeAttribute("aria-hidden");
+   badge.alt="Recorded portfolio page views (live counter badge)";
+   badge.closest(".visitor-widget")?.classList.add("counter-badge-fallback");
+   showStatus("Recorded page views · live counter badge");
+   return;
+  }
   showStatus("Live visit total temporarily unavailable");
   odo.setAttribute("aria-label","Live visit total temporarily unavailable");
  }
