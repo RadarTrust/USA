@@ -1,0 +1,14 @@
+(()=>{"use strict";const data=[
+["Social Media Manager","Marketing","Social media content and campaign workflows.","https://mcpmarket.com/tools/skills/social-media-manager"],
+["Competitor Tracker","Marketing","Competitor monitoring skill listing.","https://www.skillsdirectory.com/skills/unempyd-competitor-tracker"],
+["Awesome Claude Skills","Skills","Community collection of reusable Claude skills.","https://github.com/ComposioHQ/awesome-claude-skills"],
+["Claude Connectors","Skills","Connector examples within the community skills collection.","https://github.com/ComposioHQ/awesome-claude-skills/tree/master/connectors"],
+["Revoply AI","Marketing","External AI marketing and growth platform.","https://revoplyai.com/"],
+["Anthropic Skills","Skills","Official Anthropic skills examples and templates.","https://github.com/anthropics/skills"],
+["MCP Reference Servers","Protocols","Model Context Protocol reference server implementations.","https://github.com/modelcontextprotocol/servers"],
+["n8n","Automation","Visual workflow automation with integrations.","https://n8n.io/"],
+["LangChain","Agents","Framework for AI application and agent development.","https://www.langchain.com/"],
+["CrewAI","Agents","Multi-agent workflow orchestration.","https://www.crewai.com/"],
+["Dify","Agents","Platform for AI applications and workflows.","https://dify.ai/"],
+["Flowise","Agents","Visual builder for LLM workflows and agents.","https://flowiseai.com/"]
+];const query=document.getElementById("query"),category=document.getElementById("category"),results=document.getElementById("results"),status=document.getElementById("status");function render(){const q=query.value.trim().toLowerCase(),c=category.value;const matches=data.filter(r=>(c==="all"||r[1]===c)&&(!q||r.slice(0,3).join(" ").toLowerCase().includes(q)));results.replaceChildren();for(const [name,kind,desc,url] of matches){const card=document.createElement("article");card.className="card";const tag=document.createElement("span");tag.className="tag";tag.textContent=kind;const title=document.createElement("h2");title.textContent=name;const p=document.createElement("p");p.textContent=desc;const a=document.createElement("a");a.href=url;a.target="_blank";a.rel="noopener noreferrer";a.textContent="Visit resource ↗";card.append(tag,title,p,a);results.append(card)}status.textContent="Showing "+matches.length+" of "+data.length+" resources.";if(!matches.length){const p=document.createElement("p");p.textContent="No matching tools. Try another keyword or category.";results.append(p)}}query.addEventListener("input",render);category.addEventListener("change",render);document.getElementById("clear").addEventListener("click",()=>{query.value="";category.value="all";render();query.focus()});render()})();
