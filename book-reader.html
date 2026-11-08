@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Read original technical publications by Zeiad G. Yazaji in the RadarTrust on-site reader.">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="theme-color" content="#071b22">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-src 'none'; form-action 'none'; connect-src 'self'; img-src 'self' data:; script-src 'self'; style-src 'self'; font-src 'self'; upgrade-insecure-requests">
+<title>Read a Book | RadarTrust</title>
+<link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+<link rel="stylesheet" href="./assets/book-reader.css?v=1">
+<script src="./assets/book-reader.js?v=1" defer></script>
+</head><body>
+<a class="skip" href="#bookpage">Skip to the reading page</a>
+<header class="header">
+  <a href="./" class="brand"><span class="brand-icon" aria-hidden="true">◈</span>RadarTrust</a>
+  <nav aria-label="Book reader navigation"><a href="./works.html">My Publications &amp; Projects</a><span class="sep" aria-hidden="true">/</span><span>Read on RadarTrust</span></nav>
+</header>
+<main class="reader" id="reader">
+  <section class="reader-intro">
+    <div>
+      <p class="eyebrow">THE RADARTRUST READING ROOM</p>
+      <h1 id="book-title">Loading publication…</h1>
+      <p id="byline">Zeiad G. Yazaji · Independently published</p>
+    </div>
+    <div class="ownership"><span class="ownership-icon" aria-hidden="true">◈</span><div><strong>On-site reading edition</strong><small>No PDF download is provided. All visible content can still be captured by a visitor.</small></div></div>
+  </section>
+  <div class="reader-shell">
+    <aside class="sidebar" aria-label="Book overview">
+      <div class="book-cover"><img id="book-cover" alt="Book cover preview" width="360" height="450"></div>
+      <div class="metadata"><span class="eyebrow">BOOK INFORMATION</span><h2 id="side-title">Publication</h2><p id="subject"></p><p id="page-summary"></p></div>
+      <a href="./works.html" class="back-link">← Back to all publications</a>
+    </aside>
+    <section class="reading-area" aria-label="Reader controls and book pages">
+      <div class="toolbar">
+        <div class="toolbar-label"><span class="live-dot" aria-hidden="true"></span> READ ONLINE <span class="muted">· text edition</span></div>
+        <div class="zoom-controls" role="group" aria-label="Reading text size">
+          <button type="button" id="zoom-out" aria-label="Make page text smaller">A−</button>
+          <span id="zoom-value">100%</span>
+          <button type="button" id="zoom-in" aria-label="Make page text larger">A+</button>
+          <button type="button" id="zoom-reset" aria-label="Reset text size" title="Reset">Reset</button>
+        </div>
+      </div>
+      <div id="status" role="status" aria-live="polite">Preparing book pages…</div>
+      <div class="page-stage" id="bookpage">
+        <article class="paper" id="paper" aria-label="Current reading page">
+          <div class="paper-header">RADARTRUST <span id="paper-series">PROFESSIONAL PUBLICATIONS</span></div>
+          <div class="watermark" aria-hidden="true">RADARTRUST<br>ZEIAD G. YAZAJI</div>
+          <pre id="page-text" class="page-text"></pre>
+          <div class="paper-footer"><span>© Zeiad G. Yazaji · Reading edition</span><span id="paper-count">Page 1</span></div>
+        </article>
+      </div>
+      <p class="reader-disclosure">Reading edition extracted from the author's PDF. Embedded diagrams, illustrations and some original formatting may not be reproduced. The original PDF is not hosted on the public website.</p>
+      <div class="page-nav" aria-label="Page navigation">
+        <button id="prev-page" class="nav-button" type="button" aria-label="Previous page">← Previous</button>
+        <label class="page-select">Page <input id="page-number" type="number" min="1" value="1" inputmode="numeric" aria-label="Jump to page"><span id="total-pages">/ 1</span></label>
+        <button id="next-page" class="nav-button primary" type="button" aria-label="Next page">Next →</button>
+      </div>
+      <div class="reading-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="progress-bar"></div></div>
+      <p class="tips">Tip: use the ← → arrow keys, swipe on mobile, or enter a page number. Your last page is saved on this device.</p>
+    </section>
+  </div>
+</main>
+<footer><span>© 2026 Zeiad G. Yazaji · RadarTrust</span><a href="./works.html">My Publications & Projects ↗</a></footer>
+</body></html>
