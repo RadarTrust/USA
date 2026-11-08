@@ -16,7 +16,8 @@
     "cover": "books/covers/zya-guard-ai-security.svg",
     "evidenceImage": "",
     "publicationUrl": "",
-    "verificationUrl": ""
+    "verificationUrl": "",
+    "readerId": "zya-guard-ai-security-v13"
   },
   {
     "id": "converged-intelligence-infrastructure-2026",
@@ -35,6 +36,7 @@
     "cover": "books/covers/converged-intelligence-infrastructure.svg",
     "evidenceImage": "",
     "publicationUrl": "",
-    "verificationUrl": ""
+    "verificationUrl": "",
+    "readerId": "converged-intelligence-infrastructure-2026"
   }
 ]
