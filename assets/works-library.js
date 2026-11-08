@@ -26,7 +26,7 @@ function parseRecord(raw,kind){
  technologies:Array.isArray(raw.technologies)?raw.technologies.slice(0,25).map(v=>clean(v,50)):[],
  isbn:clean(raw.isbn,40),doi:clean(raw.doi,120),language:clean(raw.language,50),status:clean(raw.status,100),
  cover:safeAsset(raw.cover),evidenceImage:safeAsset(raw.evidenceImage),
- publicationUrl:safeLink(raw.publicationUrl),verificationUrl:safeLink(raw.verificationUrl),projectUrl:safeLink(raw.projectUrl)};
+ publicationUrl:safeLink(raw.publicationUrl),verificationUrl:safeLink(raw.verificationUrl),projectUrl:safeLink(raw.projectUrl),readerId:kind==="book"&&raw.readerId===id?id:""};
 }
 function stars(r){
  const wrap=node("div","rating"),group=node("span","stars"),value=rating(r);
@@ -43,6 +43,7 @@ function card(r){
  body.append(node("h3","",r.title),node("p","work-meta",[r.author||r.organization||r.role,r.subject,r.year||""].filter(Boolean).join(" · ")));
  body.append(node("p","work-desc",r.summary?(r.summary.length>230?r.summary.slice(0,227)+"…":r.summary):"Open details for authorship, accreditation and evidence."));
  body.append(stars(r));
+ if(r.readerId){const a=node("a","reader-action","Read book online →");a.href="./book-reader.html?book="+encodeURIComponent(r.readerId);a.setAttribute("aria-label","Read "+r.title+" on RadarTrust");body.append(a)}
  const btn=node("button","work-action","Explore work →");btn.type="button";btn.addEventListener("click",()=>openDetail(r));body.append(btn);
  a.append(cover,body);return a;
 }
@@ -56,6 +57,7 @@ function openDetail(r){
  detail.append(dl);
  if(r.summary)detail.append(node("h3","","Description"),node("p","detail-paragraph",r.summary));
  const evidence=node("div","evidence");
+ if(r.readerId){const a=node("a","reader-action","Read online inside RadarTrust →");a.href="./book-reader.html?book="+encodeURIComponent(r.readerId);evidence.append(a)}
  for(const [v,label] of [[r.publicationUrl,"View publication ↗"],[r.projectUrl,"View project ↗"],[r.verificationUrl,"Official evidence ↗"]]){const a=anchor(v,label);if(a)evidence.append(a)}
  if(r.evidenceImage){const img=node("img");img.src="./"+r.evidenceImage;img.alt="Evidence image for "+r.title;evidence.append(img)}
  if(evidence.childNodes.length)detail.append(node("h3","","Links & evidence"),evidence);
