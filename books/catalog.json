@@ -1,1 +1,40 @@
-[]
+[
+  {
+    "id": "zya-guard-ai-security-v13",
+    "title": "ZYA-GUARD: AI Security Master Course — V13 Edition",
+    "author": "Zeiad G. Yazaji",
+    "publisher": "Zeiad G. Yazaji (Independent / Self-Published)",
+    "accreditingBody": "",
+    "accreditationDetails": "The author reports an EC-Council ECE submission/recognition. Official book accreditation or ECE approval documentation has not been provided for public verification; therefore this listing does not claim independently verified accreditation.",
+    "subject": "AI Security & Cybersecurity",
+    "year": 2026,
+    "language": "English",
+    "isbn": "",
+    "doi": "",
+    "summary": "A 46-page instructor-oriented technical course covering secure AI architecture, the ZYA-GUARD framework, prompt injection defenses, trust boundaries, AI gateway controls, LangGraph agent safety, RAG hardening, SIEM telemetry, governance, labs, risk assessments, audit checklists and an executive AI security capstone.",
+    "status": "Authored technical course · 2026",
+    "cover": "books/covers/zya-guard-ai-security.svg",
+    "evidenceImage": "",
+    "publicationUrl": "",
+    "verificationUrl": ""
+  },
+  {
+    "id": "converged-intelligence-infrastructure-2026",
+    "title": "Converged Intelligence Infrastructure: Hybrid AI Data Center + Enterprise Cloud Data Center Architecture",
+    "author": "Zeiad G. Yazaji",
+    "publisher": "Zeiad G. Yazaji (Independent / Self-Published)",
+    "accreditingBody": "",
+    "accreditationDetails": "The author reports an EC-Council ECE submission/recognition. Official book accreditation or ECE approval documentation has not been provided for public verification; therefore this listing does not claim independently verified accreditation.",
+    "subject": "AI Infrastructure, Data Centers & Cloud",
+    "year": 2026,
+    "language": "English",
+    "isbn": "",
+    "doi": "",
+    "summary": "A 58-page technical master blueprint for combining AI cluster infrastructure and enterprise cloud data centers. Covers secure trust-zone segmentation, GPU/TPU compute, network fabrics, storage, cooling, workload isolation, AI governance, identity security, telemetry, incident response, operations, risk controls and architecture acceptance criteria. Publication ID: ZGY-CIC-2026-01; May 2026 edition.",
+    "status": "Authored technical architecture handbook · May 2026",
+    "cover": "books/covers/converged-intelligence-infrastructure.svg",
+    "evidenceImage": "",
+    "publicationUrl": "",
+    "verificationUrl": ""
+  }
+]
