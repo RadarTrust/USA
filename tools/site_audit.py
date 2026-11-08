@@ -110,6 +110,36 @@ def audit(root: Path) -> tuple[list[str], dict[str, int]]:
             if not target.exists():
                 errors.append(f"Broken local reference: {page.relative_to(root)} -> {uri}")
 
+    # Online reading content: require complete page editions and no public PDF master.
+    if not (root / "book-reader.html").is_file():
+        errors.append("Missing online book reader")
+    pdfs = [p.relative_to(root).as_posix() for p in root.rglob("*.pdf")]
+    if pdfs:
+        errors.append("Original downloadable PDFs found in public repository: " + ", ".join(pdfs[:10]))
+    book_catalog = root / "books" / "catalog.json"
+    if book_catalog.is_file():
+        try:
+            books = json.loads(book_catalog.read_text(encoding="utf-8-sig"))
+            for book in books:
+                reader_id = book.get("readerId")
+                if not reader_id:
+                    continue
+                if reader_id != book.get("id") or not re.fullmatch(r"[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}", reader_id):
+                    errors.append("Invalid reader identifier: " + str(reader_id))
+                    continue
+                page_path = root / "books" / "readers" / reader_id / "pages.json"
+                if not page_path.is_file():
+                    errors.append("Missing reader pages for " + reader_id)
+                    continue
+                payload = json.loads(page_path.read_text(encoding="utf-8"))
+                pages = payload.get("pages")
+                if payload.get("id") != reader_id or not isinstance(pages, list) or not pages or len(pages) != payload.get("pageCount"):
+                    errors.append("Invalid reader manifest for " + reader_id)
+                elif not all(x.get("n") == i and isinstance(x.get("t"), str) for i, x in enumerate(pages, 1)):
+                    errors.append("Invalid page entries for " + reader_id)
+        except (ValueError, TypeError, json.JSONDecodeError) as exc:
+            errors.append("Invalid online reader JSON: " + str(exc))
+
     for name, key in (("credentials.json", "core_credentials"),
                       ("archive-certificates.json", "archive_credentials")):
         path = root / "data" / name
