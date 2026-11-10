@@ -135,7 +135,7 @@ def audit(root: Path) -> tuple[list[str], dict[str, int]]:
                 pages = payload.get("pages")
                 if payload.get("id") != reader_id or not isinstance(pages, list) or not pages or len(pages) != payload.get("pageCount"):
                     errors.append("Invalid reader manifest for " + reader_id)
-                elif not all(x.get("n") == i and isinstance(x.get("t"), str) for i, x in enumerate(pages, 1)):
+                elif not all(isinstance(x, dict) and x.get("n") == i and x.get("image") == f"page-{i:03d}.webp" and (page_path.parent / x["image"]).is_file() for i, x in enumerate(pages, 1)):
                     errors.append("Invalid page entries for " + reader_id)
         except (ValueError, TypeError, json.JSONDecodeError) as exc:
             errors.append("Invalid online reader JSON: " + str(exc))
