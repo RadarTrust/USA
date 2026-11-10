@@ -8,8 +8,8 @@ import re
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-PAGES = [ROOT / "index.html", ROOT / "about.html", ROOT / "contact.html"]
-PAGES += sorted((ROOT / "skills").glob("*.html"))
+PAGES = sorted(path for path in ROOT.rglob("*.html") if path.is_file() and path.relative_to(ROOT).as_posix() not in {"assets/guide-v34.html"})
+# assets/guide-v34.html is an injected HTML fragment, not a standalone document.
 SUFFIXES = {".html", ".js", ".json", ".css", ".py"}
 PATTERNS = {
     "GitHub token": re.compile(r"\b(?:gh[pousr]_[A-Za-z0-9_]{24,}|github_pat_[A-Za-z0-9_]{20,})"),
@@ -25,7 +25,7 @@ for page in PAGES:
         continue
     source = page.read_text(encoding="utf-8-sig")
     if not re.search(r'<meta\s+http-equiv=["\']Content-Security-Policy["\']', source, re.I):
-        errors.append(f"Missing CSP meta policy: {page.relative_to(ROOT)}")
+        errors.append(f"Missing CSP meta policy (verify response-header CSP separately): {page.relative_to(ROOT)}")
     if re.search(r"<script\b[^>]*\bsrc=['\"]http://", source, re.I):
         errors.append(f"Plain-HTTP script: {page.relative_to(ROOT)}")
 
