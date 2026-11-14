@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://radartrust.github.io/USA/sitemap.xml
