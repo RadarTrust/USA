@@ -2,7 +2,7 @@
 
 <div align="center">
 
-[![RadarTrust ΓÇö Building trust through expertise Radar](https://radartrust.pages.dev/.github/assets/radartrust-repository-banner.svg)](https://radartrust.pages.dev/)
+[![RadarTrust ΓÇö Building trust through expertise Radar](.github/assets/radartrust-repository-banner.svg)](https://radartrust.pages.dev/)
 
 # [RadarTrust](https://github.com/RadarTrust)
 
